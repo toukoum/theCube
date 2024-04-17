@@ -1,3 +1,6 @@
 [submodule "libft-boost"]
 	path = libft-boost
 	url = https://github.com/toukoum/libft-42.git
+[submodule "mlx-linux"]
+	path = mlx-linux
+	url = git@github.com:42Paris/minilibx-linux.git
