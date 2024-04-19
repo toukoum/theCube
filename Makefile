@@ -1,8 +1,11 @@
 NAME 	:=	cub3D
-FLAGS	:=	-Wall -Wextra -Werror -MMD -g -O3
+FLAGS	:=	-Wall -Wextra -Werror -MMD -g
+
+SRC		:= main.c  parsing/parse.c parsing/parse_color_line.c parsing/parse_texture_line.c \
+parsing/parse_util_args.c parsing/parse_util2_args.c exec/exit.c
+
 OBJS_DIR:=	./objs/
 SRC_DIR := ./srcs/
-SRC		:= main.c
 OBJ		:= $(addprefix $(OBJS_DIR),$(SRC:.c=.o))
 DEPS	:= $(OBJ:.o=.d)
 CC		:=	cc
@@ -57,7 +60,7 @@ $(MLX_LIB):
 	@make -C $(MLX_DIR)  > /dev/null 2>&1
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(@D)
 	@printf "$(ERASE) > Compiling: $(BLUE)$@$(NC)$(END)"    
 	@$(CC) $(FLAGS) $(INCLUDE) $(MLX_FLAGS) -c $< -o $@
 
@@ -77,6 +80,9 @@ fclean: clean
 	@echo " >$(CYAN) Done 🔥\n$(NC)"
 
 re: fclean all
+
+t: all 
+	@./$(NAME)
 
 -include $(DEPS)
 
