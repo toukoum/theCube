@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 15:29:32 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/19 20:20:10 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ bool	is_dir(char *path)
 	bool	result;
 
 	result = false;
-	fd = open(path, __O_DIRECTORY);
+	if (LINUX)
+		fd = open(path, MY_DIR);
+	else
+		fd = open(path, MY_DIR);
 	if (fd >= 0)
 	{
 		result = true;

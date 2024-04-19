@@ -6,20 +6,30 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 15:45:12 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/19 20:20:20 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __CUBE_H__
 # define __CUBE_H__
 
+
+# ifdef __APPLE__
+  #define LINUX 0
+  #define MY_DIR O_DIRECTORY
+# elif __linux__
+  #define LINUX 1
+  #define MY_DIR __O_DIRECTORY
+# endif
+
+
 # include "../libft-boost/ft_printf/includes/ft_printf.h"
 # include "../libft-boost/gnl/includes/get_next_line_bonus.h"
 # include "../libft-boost/libft_mandatory/includes/libft.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <fcntl.h> // open
 # include <mlx.h>
+#  include <X11/X.h>
+#  include <X11/keysym.h>
 # include <stdbool.h> // boolean
 # include <unistd.h>  // open, write
 

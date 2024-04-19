@@ -19,12 +19,14 @@ OS	:= $(shell uname)
 
 ifeq ($(OS), Darwin)
 	MLX_DIR		:= mlx-opengl
+	MLX_FLAGS	:= -I$(MLX_DIR) -I/opt/X11/include
+	MLX_PATH	:= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 else
 	MLX_DIR		:= mlx-linux
 	MLX_FLAGS	:= -I/usr/include -I$(MLX_DIR)
 	MLX_PATH	:= -L$(MLX_DIR) -lmlx -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
-	MLX_LIB		:= mlx-linux/libmlx.a
 endif
+MLX_LIB		:= $(MLX_DIR)/libmlx.a
 
 # =================================
 
