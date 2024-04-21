@@ -6,18 +6,33 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 20:20:10 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/21 10:30:11 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	init_color(t_color *color_struct)
+void	init_color(t_args *args)
 {
-	color_struct->is_correct = false;
-	color_struct->b = 0;
-	color_struct->g = 0;
-	color_struct->r = 0;
+	args->ceilColor.is_correct = false;
+	args->ceilColor.b = 0;
+	args->ceilColor.g = 0;
+	args->ceilColor.r = 0;
+	args->floorColor.is_correct = false;
+	args->floorColor.b = 0;
+	args->floorColor.g = 0;
+	args->floorColor.r = 0;
+	args->pos_x = 0;
+	args->pos_y = 0;
+	args->is_correct_pos = false;
+	args->width = 0;
+	args->height = 0;
+	args->start_angle = 'Z';
+	args->pathE = NULL;
+	args->pathN = NULL;
+	args->pathS = NULL;
+	args->pathO = NULL;
+	args->start_map = 0;
 }
 
 bool	is_dir(char *path)

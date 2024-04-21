@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 15:18:23 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/21 11:03:41 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void assign_path(char *line, char *cpy_line, t_args *args)
 	
 	if (*target_path)
 		return (close(args->fd), quit(CLONE_ARGS));
-	*target_path = line;
+	*target_path = ft_strdup(line);
 }
 
 void parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
@@ -55,7 +55,7 @@ void parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	assign_path(line, cpy_line, args);
 }
 
-void	parse_line(char *line, t_args *args)
+int	parse_line(char *line, t_args *args)
 {
 	int	i;
 	char *cpy_line;
@@ -68,7 +68,13 @@ void	parse_line(char *line, t_args *args)
 	else if (is_texture_id(line, i))
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
-		return ;
+		return (0);
+	else if(!is_args_full(args))
+		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);
 	else
-		return (close(args->fd), quit(WRONG_ARG));
+	{
+		parse_map(args, line);
+		return (1);
+	}
+	return (0);
 }

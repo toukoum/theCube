@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:11:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 15:50:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/21 11:02:54 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ void	init_args(t_args *args)
 
 	ft_printf("fd: %d\n", (args->fd));
 	result = get_next_line(args->fd);
-	while (result && !is_args_full(args))
+	while (result)
 	{
-		parse_line(result, args);
+		args->start_map++;
+		if (parse_line(result, args))
+			return ;
 		free(result);
 		result = get_next_line(args->fd);
 	}
-	if (!is_args_full(args))
-		return (close(args->fd), quit(MISSING_ARG));
 	free(result);
+	return (close(args->fd), quit(MISSING_MAP));
 }
 
 void	check_path(int *fd, char *path)
@@ -52,8 +53,8 @@ void	check_path(int *fd, char *path)
 void	parse(t_args *args, char *path)
 {
 	ft_bzero(args, sizeof(t_args));
-	init_color(&args->ceilColor);
-	init_color(&args->floorColor);
+	args->path_file = path;
+	init_color(args);
 	check_path(&args->fd, path);
 	init_args(args);
 	close(args->fd);
