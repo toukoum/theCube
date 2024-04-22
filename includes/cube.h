@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:44:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:01:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,23 @@ typedef struct s_args
 	int				start_map;
 }					t_args;
 
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_img;
+
+typedef struct s_cub
+{
+	t_args			*arg;
+	t_img			img;
+	void			*mlx;
+	void			*win;
+}					t_cub;
+
 // =========================== EVENT MLX ===========================
 enum
 {
@@ -91,12 +108,19 @@ enum
 # define NO_PLAYER 14
 # define DUP_PLAYER 15
 
-#define RED "\e[1;31m"
-#define REDL "\e[0;31m"
-#define YELLOWB "\e[1;93m"
-#define GREENB "\e[0;92m"
-#define RESET "\e[0m"
+# define RED "\e[1;31m"
+# define REDL "\e[0;31m"
+# define YELLOWB "\e[1;93m"
+# define GREENB "\e[1;92m"
+# define RESET "\e[0m"
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+//# define WMAP 24
+//# define HMAP 24
+# define TSIZE 32 // taille d'un carreau
 
 // =========================== FUNCTION ===========================
 
@@ -126,6 +150,9 @@ void				store_map(t_args *args);
 void				quit(int exit_code);
 void				free_all_map(t_args *args, int exit_code);
 void				exit_free_map(t_args *args, int i);
+
+// mlx
+void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

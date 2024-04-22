@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:17:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:47:36 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 20:50:02 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	quit2(int exit_code)
 void	quit(int exit_code)
 {
 	if (exit_code == NUMBERS_ARGC)
-		print_err_mess("Usage: ./path/to/map.cub>");
+		print_err_mess("Usage: cub3D '/path/to/map.cub'");
 	else if (exit_code == WRONG_FILE)
 		print_err_mess("File: wrong file");
 	else if (exit_code == EXTENSION_NAME)
@@ -50,7 +50,7 @@ void	quit(int exit_code)
 	else if (exit_code == FILE_DIR)
 		print_err_mess("file is a directory");
 	else if (exit_code == MISSING_MAP)
-		print_err_mess("in map file, missing map");
+		print_err_mess("in file, missing map");
 	else if (exit_code == WRONG_ARG)
 		print_err_mess("argument in file not valid");
 	else if (exit_code == CLONE_ARGS)
@@ -58,7 +58,7 @@ void	quit(int exit_code)
 	else if (exit_code == MPTY_LINE_MAP)
 		print_err_mess("empty line in map");
 	else if (exit_code == INVALID_CHARACTER)
-		print_err_mess("in map, invalid character");
+		print_err_mess("in file, invalid character");
 	else if (exit_code == MAP_NOT_LAST)
 		print_err_mess("map is not the last element of file");
 	else

@@ -1,13 +1,19 @@
-F  50    ,    255     , 10  
-C 223, 23, 0
+F 230, 198, 198
+C 29, 29, 29
 
+
+
+EA textures/matrix.xpm
 NO textures/matrix.xpm
 SO textures/matrix.xpm
 WE textures/matrix.xpm
-EA textures/matrix.xpm
-
-110111
-100S01
-100111
-1001
-1111
+  
+1111111111
+1000001001
+1111000001
+100000N001
+1000111111
+10001
+11101
+10001
+11111
