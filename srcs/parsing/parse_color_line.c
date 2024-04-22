@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 20:15:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:42:56 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	get_number(char *line, int *i, int fd, bool is_last)
 
 void	parse_color_line(t_args *args, char *line, int i)
 {
-	t_color tmp_color;
-	t_color *color_target;
-	
+	t_color	tmp_color;
+	t_color	*color_target;
+
 	tmp_color.r = get_number(line, &i, args->fd, false);
 	tmp_color.g = get_number(line, &i, args->fd, false);
 	tmp_color.b = get_number(line, &i, args->fd, true);

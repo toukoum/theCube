@@ -6,16 +6,16 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/21 11:03:41 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:42:19 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void assign_path(char *line, char *cpy_line, t_args *args)
+void	assign_path(char *line, char *cpy_line, t_args *args)
 {
-	char **target_path;
-	
+	char	**target_path;
+
 	if (cpy_line[0] == 'N' && cpy_line[1] == 'O')
 		target_path = &args->pathN;
 	else if (cpy_line[0] == 'S' && cpy_line[1] == 'O')
@@ -24,17 +24,16 @@ void assign_path(char *line, char *cpy_line, t_args *args)
 		target_path = &args->pathO;
 	else
 		target_path = &args->pathE;
-	
 	if (*target_path)
 		return (close(args->fd), quit(CLONE_ARGS));
 	*target_path = ft_strdup(line);
 }
 
-void parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
+void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 {
-	int len_path;
-	int fd_path;
-	
+	int	len_path;
+	int	fd_path;
+
 	goto_next_char(&i, line);
 	line = line + i;
 	len_path = i;
@@ -53,12 +52,13 @@ void parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	if (fd_path == -1)
 		return (close(args->fd), quit(WRONG_FILE));
 	assign_path(line, cpy_line, args);
+	close(fd_path);
 }
 
 int	parse_line(char *line, t_args *args)
 {
-	int	i;
-	char *cpy_line;
+	int		i;
+	char	*cpy_line;
 
 	cpy_line = line;
 	i = 0;
@@ -69,7 +69,7 @@ int	parse_line(char *line, t_args *args)
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
 		return (0);
-	else if(!is_args_full(args))
+	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);
 	else
 	{

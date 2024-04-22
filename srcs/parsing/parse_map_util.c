@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:09:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/21 11:05:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:42:49 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_line_width(t_args *args, char *line)
 
 bool	is_empty_line(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
@@ -51,10 +51,10 @@ bool	is_empty_line(char *line)
 	return (true);
 }
 
-void str_copy_cube(char *dst, char *src)
+void	str_copy_cube(char *dst, char *src)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	i = 0;

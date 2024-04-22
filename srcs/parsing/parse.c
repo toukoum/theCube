@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:11:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/21 11:02:54 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:30:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	init_args(t_args *args)
 {
 	char	*result;
 
-	ft_printf("fd: %d\n", (args->fd));
 	result = get_next_line(args->fd);
 	while (result)
 	{

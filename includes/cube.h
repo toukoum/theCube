@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/21 11:05:57 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:44:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,17 @@ enum
 # define MAP_NOT_LAST 10
 # define MISSING_ARG 11
 # define MALLOC_ERROR 11
+# define WALL_SURR 12
+# define ALL_GOOD 13
+# define NO_PLAYER 14
+# define DUP_PLAYER 15
+
+#define RED "\e[1;31m"
+#define REDL "\e[0;31m"
+#define YELLOWB "\e[1;93m"
+#define GREENB "\e[0;92m"
+#define RESET "\e[0m"
+
 
 // =========================== FUNCTION ===========================
 
@@ -108,10 +119,13 @@ bool				is_empty_line(char *line);
 bool				valid_value_map(char c);
 void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
-void				exit_free_map(t_args *args, int i);
+void				check_map(t_args *args, size_t i, size_t j);
+void				store_map(t_args *args);
 
 // -> quit
 void				quit(int exit_code);
+void				free_all_map(t_args *args, int exit_code);
+void				exit_free_map(t_args *args, int i);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

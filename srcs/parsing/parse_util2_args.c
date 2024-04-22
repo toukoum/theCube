@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:14:51 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/19 15:29:11 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/22 12:43:28 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	min_atoi_boost(char *line, int *i, int *err)
 bool	is_texture_id(char *line, int i)
 {
 	return ((line[i] == 'N' && line[i + 1] == 'O') || (line[i] == 'S' && line[i
-			+ 1] == 'O') || (line[i] == 'W' && line[i + 1] == 'E')
+				+ 1] == 'O') || (line[i] == 'W' && line[i + 1] == 'E')
 		|| (line[i] == 'E' && line[i + 1] == 'A'));
 }
