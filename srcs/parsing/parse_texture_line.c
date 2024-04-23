@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 20:48:59 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:08:31 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	assign_path(char *line, char *cpy_line, t_args *args)
 	else
 		target_path = &args->pathE;
 	if (*target_path)
-		return (close(args->fd), quit(CLONE_ARGS));
+		return (free(cpy_line), exit_parse_map(args, CLONE_ARGS, true));
 	*target_path = ft_strdup(line);
 }
 
@@ -42,17 +42,17 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	i = len_path;
 	goto_next_char(&i, line);
 	if (line[i])
-		return (close(args->fd), quit(WRONG_ARG));
+		return (free(cpy_line), exit_parse_map(args, WRONG_ARG, true));
 	line[len_path] = '\0';
 	if (is_dir(line))
-		return (close(args->fd), quit(FILE_DIR));
+		return (free(cpy_line), exit_parse_map(args, FILE_DIR, true));
 	if (!check_extension(line, ".xpm"))
-		quit(EXTENSION_NAME);
+		return (free(cpy_line), exit_parse_map(args, EXTENSION_NAME, true));
 	fd_path = open(line, O_RDONLY);
 	if (fd_path == -1)
-		return (close(args->fd), quit(WRONG_FILE));
-	assign_path(line, cpy_line, args);
+		return (free(cpy_line), exit_parse_map(args, WRONG_FILE, true));
 	close(fd_path);
+	assign_path(line, cpy_line, args);
 }
 
 int	parse_line(char *line, t_args *args)

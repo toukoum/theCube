@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/23 00:14:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:39:37 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void minimap(t_cub *cub)
         }
     }
     mlx_loop(cub->mlx); // Commencer la boucle d'événements
+	
 }
+
 int	main(int argc, char **argv)
 {
 	t_args	args;
@@ -46,7 +48,7 @@ int	main(int argc, char **argv)
 		quit(NUMBERS_ARGC);
 	parse(&args, argv[1]);
 	cub.arg = &args;
-	minimap(&cub);
-	//free_all_map(&cub, ALL_GOOD);
+	// minimap(&cub);
+	free_all_map(&args, ALL_GOOD);
 	return (0);
 }

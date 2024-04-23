@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:42:56 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:11:17 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static int	get_number(char *line, int *i, int fd, bool is_last)
 	result = min_atoi_boost(line, i, &err);
 	goto_next_char(i, line);
 	if (is_last && (line[(*i)] || err))
-		return (close(fd), quit(WRONG_ARG), EXIT_FAILURE);
+		return (free(line), close(fd), quit(WRONG_ARG), EXIT_FAILURE);
 	else if (!is_last && (line[(*i)] != ',' || err))
-		return (close(fd), quit(WRONG_ARG), EXIT_FAILURE);
+		return (free(line), close(fd), quit(WRONG_ARG), EXIT_FAILURE);
 	(*i)++;
 	return (result);
 }
@@ -53,7 +53,7 @@ void	parse_color_line(t_args *args, char *line, int i)
 	else
 		color_target = &args->floorColor;
 	if (color_target->is_correct)
-		return (close(args->fd), quit(CLONE_ARGS));
+		return (free(line), close(args->fd), quit(CLONE_ARGS));
 	*color_target = tmp_color;
 	color_target->is_correct = true;
 }
