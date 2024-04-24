@@ -1,12 +1,10 @@
 F 230, 198, 198
-C 29, 29, 29
-
-
+C 29, 29, 3
 
 EA textures/matrix.xpm
 NO textures/matrix.xpm
 SO textures/matrix.xpm
-WE textures/matrix.xpm
+WO textures/matrix.xpm
   
 1111111111
 1000001001

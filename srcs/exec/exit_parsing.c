@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:17:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 20:50:02 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:34:10 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	quit2(int exit_code)
 	else if (exit_code == MALLOC_ERROR)
 		print_err_mess("malloc didn't work as expected");
 	else if (exit_code == WALL_SURR)
-		print_err_mess("map no surrounded with wall");
+		print_err_mess("map not surrounded with walls");
 	else if (exit_code == ALL_GOOD)
 	{
 		ft_printf(GREENB "All arguments valid ✅\n\n" RESET);
