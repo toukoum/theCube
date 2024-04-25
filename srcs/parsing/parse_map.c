@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 08:23:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:05:14 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 14:59:35 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	get_dimensions(t_args *args, char *line)
  */
 void	parse_map(t_args *args, char *line)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 	
 	i = 0;
 	get_dimensions(args, line);

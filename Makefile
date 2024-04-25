@@ -47,8 +47,8 @@ END		:=	\033[0m
 
 all: title $(NAME) 
 
-deb: FLAGS += $(DEBUG)
-deb: clean $(NAME)
+d: FLAGS += $(DEBUG)
+d: clean $(NAME)
 
 title:
 	@clear

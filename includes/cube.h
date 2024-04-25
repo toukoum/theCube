@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:12:07 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:42:13 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ typedef struct s_args
 	t_color			floorColor;
 	t_color			ceilColor;
 	char			**map;
-	size_t			pos_x;
-	size_t			pos_y;
-	size_t			width;
-	size_t			height;
+	int				pos_x;
+	int				pos_y;
+	int				width;
+	int				height;
 	bool			is_correct_pos;
 	char start_angle; // 'N', 'S', 'E', 'W'
 	char			*path_file;
@@ -122,9 +122,31 @@ enum
 
 # define WWIN 1280 // width of window
 # define HWIN 720 // height of window
-# define WMAP 15 * WWIN / 100 // width of minimap
-# define HMAP 15 * HWIN / 100 // height of minimap
-# define TSIZE 15 // taille d'un carreau de la minimap
+# define WMAP 200 // width of minimap
+# define HMAP 120 // height of minimap
+// # define WMAP  100 // width of minimap
+// # define HMAP 15 * HWIN / 100 // height of minimap
+
+# define TSIZE 10 // taille d'un carreau de la minimap
+
+// color for mlx
+# define MBLUE 0x000000FF
+# define MWHITE 0x00FFFFFF
+# define MGREEN 0x0000FF00
+# define MRED 0x00FF0000
+# define MBLACK 0x00000000
+# define MCYAN 0x0000FFFF
+# define MMAGENTA 0x00FF00FF
+# define MYELLOW 0x00FFFF00
+# define MORANGE 0x00FFA500
+# define MPINK 0x00FFC0CB
+# define MLIME 0x0000FF80
+
+# define CWALL 0x5e4b51
+# define CGROUND 0xf2eec1
+# define CUNDEFINED 0x87bfb4
+# define CPLAYER 0xf96160
+# define CWTF 0xf7b666
 
 // =========================== FUNCTION ===========================
 
@@ -146,9 +168,8 @@ void				exit_parse_map(t_args *args, int exit_code, bool close_fd);
 bool				is_empty_line(char *line);
 void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
-void				check_map(t_args *args, size_t i, size_t j);
+void				check_map(t_args *args, int i, int j);
 void				store_map(t_args *args);
-void				goto_next_char_sizet(size_t *i, char *line);
 
 // -> quit
 void				quit(int exit_code);

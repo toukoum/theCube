@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:09:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:00:00 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 14:59:09 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	valid_value_map(char c, bool space)
 void	get_line_width(t_args *args, char *line)
 {
 	int		i;
-	size_t	result;
+	int	result;
 	bool	found_map;
 	
 	found_map = false;
