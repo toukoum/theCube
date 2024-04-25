@@ -66,11 +66,11 @@ $(LIBFT_LIB):
 
 $(MLX_LIB):
 	@echo "\n > Compiling: $(YELLOW)minilibX...✅$(NC)"
-	@make -C $(MLX_DIR)  > /dev/null 2>&1
+	@make -C $(MLX_DIR)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
-	@printf "$(ERASE) > Compiling: $(BLUE)$@$(NC)$(END)"    
+	@printf "> Compiling: $(BLUE)$@$(NC)$(END)\n"
 	@$(CC) $(FLAGS) $(INCLUDE) $(MLX_FLAGS) -c $< -o $@
 
 clean:
