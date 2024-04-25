@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util2_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:14:51 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:11:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 18:32:58 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	min_atoi_boost(char *line, int *i, int *err)
 
 bool	is_texture_id(char *line, int i)
 {
-	return ((line[i] == 'N' && line[i + 1] == 'O') || (line[i] == 'S' && line[i
-				+ 1] == 'O') || (line[i] == 'W' && line[i + 1] == 'E')
-		|| (line[i] == 'E' && line[i + 1] == 'A'));
+	return (!ft_strncmp(line + i, "NO", 2) || !ft_strncmp(line + i, "SO", 2)
+		|| !ft_strncmp(line + i, "WE", 2) || !ft_strncmp(line + i, "EA", 2));
 }

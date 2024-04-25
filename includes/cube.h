@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:12:07 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 18:26:16 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,9 @@ void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // init
 void				init_mlx(t_cub *cub);
+
+// utils
+int					ft_strcmp(char *s1, char *s2);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
