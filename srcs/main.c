@@ -6,37 +6,73 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/23 13:39:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 12:17:25 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-
-void minimap(t_cub *cub)
+void	minimap(t_cub *cub)
 {
-	size_t width = cub->arg->width;
-	size_t height = cub->arg->height;
-	char **map = cub->arg->map;
-	
-	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, width * TSIZE, height * TSIZE, "minimap test");
-	// Dessiner la carte
-    for (size_t y = 0; y < height; y++) {
-        for (size_t x = 0; x < width; x++) {
-            int color = (map[y][x] == '1') ? 0x000000 : 0xFFFFFF; // Noir pour les murs, blanc pour le sol
-            if (map[y][x] == cub->arg->start_angle) color = 0xFF0000; // Rouge pour le joueur
+	size_t tileX;
+	size_t tileY;
 
-            // Dessiner un carré pour la case
-            for (int dy = 0; dy < TSIZE; dy++) {
-                for (int dx = 0; dx < TSIZE; dx++) {
-                    mlx_pixel_put(cub->mlx, cub->win, x * TSIZE + dx, y * TSIZE + dy, color);
-                }
-            }
-        }
-    }
-    mlx_loop(cub->mlx); // Commencer la boucle d'événements
+	tileX = WMAP / TSIZE;
+	tileY = HMAP / TSIZE;
 	
+	if (DEBUG)
+	{
+		ft_printf("> Size of minimap (x, y): %d %d\n", WMAP, HMAP);
+		ft_printf("> nombre de carreau (x, y): %d %d\n", tileX, tileY);
+		
+	}
+	size_t to_draw;
+	to_draw = 0;
+	if (cub->arg->pos_y < (tileY / 2))
+	{
+		to_draw = tileY / 2 - cub->arg->pos_y;
+	}
+	ft_printf("to_draw: %d\n", to_draw);
+	for (size_t i = 0; i < to_draw; i++)
+	{
+		for (size_t j = 0; j < WMAP; j++)
+		{
+			my_mlx_pixel_put(&cub->mmap, i, j, 0x00FF00);  // Blanc		
+		}
+	}
+	
+	for (int i = 0; i < WMAP; i++)
+    {
+		my_mlx_pixel_put(&cub->mmap, i, HMAP / 2, 0xFFFFFF);  // Blanc
+
+        // for (int j = 0; j < HMAP; j++)
+        // {
+        //     // Calcul pour alternance de couleurs dans le damier
+        //     int x_cell = i / TSIZE;  // Index de la cellule actuelle en x
+        //     int y_cell = j / TSIZE;  // Index de la cellule actuelle en y
+
+        //     // Alternance de couleurs entre les cellules
+        //     if ((x_cell + y_cell) % 2 == 0)
+        //         my_mlx_pixel_put(&cub->mmap, i, j, 0x0000FF);  // Bleu
+        //     else
+        //         my_mlx_pixel_put(&cub->mmap, i, j, 0xFFFFFF);  // Blanc
+        // }
+    }
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);
+}
+
+void	render(t_cub *cub)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			my_mlx_pixel_put(&cub->img, i, j, 0x00FF0000);
+		}
+	}	
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, WWIN / 2, HWIN
+		/ 2);
+	minimap(cub);
 }
 
 int	main(int argc, char **argv)
@@ -44,11 +80,13 @@ int	main(int argc, char **argv)
 	t_args	args;
 	t_cub	cub;
 
+	ft_bzero(&cub, sizeof(t_cub));
 	if (argc != 2)
 		quit(NUMBERS_ARGC);
 	parse(&args, argv[1]);
 	cub.arg = &args;
-	// minimap(&cub);
-	free_all_map(&args, ALL_GOOD);
-	return (0);
+	init_mlx(&cub);
+	render(&cub);
+	mlx_loop(cub.mlx);
+	return (EXIT_SUCCESS);
 }
