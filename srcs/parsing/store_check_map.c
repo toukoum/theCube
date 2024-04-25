@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:13:27 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:07:47 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief check if all the wall is correctly surrounded by 1
  */
-static bool	check_wall(t_args *args, size_t i, size_t j, size_t width)
+static bool	check_wall(t_args *args, int i, int j, int width)
 {
 	char	**map;
 
@@ -39,27 +39,27 @@ static bool	check_wall(t_args *args, size_t i, size_t j, size_t width)
 	return (true);
 }
 
-static void	set_pos_player(t_args *args, size_t i, size_t j)
+static void	set_pos_player(t_args *args, int i, int j)
 {
 	if (args->is_correct_pos)
 		return (free_all_map(args, DUP_PLAYER));
 	else
 	{
 		args->is_correct_pos = true;
-		args->pos_x = i;
-		args->pos_y = j;
+		args->pos_x = j;
+		args->pos_y = i;
 		args->start_angle = args->map[i][j];
 	}
 }
 
-void	check_map(t_args *args, size_t i, size_t j)
+void	check_map(t_args *args, int i, int j)
 {
-	size_t	width_line;
+	int	width_line;
 
 	while (args->map[i])
 	{
 		j = 0;
-		goto_next_char_sizet(&j, args->map[i]);
+		goto_next_char(&j, args->map[i]);
 		width_line = ft_strlen(args->map[i] + j);
 		while (args->map[i][j])
 		{
