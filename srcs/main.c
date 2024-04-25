@@ -3,61 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 12:17:25 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:43:14 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
+
+void drawTile(t_cub * cub, int x, int y, int color)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < TSIZE)
+	{
+		j = 0;
+		while (j < TSIZE)
+		{
+			my_mlx_pixel_put(&cub->mmap, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+int getTileColor(char **map, int mapPosX, int mapPosY)
+{
+	if (!map[mapPosY] || !map[mapPosY][mapPosX] || is_space(map[mapPosY][mapPosX])) // dans la map mais a l'exterieur
+		return (CWTF);
+	if (map[mapPosY][mapPosX] == '1')
+		return (CWALL);
+	else if (map[mapPosY][mapPosX] == '0')
+	{
+		return (CGROUND);
+	}
+	else
+		return (CPLAYER);
+}
+
+
 void	minimap(t_cub *cub)
 {
-	size_t tileX;
-	size_t tileY;
+	int	tileX;
+	int	tileY;
+	int	playerX;
+	int	playerY;
+	int	mapPosX;
+	int	mapPosY;
+	int		y;
+	int		x;
 
 	tileX = WMAP / TSIZE;
 	tileY = HMAP / TSIZE;
-	
+	playerX = cub->arg->pos_x;
+	playerY = cub->arg->pos_y;
 	if (DEBUG)
 	{
 		ft_printf("> Size of minimap (x, y): %d %d\n", WMAP, HMAP);
 		ft_printf("> nombre de carreau (x, y): %d %d\n", tileX, tileY);
-		
 	}
-	size_t to_draw;
-	to_draw = 0;
-	if (cub->arg->pos_y < (tileY / 2))
+	y = 0;
+	while (y < tileY)
 	{
-		to_draw = tileY / 2 - cub->arg->pos_y;
-	}
-	ft_printf("to_draw: %d\n", to_draw);
-	for (size_t i = 0; i < to_draw; i++)
-	{
-		for (size_t j = 0; j < WMAP; j++)
+		x = 0;
+		while (x < tileX)
 		{
-			my_mlx_pixel_put(&cub->mmap, i, j, 0x00FF00);  // Blanc		
+			ft_printf("draw tile !\n");
+			mapPosX = playerX - (tileX / 2) + x;
+			mapPosY = playerY - (tileY / 2) + y;
+			if (mapPosX < 0 || mapPosX >= cub->arg->width || mapPosY < 0
+				|| mapPosY >= cub->arg->height)
+				drawTile(cub, x * TSIZE, y * TSIZE, CUNDEFINED);
+			else
+				drawTile(cub, x * TSIZE, y * TSIZE, getTileColor(cub->arg->map, mapPosX, mapPosY));
+			x++;
+		}
+		y++;
+	}
+
+	//draw border
+	for (int i = 0; i < HMAP; i++)
+	{
+		for (int j = 0; j < WMAP; j++)
+		{
+			if (i == 0 || i == HMAP - 1)
+				my_mlx_pixel_put(&cub->mmap, j, i, MWHITE);
+			else if (j == 0 || j == WMAP - 1)
+				my_mlx_pixel_put(&cub->mmap, j, i, MWHITE);
 		}
 	}
-	
-	for (int i = 0; i < WMAP; i++)
-    {
-		my_mlx_pixel_put(&cub->mmap, i, HMAP / 2, 0xFFFFFF);  // Blanc
-
-        // for (int j = 0; j < HMAP; j++)
-        // {
-        //     // Calcul pour alternance de couleurs dans le damier
-        //     int x_cell = i / TSIZE;  // Index de la cellule actuelle en x
-        //     int y_cell = j / TSIZE;  // Index de la cellule actuelle en y
-
-        //     // Alternance de couleurs entre les cellules
-        //     if ((x_cell + y_cell) % 2 == 0)
-        //         my_mlx_pixel_put(&cub->mmap, i, j, 0x0000FF);  // Bleu
-        //     else
-        //         my_mlx_pixel_put(&cub->mmap, i, j, 0xFFFFFF);  // Blanc
-        // }
-    }
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);
 }
 
@@ -69,7 +107,7 @@ void	render(t_cub *cub)
 		{
 			my_mlx_pixel_put(&cub->img, i, j, 0x00FF0000);
 		}
-	}	
+	}
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, WWIN / 2, HWIN
 		/ 2);
 	minimap(cub);
