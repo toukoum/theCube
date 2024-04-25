@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/23 00:01:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 12:12:07 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_cub
 {
 	t_args			*arg;
 	t_img			img;
+	t_img			mmap;
 	void			*mlx;
 	void			*win;
 }					t_cub;
@@ -107,6 +108,7 @@ enum
 # define ALL_GOOD 13
 # define NO_PLAYER 14
 # define DUP_PLAYER 15
+# define SUCESS 16
 
 # define RED "\e[1;31m"
 # define REDL "\e[0;31m"
@@ -118,9 +120,11 @@ enum
 #  define DEBUG 0
 # endif
 
-//# define WMAP 24
-//# define HMAP 24
-# define TSIZE 32 // taille d'un carreau
+# define WWIN 1280 // width of window
+# define HWIN 720 // height of window
+# define WMAP 15 * WWIN / 100 // width of minimap
+# define HMAP 15 * HWIN / 100 // height of minimap
+# define TSIZE 15 // taille d'un carreau de la minimap
 
 // =========================== FUNCTION ===========================
 
@@ -140,19 +144,24 @@ bool				good_number(int i, char *line);
 void				parse_map(t_args *args, char *line);
 void				exit_parse_map(t_args *args, int exit_code, bool close_fd);
 bool				is_empty_line(char *line);
-bool				valid_value_map(char c);
 void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
 void				check_map(t_args *args, size_t i, size_t j);
 void				store_map(t_args *args);
+void				goto_next_char_sizet(size_t *i, char *line);
 
 // -> quit
 void				quit(int exit_code);
 void				free_all_map(t_args *args, int exit_code);
 void				exit_free_map(t_args *args, int i);
+void				quit_cub(int exit_code);
+void				free_cub(t_cub *cub);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+// init
+void				init_mlx(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

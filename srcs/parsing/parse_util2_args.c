@@ -6,13 +6,20 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:14:51 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:43:28 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 12:11:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
 void	goto_next_char(int *i, char *line)
+{
+	while (is_space(line[*i]))
+		(*i)++;
+}
+
+
+void	goto_next_char_sizet(size_t *i, char *line)
 {
 	while (is_space(line[*i]))
 		(*i)++;

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:42:11 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 12:13:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	check_map(t_args *args, size_t i, size_t j)
 	while (args->map[i])
 	{
 		j = 0;
-		width_line = ft_strlen(args->map[i]);
+		goto_next_char_sizet(&j, args->map[i]);
+		width_line = ft_strlen(args->map[i] + j);
 		while (args->map[i][j])
 		{
 			if (args->map[i][j] == 'N' || args->map[i][j] == 'S'
