@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 21:52:48 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/26 09:51:29 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 	char	**map;
 
 	map = args->map;
-	if (i > 0 && map[i - 1][j] == '\0')
+	if (i > 0 && (map[i - 1][j] == '\0' || map[i - 1][j] == ' '))
 		return (false);
-	if (i < args->height - 1 && map[i + 1][j] == '\0')
+	if (i < args->height - 1 && (map[i + 1][j] == '\0' || map[i + 1][j] == ' '))
 		return (false);
 	if (j > 0 && (map[i][j - 1] == '\0' || map[i - 1][j - 1] == ' '))
 		return (false);

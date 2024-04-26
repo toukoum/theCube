@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 22:54:23 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/26 11:08:28 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 #  define LINUX 0
 #  define MY_DIR O_DIRECTORY
 # elif __linux__
-#  define LINUX 1
-#  include <X11/X.h>
 #  include <X11/keysym.h>
+#  define LINUX 1
 #  define MY_DIR __O_DIRECTORY
 # endif
 
 # include "../libft-boost/ft_printf/includes/ft_printf.h"
 # include "../libft-boost/gnl/includes/get_next_line_bonus.h"
 # include "../libft-boost/libft_mandatory/includes/libft.h"
+# include <X11/X.h>
 # include <fcntl.h> // open
 # include <mlx.h>
 # include <stdbool.h> // boolean
@@ -208,15 +208,19 @@ void				render(t_cub *cub);
 
 // init
 void				init_mlx(t_cub *cub);
+void				init_cub(t_cub *cub, t_args *args);
+
+// minimap
+void				minimap(t_cub *cub, double playerX, double playerY);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
-#  define XK_Q 12
-#  define XK_W 13
-#  define XK_E 14
-#  define XK_A 0
-#  define XK_S 1
-#  define XK_D 2
+#  define XK_q 12
+#  define XK_w 13
+#  define XK_e 14
+#  define XK_a 0
+#  define XK_s 1
+#  define XK_d 2
 #  define XK_Up 126
 #  define XK_Down 125
 #  define XK_Left 123
