@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 16:42:13 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 22:54:23 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_args
 	t_color			floorColor;
 	t_color			ceilColor;
 	char			**map;
-	int				pos_x;
-	int				pos_y;
+	double			pos_x;
+	double			pos_y;
 	int				width;
 	int				height;
 	bool			is_correct_pos;
@@ -60,6 +60,26 @@ typedef struct s_args
 	char			*path_file;
 	int				start_map;
 }					t_args;
+
+typedef struct s_player
+{
+	double			posX;
+	double			posY;
+	char			start_angle;
+}					t_player;
+
+typedef struct s_map
+{
+	char			*pathN;
+	char			*pathS;
+	char			*pathO;
+	char			*pathE;
+	t_color			floorColor;
+	t_color			ceilColor;
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
 
 typedef struct s_img
 {
@@ -72,7 +92,8 @@ typedef struct s_img
 
 typedef struct s_cub
 {
-	t_args			*arg;
+	t_args			*map;
+	t_player		player;
 	t_img			img;
 	t_img			mmap;
 	void			*mlx;
@@ -92,6 +113,7 @@ enum
 };
 
 // =========================== EXIT CODE ===========================
+// error code
 # define NUMBERS_ARGC 1
 # define WRONG_FILE 2
 # define EXTENSION_NAME 3
@@ -110,6 +132,7 @@ enum
 # define DUP_PLAYER 15
 # define SUCESS 16
 
+// shell color
 # define RED "\e[1;31m"
 # define REDL "\e[0;31m"
 # define YELLOWB "\e[1;93m"
@@ -130,17 +153,17 @@ enum
 # define TSIZE 10 // taille d'un carreau de la minimap
 
 // color for mlx
-# define MBLUE 0x000000FF
-# define MWHITE 0x00FFFFFF
-# define MGREEN 0x0000FF00
-# define MRED 0x00FF0000
-# define MBLACK 0x00000000
-# define MCYAN 0x0000FFFF
-# define MMAGENTA 0x00FF00FF
-# define MYELLOW 0x00FFFF00
-# define MORANGE 0x00FFA500
-# define MPINK 0x00FFC0CB
-# define MLIME 0x0000FF80
+# define CBLUE 0x000000FF
+# define CWHITE 0x00FFFFFF
+# define CGREEN 0x0000FF00
+# define CRED 0x00FF0000
+# define CBLACK 0x00000000
+# define CCYAN 0x0000FFFF
+# define CMAGENTA 0x00FF00FF
+# define CYELLOW 0x00FFFF00
+# define CORANGE 0x00FFA500
+# define CPINK 0x00FFC0CB
+# define CLIME 0x0000FF80
 
 # define CWALL 0x5e4b51
 # define CGROUND 0xf2eec1
@@ -148,6 +171,7 @@ enum
 # define CPLAYER 0xf96160
 # define CWTF 0xf7b666
 
+# define MOVESPEED 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -180,6 +204,7 @@ void				free_cub(t_cub *cub);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void				render(t_cub *cub);
 
 // init
 void				init_mlx(t_cub *cub);

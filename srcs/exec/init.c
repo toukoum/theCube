@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/24 19:18:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/25 22:41:53 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,26 @@ int	handle_close_win(t_cub *cub)
 	return (EXIT_SUCCESS);
 }
 
+
+// void move_player(int keycode)
+// {
+	
+// }
 int	handle_key(int keycode, t_cub *cub)
 {
 	ft_printf("keycode: %d\n", keycode);
 	if (keycode == XK_Escape)
 		return (free_cub(cub), quit_cub(SUCESS), EXIT_FAILURE);
-	return (EXIT_FAILURE);
+	else if (keycode == XK_w)
+		cub->player.posY -= MOVESPEED;
+	else if (keycode == XK_s)
+		cub->player.posY += MOVESPEED;
+	else if (keycode == XK_a)
+		cub->player.posX -= MOVESPEED;
+	else if (keycode == XK_d)
+		cub->player.posX += MOVESPEED;
+	render(cub);
+	return (0);
 }
 
 void	init_handle(t_cub *cub)
