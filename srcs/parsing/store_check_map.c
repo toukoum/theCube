@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 16:07:47 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/26 09:51:29 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 	char	**map;
 
 	map = args->map;
-	if (i > 0 && map[i - 1][j] == '\0')
+	if (i > 0 && (map[i - 1][j] == '\0' || map[i - 1][j] == ' '))
 		return (false);
-	if (i < args->height - 1 && map[i + 1][j] == '\0')
+	if (i < args->height - 1 && (map[i + 1][j] == '\0' || map[i + 1][j] == ' '))
 		return (false);
-	if (j > 0 && map[i][j - 1] == '\0')
+	if (j > 0 && (map[i][j - 1] == '\0' || map[i - 1][j - 1] == ' '))
 		return (false);
 	if (j < width - 1 && map[i][j + 1] == '\0')
 		return (false);
-	if (i > 0 && j > 0 && map[i - 1][j - 1] == '\0')
+	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0' || map[i - 1][j
+			- 1] == ' '))
 		return (false);
 	if (i > 0 && j < width - 1 && map[i - 1][j + 1] == '\0')
 		return (false);
-	if (i < args->height - 1 && j > 0 && map[i + 1][j - 1] == '\0')
+	if (i < args->height - 1 && j > 0 && (map[i + 1][j - 1] == '\0' || map[i
+			- 1][j - 1] == ' '))
 		return (false);
 	if (i < args->height - 1 && j < width - 1 && map[i + 1][j + 1] == '\0')
 		return (false);
@@ -55,18 +57,20 @@ static void	set_pos_player(t_args *args, int i, int j)
 void	check_map(t_args *args, int i, int j)
 {
 	int	width_line;
+	int	first_j;
 
 	while (args->map[i])
 	{
 		j = 0;
 		goto_next_char(&j, args->map[i]);
+		first_j = j;
 		width_line = ft_strlen(args->map[i] + j);
 		while (args->map[i][j])
 		{
 			if (args->map[i][j] == 'N' || args->map[i][j] == 'S'
 				|| args->map[i][j] == 'E' || args->map[i][j] == 'W')
 				set_pos_player(args, i, j);
-			if ((i == 0 || i == args->height - 1 || j == 0
+			if ((i == 0 || i == args->height - 1 || j == first_j
 					|| j == ft_strlen(args->map[i]) - 1)
 				&& args->map[i][j] != '1')
 				return (free_all_map(args, WALL_SURR));

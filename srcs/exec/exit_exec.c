@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/24 19:14:18 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/26 11:18:57 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	quit_cub(int exit_code)
 
 void	free_cub(t_cub *cub)
 {
-	free_arg(cub->arg);
+	free_arg(cub->map);
 	mlx_destroy_image(cub->mlx, cub->img.img);
 	mlx_destroy_image(cub->mlx, cub->mmap.img);
 	mlx_destroy_window(cub->mlx, cub->win);
