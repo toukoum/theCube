@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/26 11:16:51 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 00:11:14 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@ void print_log_debug(t_args *args)
 
 void	render(t_cub *cub)
 {
-	printf("> pos of player (x, y): %f, %f\n", cub->player.posX, cub->player.posY);
-	for (int i = 0; i < 100; i++)
-		for (int j = 0; j < 100; j++)
-			my_mlx_pixel_put(&cub->img, i, j, 0x00FF0000);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, WWIN / 2, HWIN
-		/ 2);
-	minimap(cub, cub->player.posX * TSIZE, cub->player.posY * TSIZE);
+	printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
+	minimap(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);
+	
 }
 
 int	main(int argc, char **argv)
