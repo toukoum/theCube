@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/26 11:19:20 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 00:14:09 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,21 @@ void move_player(int keycode, t_cub *cub, int mapIndexX, int mapIndexY)
     double nextX;
     double nextY;
 
-	nextX = cub->player.posX;
-	nextY = cub->player.posY;
+	nextX = cub->player.x;
+	nextY = cub->player.y;
     if (keycode == XK_w)
         nextY -= MOVESPEED;
     else if (keycode == XK_s)
-        nextY += 1;
+        nextY += MOVESPEED;
     else if (keycode == XK_a)
         nextX -= MOVESPEED;
     else if (keycode == XK_d)
-        nextX += 1;
+        nextX += MOVESPEED;
     mapIndexX = (int)(nextX);
     mapIndexY = (int)(nextY);
     if (cub->map->map[mapIndexY][mapIndexX] == '0' || cub->map->map[mapIndexY][mapIndexX] == cub->player.start_angle) {
-		if (keycode == XK_d)
-			nextX -= 0.9;
-		if (keycode == XK_s)
-			nextY -= 0.9;
-        cub->player.posX = nextX;
-        cub->player.posY = nextY;
+        cub->player.x = nextX;
+        cub->player.y = nextY;
     } 
 	else
         printf("Movement blocked at (%d, %d) %f, %f\n", mapIndexX, mapIndexY, nextX, nextY);
@@ -53,20 +49,78 @@ void move_player(int keycode, t_cub *cub, int mapIndexX, int mapIndexY)
 
 void init_cub(t_cub *cub, t_args *args)
 {
-	cub->player.posX = args->pos_x;
-	cub->player.posY = args->pos_y;
+	cub->player.x = args->pos_x;
+	cub->player.y = args->pos_y;
 	cub->player.start_angle = args->start_angle;
 	cub->map = args;
+
+	cub->dir.x = 0;
+	cub->dir.y = 0;
+	cub->plane.x = 0;
+	cub->plane.y = 0;
+	if (cub->player.start_angle == 'N')
+	{
+		cub->dir.y = -1;
+		cub->plane.x = 0.66;
+	}
+	else if (cub->player.start_angle == 'S')
+	{
+		cub->dir.y = 1;
+		cub->plane.x = 0.66;
+	}
+	else if (cub->player.start_angle == 'E')
+	{
+		cub->dir.x = 1;
+		cub->plane.y = 0.66;
+	}
+	else if (cub->player.start_angle == 'W')
+	{
+		cub->dir.x = -1;
+		cub->plane.y = 0.66;
+	}
+}	
+
+
+void rotate_player(int keycode, t_cub *cub)
+{
+	double oldDirX;
+	double rotSpeed;
+	double oldPlaneX;
+
+	rotSpeed = 0.1;
+	
+	if (keycode == XK_Left)
+    {
+      //both camera direction and camera plane must be rotated
+		oldDirX = cub->dir.x;
+		cub->dir.x = cub->dir.x * cos(-rotSpeed) - cub->dir.y * sin(-rotSpeed);
+		cub->dir.y = oldDirX * sin(-rotSpeed) + cub->dir.y * cos(-rotSpeed);
+    	oldPlaneX = cub->plane.x;
+		cub->plane.x = cub->plane.x * cos(-rotSpeed) - cub->plane.y * sin(-rotSpeed);
+		cub->plane.y = oldPlaneX * sin(-rotSpeed) + cub->plane.y * cos(-rotSpeed);
+    }
+    if (keycode == XK_Right)
+    {
+      //both camera direction and camera plane must be rotated
+      oldDirX = cub->dir.x;
+      cub->dir.x = cub->dir.x * cos(rotSpeed) - cub->dir.y * sin(rotSpeed);
+      cub->dir.y = oldDirX * sin(rotSpeed) + cub->dir.y * cos(rotSpeed);
+      oldPlaneX = cub->plane.x;
+      cub->plane.x = cub->plane.x * cos(rotSpeed) - cub->plane.y * sin(rotSpeed);
+      cub->plane.y = oldPlaneX * sin(rotSpeed) + cub->plane.y * cos(rotSpeed);
+    }
 }
+
 
 int	handle_key(int keycode, t_cub *cub)
 {
-	ft_printf("keycode: %d\n", keycode);
 	if (keycode == XK_Escape)
 		return (free_cub(cub), quit_cub(SUCESS), EXIT_FAILURE);
 	else if (keycode == XK_w || keycode == XK_s || keycode == XK_a
 		|| keycode == XK_d)
 		move_player(keycode, cub, 0, 0);
+	else if (keycode == XK_Left || keycode == XK_Right)
+		rotate_player(keycode, cub);
 	render(cub);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/26 11:08:28 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 00:09:53 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "../libft-boost/libft_mandatory/includes/libft.h"
 # include <X11/X.h>
 # include <fcntl.h> // open
+# include <math.h>
 # include <mlx.h>
 # include <stdbool.h> // boolean
 # include <unistd.h>  // open, write
@@ -61,13 +62,36 @@ typedef struct s_args
 	int				start_map;
 }					t_args;
 
+typedef struct s_coord
+{
+	double			x;
+	double			y;
+}					t_coord;
+
+typedef struct s_int_coord
+{
+	int				x;
+	int				y;
+}					t_int_coord;
+
 typedef struct s_player
 {
-	double			posX;
-	double			posY;
+	double			x;
+	double			y;
 	char			start_angle;
 }					t_player;
 
+typedef struct s_ray
+{
+	t_coord rayDir; // vecteur of the current ray
+	t_coord			d;
+	t_int_coord		map;
+	t_coord			sideDist;
+	double			perpWallDist;
+	t_int_coord		step;
+	bool			hit;
+	bool			side_hit;
+}					t_ray;
 typedef struct s_map
 {
 	char			*pathN;
@@ -98,6 +122,10 @@ typedef struct s_cub
 	t_img			mmap;
 	void			*mlx;
 	void			*win;
+
+	// paremetre for raytracing
+	t_coord			dir;
+	t_coord			plane;
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -145,31 +173,34 @@ enum
 
 # define WWIN 1280 // width of window
 # define HWIN 720 // height of window
-# define WMAP 200 // width of minimap
-# define HMAP 120 // height of minimap
-// # define WMAP  100 // width of minimap
-// # define HMAP 15 * HWIN / 100 // height of minimap
+//# define WMAP WWIN / 1.2 // width of minimap
+//# define HMAP HWIN / 1.2 // height of minimap
+# define WMAP 20 * WWIN / 100 // width of minimap
+# define HMAP 20 * HWIN / 100 // height of minimap
 
-# define TSIZE 10 // taille d'un carreau de la minimap
+# define TSIZE 15 // taille d'un carreau de la minimap
 
 // color for mlx
 # define CBLUE 0x000000FF
 # define CWHITE 0x00FFFFFF
-# define CGREEN 0x0000FF00
+# define CGREEN 0xB5E550
 # define CRED 0x00FF0000
 # define CBLACK 0x00000000
 # define CCYAN 0x0000FFFF
 # define CMAGENTA 0x00FF00FF
-# define CYELLOW 0x00FFFF00
-# define CORANGE 0x00FFA500
+# define CYELLOW 0x00E8E337
+# define CORANGE 0x00FA991C
 # define CPINK 0x00FFC0CB
 # define CLIME 0x0000FF80
 
-# define CWALL 0x5e4b51
-# define CGROUND 0xf2eec1
-# define CUNDEFINED 0x87bfb4
+# define CWALL 0x032539
+# define CGROUND 0xFBF3F2
+# define CUNDEFINED 0x1E1E1E
+# define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160
 # define CWTF 0xf7b666
+
+# define CRAY 0xCAE9EA
 
 # define MOVESPEED 0.1
 // =========================== FUNCTION ===========================
@@ -211,7 +242,12 @@ void				init_mlx(t_cub *cub);
 void				init_cub(t_cub *cub, t_args *args);
 
 // minimap
-void				minimap(t_cub *cub, double playerX, double playerY);
+void				minimap(t_cub *cub);
+int					getPixelColor(char **map, t_int_coord *mapIndex);
+void				rayCasting(t_cub *cub);
+void				drawBorder(t_cub *cub);
+void				drawLine(t_img *img, t_coord x1, t_coord x2, int color);
+void				drawLineMap(t_img *img, t_coord x1, t_coord x2, int color);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
