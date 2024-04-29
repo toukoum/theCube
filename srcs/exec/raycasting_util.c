@@ -6,13 +6,13 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:58:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 13:59:40 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:21:48 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	initRayStep(t_ray *ray, t_cub *cub)
+void	init_ray_step(t_ray *ray, t_cub *cub)
 {
 	if (ray->rayDir.x < 0)
 	{
@@ -36,7 +36,7 @@ void	initRayStep(t_ray *ray, t_cub *cub)
 	}
 }
 
-void	initRay(t_cub *cub, t_ray *ray, double camX)
+void	init_ray(t_cub *cub, t_ray *ray, double camX)
 {
 	ray->rayDir.x = cub->dir.x + camX * cub->plane.x;
 	ray->rayDir.y = cub->dir.y + camX * cub->plane.y;
@@ -51,10 +51,10 @@ void	initRay(t_cub *cub, t_ray *ray, double camX)
 	else
 		ray->d.y = fabs(1 / ray->rayDir.y);
 	ray->hit = false;
-	initRayStep(ray, cub);
+	init_ray_step(ray, cub);
 }
 
-int	getWallColor(t_int_coord *mapIndex, char **map, int side_hit)
+int	get_wall_color(t_int_coord *mapIndex, char **map, int side_hit)
 {
 	if (!map[mapIndex->y] || !map[mapIndex->y][mapIndex->x]
 		|| is_space(map[mapIndex->y][mapIndex->x]))

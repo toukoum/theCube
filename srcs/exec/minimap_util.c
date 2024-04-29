@@ -6,13 +6,13 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 13:54:50 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:18:45 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	drawTile(t_cub *cub, int x, int y, int color)
+void	draw_tile(t_cub *cub, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ void	drawTile(t_cub *cub, int x, int y, int color)
 	}
 }
 
-int	getPixelColor(char **map, t_int_coord *mapIndex)
+int	get_pixel_color(char **map, t_int_coord *mapIndex)
 {
 	if (!map[mapIndex->y] || !map[mapIndex->y][mapIndex->x]
 		|| is_space(map[mapIndex->y][mapIndex->x]))
@@ -45,7 +45,7 @@ int	getPixelColor(char **map, t_int_coord *mapIndex)
 		return (CLIME);
 }
 
-void	drawBorderMinimap(t_cub *cub)
+void	draw_border_minimap(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -64,7 +64,7 @@ void	drawBorderMinimap(t_cub *cub)
 	}
 }
 
-void	drawLineMinimap(t_img *img, t_coord x1, t_coord x2, int color)
+void	draw_line_minimap(t_img *img, t_coord x1, t_coord x2, int color)
 {
 	t_coord	d;
 	t_coord	increment;
@@ -90,7 +90,7 @@ void	drawLineMinimap(t_img *img, t_coord x1, t_coord x2, int color)
 	}
 }
 
-void	drawLine(t_img *img, t_coord x1, t_coord x2, int color)
+void	draw_line(t_img *img, t_coord x1, t_coord x2, int color)
 {
 	t_coord	d;
 	t_coord	increment;

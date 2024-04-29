@@ -6,28 +6,28 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:07:32 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:18:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	drawColumn(int x, t_ray *ray, t_cub *cub)
+void	draw_column(int x, t_ray *ray, t_cub *cub)
 {
-	int	lineHeight;
-	int	drawStart;
-	int	drawEnd;
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
 
 	x = WWIN - x;
-	lineHeight = (int)(HWIN / ray->perpWallDist);
-	drawStart = -lineHeight / 2 + HWIN / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + HWIN / 2;
-	if (drawEnd >= HWIN)
-		drawEnd = WWIN - 1;
-	drawLine(&cub->img, (t_coord){x, drawStart}, (t_coord){x, drawEnd},
-		getWallColor(&ray->map, cub->map->map, ray->side_hit));
+	line_height = (int)(HWIN / ray->perpWallDist);
+	draw_start = -line_height / 2 + HWIN / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = line_height / 2 + HWIN / 2;
+	if (draw_end >= HWIN)
+		draw_end = WWIN - 1;
+	draw_line(&cub->img, (t_coord){x, draw_start}, (t_coord){x, draw_end},
+		get_wall_color(&ray->map, cub->map->map, ray->side_hit));
 }
 
 void	assign_side_hit(t_ray *ray, bool horizontal)
@@ -79,10 +79,10 @@ void	dda(t_ray *ray, char **map)
  *
  * @param cub
  */
-void	rayCasting(t_cub *cub)
+void	raycasting(t_cub *cub)
 {
 	int		x;
-	double	camX;
+	double	cam_x;
 	t_ray	ray;
 	t_coord	dist;
 
@@ -90,16 +90,16 @@ void	rayCasting(t_cub *cub)
 	while (x < WWIN)
 	{
 		// remaper dans -1,1 la coordonne du pixel
-		camX = 2 * x / (double)WWIN - 1;
-		initRay(cub, &ray, camX);
+		cam_x = 2 * x / (double)WWIN - 1;
+		init_ray(cub, &ray, cam_x);
 		dda(&ray, cub->map->map);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
 		//// draw the ray
 		if (x % 75 == 0)
-			drawLineMinimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
+			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
 				(t_coord){dist.x, dist.y}, CORANGE);
-		drawColumn(x, &ray, cub);
+		draw_column(x, &ray, cub);
 		x++;
 	}
 }
