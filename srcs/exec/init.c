@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 00:14:09 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 12:02:16 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,25 @@ void move_player(int keycode, t_cub *cub, int mapIndexX, int mapIndexY)
 	nextX = cub->player.x;
 	nextY = cub->player.y;
     if (keycode == XK_w)
-        nextY -= MOVESPEED;
+	{
+        nextY += MOVESPEED * cub->dir.y;
+        nextX += MOVESPEED * cub->dir.x;
+	}
     else if (keycode == XK_s)
-        nextY += MOVESPEED;
+	{
+		nextY -= MOVESPEED * cub->dir.y;
+        nextX -= MOVESPEED * cub->dir.x;
+	}
     else if (keycode == XK_a)
-        nextX -= MOVESPEED;
+	{
+        nextY -= MOVESPEED * cub->dir.x;
+        nextX += MOVESPEED * cub->dir.y;
+	}
     else if (keycode == XK_d)
-        nextX += MOVESPEED;
+	{
+        nextY += MOVESPEED * cub->dir.x;
+        nextX -= MOVESPEED * cub->dir.y;
+	}
     mapIndexX = (int)(nextX);
     mapIndexY = (int)(nextY);
     if (cub->map->map[mapIndexY][mapIndexX] == '0' || cub->map->map[mapIndexY][mapIndexX] == cub->player.start_angle) {
@@ -150,7 +162,7 @@ void	init_mlx(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx, WWIN, HWIN);
 	if (!cub->img.img)
 		return (mlx_destroy_window(cub->mlx, cub->win),
-				mlx_destroy_display(cub->mlx), free(cub->mlx),
+				//mlx_destroy_display(cub->mlx), free(cub->mlx),
 				quit_cub(MALLOC_ERROR));
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &cub->img.endian);
@@ -158,7 +170,7 @@ void	init_mlx(t_cub *cub)
 	if (!cub->mmap.img)
 		return (mlx_destroy_image(cub->mlx, cub->img.img),
 				mlx_destroy_window(cub->mlx, cub->win),
-				mlx_destroy_display(cub->mlx), free(cub->mlx),
+				//mlx_destroy_display(cub->mlx), free(cub->mlx),
 				quit_cub(MALLOC_ERROR));
 	cub->mmap.addr = mlx_get_data_addr(cub->mmap.img, &cub->mmap.bits_per_pixel,
 			&cub->mmap.line_length, &cub->mmap.endian);

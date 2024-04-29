@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 00:09:53 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:33:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_color
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
+	int				color;
 
 }					t_color;
 
@@ -90,7 +91,7 @@ typedef struct s_ray
 	double			perpWallDist;
 	t_int_coord		step;
 	bool			hit;
-	bool			side_hit;
+	int				side_hit;
 }					t_ray;
 typedef struct s_map
 {
@@ -194,7 +195,7 @@ enum
 # define CLIME 0x0000FF80
 
 # define CWALL 0x032539
-# define CGROUND 0xFBF3F2
+# define CGROUND 0xF5F7F8
 # define CUNDEFINED 0x1E1E1E
 # define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/23 14:11:17 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:29:19 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static int	get_number(char *line, int *i, int fd, bool is_last)
 	return (result);
 }
 
+static int rgb_to_int(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
 void	parse_color_line(t_args *args, char *line, int i)
 {
 	t_color	tmp_color;
@@ -56,4 +60,8 @@ void	parse_color_line(t_args *args, char *line, int i)
 		return (free(line), close(args->fd), quit(CLONE_ARGS));
 	*color_target = tmp_color;
 	color_target->is_correct = true;
+	color_target->color = color_target->r * 1000;
+	color_target->color += color_target->g;
+	color_target->color = color_target->color * 1000 + color_target->b;
+	color_target->color = rgb_to_int(color_target->r, color_target->g, color_target->b);
 }

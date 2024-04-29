@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 00:10:59 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:44:54 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,51 @@ void	dda(t_ray *ray, char **map)
 			ray->sideDist.x += ray->d.x;
 			ray->map.x += ray->step.x;
 			ray->side_hit = false;
+			if (ray->step.x > 0)
+				ray->side_hit = 'E';
+			else
+				ray->side_hit = 'W';
 		}
 		else
 		{
 			ray->sideDist.y += ray->d.y;
 			ray->map.y += ray->step.y;
 			ray->side_hit = true;
+			if (ray->step.y > 0)
+				ray->side_hit = 'N';
+			else
+				ray->side_hit = 'S';
 		}
 		if (map[ray->map.y][ray->map.x] == '1')
 			ray->hit = true;
 	}
-	if (ray->side_hit)
+	if (ray->side_hit == 'N' || ray->side_hit == 'S')
 		ray->perpWallDist = ray->sideDist.y - ray->d.y;
 	else
 		ray->perpWallDist = ray->sideDist.x - ray->d.x;
 }
 
-int		getWallColor(t_int_coord *mapIndex, char **map)
+int	getWallColor(t_int_coord *mapIndex, char **map, int side_hit)
 {
 	if (!map[mapIndex->y] || !map[mapIndex->y][mapIndex->x]
 		|| is_space(map[mapIndex->y][mapIndex->x]))
 		return (CRED);
 	if (map[mapIndex->y][mapIndex->x] == '1')
-		return (CWALL);
+	{
+		if (side_hit == 'N')
+			return (CRED);
+		else if (side_hit == 'S')
+		{
+			return (CCYAN);
+		}
+		else if (side_hit == 'E')
+		{
+			return (CGREEN);
+		}
+		else
+			return (CYELLOW);
+		
+	}
 	else if (map[mapIndex->y][mapIndex->x] == '0')
 	{
 		return (CGROUND);
@@ -99,6 +121,7 @@ void	drawColumn(int x, t_ray *ray, t_cub *cub)
 	int	drawStart;
 	int	drawEnd;
 
+	x = WWIN - x;
 	lineHeight = (int)(HWIN / ray->perpWallDist);
 	drawStart = -lineHeight / 2 + HWIN / 2;
 	if (drawStart < 0)
@@ -106,8 +129,8 @@ void	drawColumn(int x, t_ray *ray, t_cub *cub)
 	drawEnd = lineHeight / 2 + HWIN / 2;
 	if (drawEnd >= HWIN)
 		drawEnd = WWIN - 1;
-
-	drawLine(&cub->img, (t_coord){x, drawStart}, (t_coord){x, drawEnd}, getWallColor(&ray->map, cub->map->map));
+	drawLine(&cub->img, (t_coord){x, drawStart}, (t_coord){x, drawEnd},
+		getWallColor(&ray->map, cub->map->map, ray->side_hit));
 }
 
 /**
@@ -134,16 +157,16 @@ void	rayCasting(t_cub *cub)
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
 		// draw the ray
 		if (x % 50 == 0)
-			drawLineMap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, (t_coord){dist.x,
-				dist.y}, CORANGE);
+			drawLineMap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
+				(t_coord){dist.x, dist.y}, CORANGE);
 		drawColumn(x, &ray, cub);
 		x++;
 	}
 	// vecteur direction
-	drawLineMap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, (t_coord){WMAP / 2 + cub->dir.x
-		* TSIZE, HMAP / 2 + cub->dir.y * TSIZE}, CBLUE);
+	drawLineMap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, (t_coord){WMAP / 2
+		+ cub->dir.x * TSIZE, HMAP / 2 + cub->dir.y * TSIZE}, CBLUE);
 	// vecteur plane
-	drawLineMap(&cub->mmap, (t_coord){WMAP / 2 - (cub->plane.x * TSIZE), HMAP / 2
-		- (cub->plane.y * TSIZE)}, (t_coord){WMAP / 2 + (cub->plane.x * TSIZE),
-		HMAP / 2 + (cub->plane.y * TSIZE)}, CRED);
+	drawLineMap(&cub->mmap, (t_coord){WMAP / 2 - (cub->plane.x * TSIZE), HMAP
+		/ 2 - (cub->plane.y * TSIZE)}, (t_coord){WMAP / 2 + (cub->plane.x
+			* TSIZE), HMAP / 2 + (cub->plane.y * TSIZE)}, CRED);
 }
