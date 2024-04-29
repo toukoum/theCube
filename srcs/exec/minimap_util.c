@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 00:10:07 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:54:50 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	getPixelColor(char **map, t_int_coord *mapIndex)
 		return (CLIME);
 }
 
-void	drawBorder(t_cub *cub)
+void	drawBorderMinimap(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -64,7 +64,7 @@ void	drawBorder(t_cub *cub)
 	}
 }
 
-void	drawLineMap(t_img *img, t_coord x1, t_coord x2, int color)
+void	drawLineMinimap(t_img *img, t_coord x1, t_coord x2, int color)
 {
 	t_coord	d;
 	t_coord	increment;

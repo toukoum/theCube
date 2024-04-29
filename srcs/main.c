@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 13:51:00 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:52:59 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	render(t_cub *cub)
 	printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
 	printf(">> Vector dir of player (x, y): %f, %f\n", cub->dir.x, cub->dir.y);
 	drawFloorCeil(cub);
-	minimap(cub);
+	drawAll(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);
 }

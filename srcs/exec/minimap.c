@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:02:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 11:54:13 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:56:42 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @param player pos in PIXEL of the player
 
  */
-void drawMap(t_cub *cub, t_coord player)
+void drawMinimap(t_cub *cub, t_coord player)
 {
 	t_coord mapPos;
 	t_int_coord	mapIndex;
@@ -48,10 +48,22 @@ void drawMap(t_cub *cub, t_coord player)
 		y++;
 	}
 }
-void	minimap(t_cub *cub)
+
+void drawPlayer(t_cub *cub)
 {
-	drawMap(cub, (t_coord){cub->player.x * TSIZE, cub->player.y * TSIZE});
-	rayCasting(cub);
-	drawBorder(cub);
+	// vecteur direction
+	drawLineMinimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, (t_coord){WMAP / 2
+		+ cub->dir.x * TSIZE, HMAP / 2 + cub->dir.y * TSIZE}, CBLUE);
+	// vecteur plane
+	drawLineMinimap(&cub->mmap, (t_coord){WMAP / 2 - (cub->plane.x * TSIZE), HMAP
+		/ 2 - (cub->plane.y * TSIZE)}, (t_coord){WMAP / 2 + (cub->plane.x
+			* TSIZE), HMAP / 2 + (cub->plane.y * TSIZE)}, CRED);
 	my_mlx_pixel_put(&cub->mmap, WMAP / 2, HMAP / 2, CRED); // player
+}
+void	drawAll(t_cub *cub)
+{
+	drawMinimap(cub, (t_coord){cub->player.x * TSIZE, cub->player.y * TSIZE});
+	rayCasting(cub);
+	drawBorderMinimap(cub);
+	drawPlayer(cub);
 }

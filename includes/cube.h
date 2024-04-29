@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 13:33:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:59:53 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,12 +243,19 @@ void				init_mlx(t_cub *cub);
 void				init_cub(t_cub *cub, t_args *args);
 
 // minimap
-void				minimap(t_cub *cub);
+void				drawAll(t_cub *cub);
 int					getPixelColor(char **map, t_int_coord *mapIndex);
-void				rayCasting(t_cub *cub);
-void				drawBorder(t_cub *cub);
+void				drawBorderMinimap(t_cub *cub);
 void				drawLine(t_img *img, t_coord x1, t_coord x2, int color);
-void				drawLineMap(t_img *img, t_coord x1, t_coord x2, int color);
+void				drawLineMinimap(t_img *img, t_coord x1, t_coord x2,
+						int color);
+
+// raycasting
+void				rayCasting(t_cub *cub);
+void				initRayStep(t_ray *ray, t_cub *cub);
+void				initRay(t_cub *cub, t_ray *ray, double camX);
+int					getWallColor(t_int_coord *mapIndex, char **map,
+						int side_hit);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

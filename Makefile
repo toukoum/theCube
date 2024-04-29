@@ -4,8 +4,8 @@ FLAGS	:=	-Wall -Wextra -Werror -MMD -g
 SRC		:= main.c  parsing/parse.c parsing/parse_color_line.c parsing/parse_texture_line.c \
 parsing/parse_util_args.c parsing/parse_util2_args.c exec/exit_parsing.c parsing/parse_map.c \
 parsing/parse_map_util.c parsing/store_check_map.c parsing/exit_parsing_util.c \
-exec/exit_exec.c exec/mlx_util.c exec/init.c exec/minimap.c exec/raycasting_minimap.c \
-exec/minimap_util.c
+exec/exit_exec.c exec/mlx_util.c exec/init.c exec/minimap.c exec/raycasting.c \
+exec/minimap_util.c exec/raycasting_util.c
 
 
 OBJS_DIR:=	./objs/
