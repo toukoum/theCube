@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 18:28:00 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:08:52 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	parse_line(char *line, t_args *args)
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
 		return (0);
-	else if (!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F' || line[i] == 'C')))
+	else if (!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
+				|| line[i] == 'C')))
 		return (free(line), exit_parse_map(args, INVALID_CHARACTER, true), 0);
 	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);

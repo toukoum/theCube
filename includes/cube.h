@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 00:09:53 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:43:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_color
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
+	int				color;
 
 }					t_color;
 
@@ -83,14 +84,14 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	t_coord rayDir; // vecteur of the current ray
+	t_coord			rayDir;
 	t_coord			d;
 	t_int_coord		map;
 	t_coord			sideDist;
 	double			perpWallDist;
 	t_int_coord		step;
 	bool			hit;
-	bool			side_hit;
+	int				side_hit;
 }					t_ray;
 typedef struct s_map
 {
@@ -122,8 +123,6 @@ typedef struct s_cub
 	t_img			mmap;
 	void			*mlx;
 	void			*win;
-
-	// paremetre for raytracing
 	t_coord			dir;
 	t_coord			plane;
 }					t_cub;
@@ -194,7 +193,7 @@ enum
 # define CLIME 0x0000FF80
 
 # define CWALL 0x032539
-# define CGROUND 0xFBF3F2
+# define CGROUND 0xF5F7F8
 # define CUNDEFINED 0x1E1E1E
 # define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160
@@ -203,6 +202,7 @@ enum
 # define CRAY 0xCAE9EA
 
 # define MOVESPEED 0.1
+# define ROTSPEED 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -242,12 +242,25 @@ void				init_mlx(t_cub *cub);
 void				init_cub(t_cub *cub, t_args *args);
 
 // minimap
-void				minimap(t_cub *cub);
-int					getPixelColor(char **map, t_int_coord *mapIndex);
-void				rayCasting(t_cub *cub);
-void				drawBorder(t_cub *cub);
-void				drawLine(t_img *img, t_coord x1, t_coord x2, int color);
-void				drawLineMap(t_img *img, t_coord x1, t_coord x2, int color);
+void				draw_all(t_cub *cub);
+int					get_pixel_color(char **map, t_int_coord *mapIndex);
+void				draw_border_minimap(t_cub *cub);
+void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
+void				draw_line_minimap(t_img *img, t_coord x1, t_coord x2,
+						int color);
+
+// raycasting
+void				raycasting(t_cub *cub);
+void				init_ray(t_cub *cub, t_ray *ray, double camX);
+int					get_wall_color(t_int_coord *mapIndex, char **map,
+						int side_hit);
+// event mlx
+int					handle_close_win(t_cub *cub);
+int					handle_key(int keycode, t_cub *cub);
+
+// move player
+void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
+void				rotate_player(int keycode, t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
