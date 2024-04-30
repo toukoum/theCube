@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 23:34:18 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:27:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,23 @@ typedef struct s_color
 
 }					t_color;
 
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
+
 typedef struct s_args
 {
 	int				fd;
 	char			*pathN;
 	char			*pathS;
-	char			*pathO;
+	char			*pathW;
 	char			*pathE;
 	t_color			floorColor;
 	t_color			ceilColor;
@@ -96,7 +107,7 @@ typedef struct s_map
 {
 	char			*pathN;
 	char			*pathS;
-	char			*pathO;
+	char			*pathW;
 	char			*pathE;
 	t_color			floorColor;
 	t_color			ceilColor;
@@ -104,15 +115,6 @@ typedef struct s_map
 	int				width;
 	int				height;
 }					t_map;
-
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_length;
-	int				endian;
-}					t_img;
 
 typedef struct s_cub
 {
@@ -124,6 +126,10 @@ typedef struct s_cub
 	void			*win;
 	t_coord			dir;
 	t_coord			plane;
+	t_img			texN;
+	t_img			texS;
+	t_img			texE;
+	t_img			texW;
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -220,6 +226,7 @@ void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
 void				check_map(t_args *args, int i, int j);
 void				store_map(t_args *args);
+void				init_all_textures(t_cub *cub);
 
 // -> quit
 void				quit(int exit_code);
@@ -227,6 +234,7 @@ void				free_all_map(t_args *args, int exit_code);
 void				exit_free_map(t_args *args, int i);
 void				quit_cub(int exit_code);
 void				free_cub(t_cub *cub);
+void				free_arg(t_args *args);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);

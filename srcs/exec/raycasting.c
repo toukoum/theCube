@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 12:17:44 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 15:05:59 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	raycasting(t_cub *cub)
 	t_ray	ray;
 	t_coord	dist;
 
-	
 	x = 0;
 	while (x < WWIN)
 	{
@@ -95,7 +94,8 @@ void	raycasting(t_cub *cub)
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
 
 
-		// calcul for texture
+		//calcul for texture
+		
 		//double offset;
 		//if (ray.side_hit == 'N' || ray.side_hit == 'S')
 		//	offset = cub->player.y + ray.perpWallDist * ray.rayDir.y;
@@ -109,9 +109,9 @@ void	raycasting(t_cub *cub)
 
 		
 		// draw the ray
-		/* if (x % 75 == 0) */
-		/* 	draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, */
-		/* 		(t_coord){dist.x, dist.y}, CORANGE); */
+		if (x % 75 == 0)
+			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
+				(t_coord){dist.x, dist.y}, CORANGE);
 		// draw the column
 		draw_column(x, &ray, cub);
 		x++;

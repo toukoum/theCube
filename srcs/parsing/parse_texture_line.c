@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:08:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:27:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	assign_path(char *line, char *cpy_line, t_args *args)
 	else if (cpy_line[0] == 'S' && cpy_line[1] == 'O')
 		target_path = &args->pathS;
 	else if (cpy_line[0] == 'W' && cpy_line[1] == 'E')
-		target_path = &args->pathO;
+		target_path = &args->pathW;
 	else
 		target_path = &args->pathE;
 	if (*target_path)
