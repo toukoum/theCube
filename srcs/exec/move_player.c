@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:42:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 12:51:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,26 @@ static void	add_move(t_cub *cub, int keycode, t_coord *next)
 {
 	if (keycode == XK_w)
 	{
-		next->y += MOVESPEED * cub->dir.y;
 		next->x += MOVESPEED * cub->dir.x;
+		next->y += MOVESPEED * cub->dir.y;
 	}
 	else if (keycode == XK_s)
 	{
-		next->y -= MOVESPEED * cub->dir.y;
 		next->x -= MOVESPEED * cub->dir.x;
-	}
-	else if (keycode == XK_a)
-	{
-		next->y -= MOVESPEED * cub->dir.x;
-		next->x += MOVESPEED * cub->dir.y;
+		next->y -= MOVESPEED * cub->dir.y;
 	}
 	else if (keycode == XK_d)
 	{
-		next->y += MOVESPEED * cub->dir.x;
 		next->x -= MOVESPEED * cub->dir.y;
+		next->y += MOVESPEED * cub->dir.x;
+	}
+	else if (keycode == XK_a)
+	{
+		next->x += MOVESPEED * cub->dir.y;
+		next->y -= MOVESPEED * cub->dir.x;
 	}
 }
+
 /**
  * @brief a finir
  */

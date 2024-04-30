@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:40:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 12:49:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	init_start_angle(t_cub *cub)
 	else if (cub->player.start_angle == 'S')
 	{
 		cub->dir.y = 1;
-		cub->plane.x = 0.66;
+		cub->plane.x = -0.66;
 	}
 	else if (cub->player.start_angle == 'E')
 	{
@@ -32,9 +32,10 @@ static void	init_start_angle(t_cub *cub)
 	else if (cub->player.start_angle == 'W')
 	{
 		cub->dir.x = -1;
-		cub->plane.y = 0.66;
+		cub->plane.y = -0.66;
 	}
 }
+
 void	init_cub(t_cub *cub, t_args *args)
 {
 	cub->player.x = args->pos_x;

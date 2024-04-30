@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:43:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 23:34:18 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ typedef struct s_ray
 	t_coord			sideDist;
 	double			perpWallDist;
 	t_int_coord		step;
-	bool			hit;
 	int				side_hit;
 }					t_ray;
 typedef struct s_map
@@ -172,8 +171,6 @@ enum
 
 # define WWIN 1280 // width of window
 # define HWIN 720 // height of window
-//# define WMAP WWIN / 1.2 // width of minimap
-//# define HMAP HWIN / 1.2 // height of minimap
 # define WMAP 20 * WWIN / 100 // width of minimap
 # define HMAP 20 * HWIN / 100 // height of minimap
 
@@ -195,9 +192,7 @@ enum
 # define CWALL 0x032539
 # define CGROUND 0xF5F7F8
 # define CUNDEFINED 0x1E1E1E
-# define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160
-# define CWTF 0xf7b666
 
 # define CRAY 0xCAE9EA
 

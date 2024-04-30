@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:20:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 12:13:34 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	draw_floor_ceil(t_cub *cub)
 }
 void	render(t_cub *cub)
 {
+	//(void)cub;
 	printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
 	printf(">> Vector dir of player (x, y): %f, %f\n", cub->dir.x, cub->dir.y);
 	draw_floor_ceil(cub);

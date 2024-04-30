@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:58:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:21:48 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 23:40:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_ray(t_cub *cub, t_ray *ray, double camX)
 		ray->d.y = INFINITY;
 	else
 		ray->d.y = fabs(1 / ray->rayDir.y);
-	ray->hit = false;
 	init_ray_step(ray, cub);
 }
 
