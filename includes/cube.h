@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 14:27:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 16:32:07 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	int				line_height;
 	t_coord			rayDir;
 	t_coord			d;
 	t_int_coord		map;
@@ -102,6 +103,8 @@ typedef struct s_ray
 	double			perpWallDist;
 	t_int_coord		step;
 	int				side_hit;
+	t_int_coord		start_point;
+	t_int_coord		end_point;
 }					t_ray;
 typedef struct s_map
 {

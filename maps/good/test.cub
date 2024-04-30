@@ -1,10 +1,10 @@
 F 255,255,255
 C 60, 12, 159
 
-EA textures/melanch.xpm
-NO textures/melanch.xpm
-SO textures/melanch.xpm
-WE textures/melanch.xpm
+EA textures/square.xpm
+NO textures/square.xpm
+SO textures/square.xpm
+WE textures/square.xpm
   
 11111111111111111111111111111111111
 10001001000000000000000000000000001

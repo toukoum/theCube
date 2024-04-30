@@ -6,28 +6,62 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 15:05:59 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 23:57:45 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
+void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
+{
+	double	increment_y;
+	double	tex_y;
+	int		color;
+	int		pixel_index;
+
+	if (ray->line_height > HWIN)
+		ray->line_height = HWIN;
+	increment_y = (double)texture->height / ray->line_height;
+	tex_y = 0;
+	while (ray->start_point.y < ray->end_point.y)
+	{
+		pixel_index = (((int)tex_y % texture->height) * texture->line_length)
+			+ (texX * (texture->bits_per_pixel / 8));
+		color = *(int *)(texture->addr + pixel_index);
+		my_mlx_pixel_put(img, ray->start_point.x, ray->start_point.y, color);
+		tex_y += increment_y;
+		ray->start_point.y++;
+	}
+}
+
 void	draw_column(int x, t_ray *ray, t_cub *cub)
 {
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	double	offset;
 
-	line_height = (int)(HWIN / ray->perpWallDist);
-	draw_start = -line_height / 2 + HWIN / 2;
+	ray->line_height = (int)(HWIN / ray->perpWallDist);
+	draw_start = -ray->line_height / 2 + HWIN / 2;
 	if (draw_start < 0)
 		draw_start = 0;
-	draw_end = line_height / 2 + HWIN / 2;
+	draw_end = ray->line_height / 2 + HWIN / 2;
 	if (draw_end >= HWIN)
 		draw_end = HWIN - 1;
-	draw_line(&cub->img, (t_coord){x, draw_start}, (t_coord){x, draw_end},
-		get_wall_color(&ray->map, cub->map->map, ray->side_hit));
+	if (ray->side_hit == 'N' || ray->side_hit == 'S')
+		offset = cub->player.x + ray->perpWallDist * ray->rayDir.x;
+	else
+		offset = cub->player.y + ray->perpWallDist * ray->rayDir.y;
+	offset = offset - floor(offset);
+	ray->start_point = (t_int_coord){x, draw_start};
+	ray->end_point = (t_int_coord){x, draw_end};
+	tex_x = (int)(offset * (double)cub->texN.width);
+	draw_column_texture(&cub->img, ray, &cub->texN, tex_x);
 }
+
+//// Calculer texY en utilisant texPos, qui est incrémenté par step
+//        int texY = (int)texPos & (texture->height - 1);
+//        texPos += step;
 
 void	assign_side_hit(t_ray *ray, bool vertical)
 {
@@ -92,22 +126,6 @@ void	raycasting(t_cub *cub)
 		dda(&ray, cub->map->map);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
-
-
-		//calcul for texture
-		
-		//double offset;
-		//if (ray.side_hit == 'N' || ray.side_hit == 'S')
-		//	offset = cub->player.y + ray.perpWallDist * ray.rayDir.y;
-		//else
-		//	offset = cub->player.x + ray.perpWallDist * ray.rayDir.x;
-		//offset -= floor(offset);
-		
-		//int texX = (int)(offset * )
-
-
-
-		
 		// draw the ray
 		if (x % 75 == 0)
 			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
