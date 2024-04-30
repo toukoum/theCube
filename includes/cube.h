@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 16:42:13 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/29 14:43:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@
 #  define LINUX 0
 #  define MY_DIR O_DIRECTORY
 # elif __linux__
-#  define LINUX 1
-#  include <X11/X.h>
 #  include <X11/keysym.h>
+#  define LINUX 1
 #  define MY_DIR __O_DIRECTORY
 # endif
 
 # include "../libft-boost/ft_printf/includes/ft_printf.h"
 # include "../libft-boost/gnl/includes/get_next_line_bonus.h"
 # include "../libft-boost/libft_mandatory/includes/libft.h"
+# include <X11/X.h>
 # include <fcntl.h> // open
+# include <math.h>
 # include <mlx.h>
 # include <stdbool.h> // boolean
 # include <unistd.h>  // open, write
@@ -38,6 +39,7 @@ typedef struct s_color
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
+	int				color;
 
 }					t_color;
 
@@ -51,8 +53,8 @@ typedef struct s_args
 	t_color			floorColor;
 	t_color			ceilColor;
 	char			**map;
-	int				pos_x;
-	int				pos_y;
+	double			pos_x;
+	double			pos_y;
 	int				width;
 	int				height;
 	bool			is_correct_pos;
@@ -60,6 +62,49 @@ typedef struct s_args
 	char			*path_file;
 	int				start_map;
 }					t_args;
+
+typedef struct s_coord
+{
+	double			x;
+	double			y;
+}					t_coord;
+
+typedef struct s_int_coord
+{
+	int				x;
+	int				y;
+}					t_int_coord;
+
+typedef struct s_player
+{
+	double			x;
+	double			y;
+	char			start_angle;
+}					t_player;
+
+typedef struct s_ray
+{
+	t_coord			rayDir;
+	t_coord			d;
+	t_int_coord		map;
+	t_coord			sideDist;
+	double			perpWallDist;
+	t_int_coord		step;
+	bool			hit;
+	int				side_hit;
+}					t_ray;
+typedef struct s_map
+{
+	char			*pathN;
+	char			*pathS;
+	char			*pathO;
+	char			*pathE;
+	t_color			floorColor;
+	t_color			ceilColor;
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
 
 typedef struct s_img
 {
@@ -72,11 +117,14 @@ typedef struct s_img
 
 typedef struct s_cub
 {
-	t_args			*arg;
+	t_args			*map;
+	t_player		player;
 	t_img			img;
 	t_img			mmap;
 	void			*mlx;
 	void			*win;
+	t_coord			dir;
+	t_coord			plane;
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -92,6 +140,7 @@ enum
 };
 
 // =========================== EXIT CODE ===========================
+// error code
 # define NUMBERS_ARGC 1
 # define WRONG_FILE 2
 # define EXTENSION_NAME 3
@@ -110,6 +159,7 @@ enum
 # define DUP_PLAYER 15
 # define SUCESS 16
 
+// shell color
 # define RED "\e[1;31m"
 # define REDL "\e[0;31m"
 # define YELLOWB "\e[1;93m"
@@ -122,32 +172,37 @@ enum
 
 # define WWIN 1280 // width of window
 # define HWIN 720 // height of window
-# define WMAP 200 // width of minimap
-# define HMAP 120 // height of minimap
-// # define WMAP  100 // width of minimap
-// # define HMAP 15 * HWIN / 100 // height of minimap
+//# define WMAP WWIN / 1.2 // width of minimap
+//# define HMAP HWIN / 1.2 // height of minimap
+# define WMAP 20 * WWIN / 100 // width of minimap
+# define HMAP 20 * HWIN / 100 // height of minimap
 
-# define TSIZE 10 // taille d'un carreau de la minimap
+# define TSIZE 15 // taille d'un carreau de la minimap
 
 // color for mlx
-# define MBLUE 0x000000FF
-# define MWHITE 0x00FFFFFF
-# define MGREEN 0x0000FF00
-# define MRED 0x00FF0000
-# define MBLACK 0x00000000
-# define MCYAN 0x0000FFFF
-# define MMAGENTA 0x00FF00FF
-# define MYELLOW 0x00FFFF00
-# define MORANGE 0x00FFA500
-# define MPINK 0x00FFC0CB
-# define MLIME 0x0000FF80
+# define CBLUE 0x000000FF
+# define CWHITE 0x00FFFFFF
+# define CGREEN 0xB5E550
+# define CRED 0x00FF0000
+# define CBLACK 0x00000000
+# define CCYAN 0x0000FFFF
+# define CMAGENTA 0x00FF00FF
+# define CYELLOW 0x00E8E337
+# define CORANGE 0x00FA991C
+# define CPINK 0x00FFC0CB
+# define CLIME 0x0000FF80
 
-# define CWALL 0x5e4b51
-# define CGROUND 0xf2eec1
-# define CUNDEFINED 0x87bfb4
+# define CWALL 0x032539
+# define CGROUND 0xF5F7F8
+# define CUNDEFINED 0x1E1E1E
+# define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160
 # define CWTF 0xf7b666
 
+# define CRAY 0xCAE9EA
+
+# define MOVESPEED 0.1
+# define ROTSPEED 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -180,21 +235,44 @@ void				free_cub(t_cub *cub);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void				render(t_cub *cub);
 
 // init
 void				init_mlx(t_cub *cub);
+void				init_cub(t_cub *cub, t_args *args);
+
+// minimap
+void				draw_all(t_cub *cub);
+int					get_pixel_color(char **map, t_int_coord *mapIndex);
+void				draw_border_minimap(t_cub *cub);
+void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
+void				draw_line_minimap(t_img *img, t_coord x1, t_coord x2,
+						int color);
+
+// raycasting
+void				raycasting(t_cub *cub);
+void				init_ray(t_cub *cub, t_ray *ray, double camX);
+int					get_wall_color(t_int_coord *mapIndex, char **map,
+						int side_hit);
+// event mlx
+int					handle_close_win(t_cub *cub);
+int					handle_key(int keycode, t_cub *cub);
+
+// move player
+void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
+void				rotate_player(int keycode, t_cub *cub);
 
 // utils
 int					ft_strcmp(char *s1, char *s2);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
-#  define XK_Q 12
-#  define XK_W 13
-#  define XK_E 14
-#  define XK_A 0
-#  define XK_S 1
-#  define XK_D 2
+#  define XK_q 12
+#  define XK_w 13
+#  define XK_e 14
+#  define XK_a 0
+#  define XK_s 1
+#  define XK_d 2
 #  define XK_Up 126
 #  define XK_Down 125
 #  define XK_Left 123

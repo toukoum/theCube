@@ -69,7 +69,8 @@ int	parse_line(char *line, t_args *args)
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
 		return (0);
-	else if (!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F' || line[i] == 'C')))
+	else if (!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
+				|| line[i] == 'C')))
 		return (free(line), exit_parse_map(args, INVALID_CHARACTER, true), 0);
 	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);

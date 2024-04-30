@@ -104,5 +104,5 @@ client_secret.json
 *.a
 *.d
 cub3D
-compile_commands.json
-.cache/
+*.json
+cache/
