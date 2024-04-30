@@ -1,0 +1,1737 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_atoi.o",
+      "libft_mandatory/srcs/ft_atoi.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_atoi.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_atoi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_bzero.o",
+      "libft_mandatory/srcs/ft_bzero.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_bzero.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_bzero.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_calloc.o",
+      "libft_mandatory/srcs/ft_calloc.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_calloc.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_calloc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_isalnum.o",
+      "libft_mandatory/srcs/ft_isalnum.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isalnum.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isalnum.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_isalpha.o",
+      "libft_mandatory/srcs/ft_isalpha.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isalpha.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isalpha.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_isascii.o",
+      "libft_mandatory/srcs/ft_isascii.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isascii.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isascii.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_isdigit.o",
+      "libft_mandatory/srcs/ft_isdigit.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isdigit.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isdigit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_isprint.o",
+      "libft_mandatory/srcs/ft_isprint.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isprint.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_isprint.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_itoa.o",
+      "libft_mandatory/srcs/ft_itoa.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_itoa.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_itoa.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstadd_back.o",
+      "libft_mandatory/srcs/ft_lstadd_back.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstadd_back.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstadd_back.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstadd_front.o",
+      "libft_mandatory/srcs/ft_lstadd_front.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstadd_front.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstadd_front.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstclear.o",
+      "libft_mandatory/srcs/ft_lstclear.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstclear.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstclear.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstdelone.o",
+      "libft_mandatory/srcs/ft_lstdelone.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstdelone.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstdelone.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstiter.o",
+      "libft_mandatory/srcs/ft_lstiter.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstiter.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstiter.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstlast.o",
+      "libft_mandatory/srcs/ft_lstlast.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstlast.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstlast.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstmap.o",
+      "libft_mandatory/srcs/ft_lstmap.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstmap.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstmap.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstnew.o",
+      "libft_mandatory/srcs/ft_lstnew.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstnew.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstnew.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_lstsize.o",
+      "libft_mandatory/srcs/ft_lstsize.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstsize.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_lstsize.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_memchr.o",
+      "libft_mandatory/srcs/ft_memchr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memchr.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_memcmp.o",
+      "libft_mandatory/srcs/ft_memcmp.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memcmp.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memcmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_memcpy.o",
+      "libft_mandatory/srcs/ft_memcpy.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memcpy.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_memmove.o",
+      "libft_mandatory/srcs/ft_memmove.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memmove.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memmove.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_memset.o",
+      "libft_mandatory/srcs/ft_memset.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memset.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_memset.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_putchar_fd.o",
+      "libft_mandatory/srcs/ft_putchar_fd.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putchar_fd.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putchar_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_putendl_fd.o",
+      "libft_mandatory/srcs/ft_putendl_fd.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putendl_fd.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putendl_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_putnbr_fd.o",
+      "libft_mandatory/srcs/ft_putnbr_fd.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putnbr_fd.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putnbr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_putstr_fd.o",
+      "libft_mandatory/srcs/ft_putstr_fd.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putstr_fd.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_putstr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_split.o",
+      "libft_mandatory/srcs/ft_split.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_split.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_split.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strchr.o",
+      "libft_mandatory/srcs/ft_strchr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strchr.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strdup.o",
+      "libft_mandatory/srcs/ft_strdup.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strdup.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strdup.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_striteri.o",
+      "libft_mandatory/srcs/ft_striteri.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_striteri.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_striteri.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strjoin.o",
+      "libft_mandatory/srcs/ft_strjoin.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strjoin.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strjoin.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strlcat.o",
+      "libft_mandatory/srcs/ft_strlcat.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlcat.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlcat.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strlcpy.o",
+      "libft_mandatory/srcs/ft_strlcpy.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlcpy.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strlen.o",
+      "libft_mandatory/srcs/ft_strlen.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlen.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strlen.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strmapi.o",
+      "libft_mandatory/srcs/ft_strmapi.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strmapi.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strmapi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strncmp.o",
+      "libft_mandatory/srcs/ft_strncmp.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strncmp.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strncmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strnstr.o",
+      "libft_mandatory/srcs/ft_strnstr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strnstr.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strnstr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strrchr.o",
+      "libft_mandatory/srcs/ft_strrchr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strrchr.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strrchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_strtrim.o",
+      "libft_mandatory/srcs/ft_strtrim.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strtrim.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_strtrim.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_substr.o",
+      "libft_mandatory/srcs/ft_substr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_substr.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_substr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_tolower.o",
+      "libft_mandatory/srcs/ft_tolower.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_tolower.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_tolower.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "libft_mandatory/srcs/ft_toupper.o",
+      "libft_mandatory/srcs/ft_toupper.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_toupper.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/libft_mandatory/srcs/ft_toupper.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_base2.o",
+      "ft_printf/srcs/ft_convert_base2.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_base2.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_base2.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_base.o",
+      "ft_printf/srcs/ft_convert_base.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_base.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_base.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert.o",
+      "ft_printf/srcs/ft_convert.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_c.o",
+      "ft_printf/srcs/ft_convert_c.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_c.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_id.o",
+      "ft_printf/srcs/ft_convert_id.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_id.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_id.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_p.o",
+      "ft_printf/srcs/ft_convert_p.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_p.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_p.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_s.o",
+      "ft_printf/srcs/ft_convert_s.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_s.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_s.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_u.o",
+      "ft_printf/srcs/ft_convert_u.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_u.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_u.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_convert_x.o",
+      "ft_printf/srcs/ft_convert_x.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_x.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_convert_x.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_flags.o",
+      "ft_printf/srcs/ft_flags.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_flags.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_flags.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_itoa_boost.o",
+      "ft_printf/srcs/ft_itoa_boost.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_itoa_boost.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_itoa_boost.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_parse.o",
+      "ft_printf/srcs/ft_parse.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_parse.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_parse.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_printf.o",
+      "ft_printf/srcs/ft_printf.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_printf_utils2.o",
+      "ft_printf/srcs/ft_printf_utils2.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf_utils2.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf_utils2.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "ft_printf/srcs/ft_printf_utils.o",
+      "ft_printf/srcs/ft_printf_utils.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf_utils.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/ft_printf/srcs/ft_printf_utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-o",
+      "gnl/srcs/get_next_line_bonus.o",
+      "gnl/srcs/get_next_line_bonus.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/libft-boost",
+    "file": "/home/ketrevis/42/cub3d/libft-boost/gnl/srcs/get_next_line_bonus.c",
+    "output": "/home/ketrevis/42/cub3d/libft-boost/gnl/srcs/get_next_line_bonus.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/main.o",
+      "srcs/main.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/main.c",
+    "output": "/home/ketrevis/42/cub3d/objs/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse.o",
+      "srcs/parsing/parse.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_color_line.o",
+      "srcs/parsing/parse_color_line.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_color_line.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_color_line.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_texture_line.o",
+      "srcs/parsing/parse_texture_line.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_texture_line.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_texture_line.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_util_args.o",
+      "srcs/parsing/parse_util_args.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_util_args.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_util_args.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_util2_args.o",
+      "srcs/parsing/parse_util2_args.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_util2_args.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_util2_args.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/exit_parsing.o",
+      "srcs/exec/exit_parsing.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/exit_parsing.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/exit_parsing.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_map.o",
+      "srcs/parsing/parse_map.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_map.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_map.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/parse_map_util.o",
+      "srcs/parsing/parse_map_util.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/parse_map_util.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/parse_map_util.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/store_check_map.o",
+      "srcs/parsing/store_check_map.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/store_check_map.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/store_check_map.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/parsing/exit_parsing_util.o",
+      "srcs/parsing/exit_parsing_util.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/parsing/exit_parsing_util.c",
+    "output": "/home/ketrevis/42/cub3d/objs/parsing/exit_parsing_util.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/exit_exec.o",
+      "srcs/exec/exit_exec.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/exit_exec.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/exit_exec.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/mlx_util.o",
+      "srcs/exec/mlx_util.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/mlx_util.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/mlx_util.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/init.o",
+      "srcs/exec/init.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/init.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/init.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/minimap.o",
+      "srcs/exec/minimap.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/minimap.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/minimap.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/raycasting.o",
+      "srcs/exec/raycasting.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/raycasting.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/raycasting.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/minimap_util.o",
+      "srcs/exec/minimap_util.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/minimap_util.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/minimap_util.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/raycasting_util.o",
+      "srcs/exec/raycasting_util.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/raycasting_util.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/raycasting_util.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/move_player.o",
+      "srcs/exec/move_player.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/move_player.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/move_player.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-I",
+      "includes",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/handle_event.o",
+      "srcs/exec/handle_event.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/handle_event.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/handle_event.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_init.o",
+      "mlx_init.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_init.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_init.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_new_window.o",
+      "mlx_new_window.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_new_window.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_new_window.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_pixel_put.o",
+      "mlx_pixel_put.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_pixel_put.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_pixel_put.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_loop.o",
+      "mlx_loop.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_loop.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_loop.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_mouse_hook.o",
+      "mlx_mouse_hook.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_mouse_hook.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_mouse_hook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_key_hook.o",
+      "mlx_key_hook.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_key_hook.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_key_hook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_expose_hook.o",
+      "mlx_expose_hook.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_expose_hook.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_expose_hook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_loop_hook.o",
+      "mlx_loop_hook.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_loop_hook.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_loop_hook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_anti_resize_win.o",
+      "mlx_int_anti_resize_win.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_anti_resize_win.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_anti_resize_win.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_do_nothing.o",
+      "mlx_int_do_nothing.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_do_nothing.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_do_nothing.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_wait_first_expose.o",
+      "mlx_int_wait_first_expose.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_wait_first_expose.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_wait_first_expose.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_get_visual.o",
+      "mlx_int_get_visual.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_get_visual.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_get_visual.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_flush_event.o",
+      "mlx_flush_event.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_flush_event.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_flush_event.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_string_put.o",
+      "mlx_string_put.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_string_put.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_string_put.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_set_font.o",
+      "mlx_set_font.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_set_font.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_set_font.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_new_image.o",
+      "mlx_new_image.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_new_image.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_new_image.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_get_data_addr.o",
+      "mlx_get_data_addr.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_get_data_addr.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_get_data_addr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_put_image_to_window.o",
+      "mlx_put_image_to_window.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_put_image_to_window.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_put_image_to_window.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_get_color_value.o",
+      "mlx_get_color_value.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_get_color_value.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_get_color_value.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_clear_window.o",
+      "mlx_clear_window.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_clear_window.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_clear_window.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_xpm.o",
+      "mlx_xpm.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_xpm.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_xpm.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_str_to_wordtab.o",
+      "mlx_int_str_to_wordtab.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_str_to_wordtab.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_str_to_wordtab.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_destroy_window.o",
+      "mlx_destroy_window.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_destroy_window.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_destroy_window.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_param_event.o",
+      "mlx_int_param_event.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_param_event.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_param_event.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_int_set_win_event_mask.o",
+      "mlx_int_set_win_event_mask.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_int_set_win_event_mask.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_int_set_win_event_mask.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_hook.o",
+      "mlx_hook.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_hook.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_hook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_rgb.o",
+      "mlx_rgb.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_rgb.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_rgb.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_destroy_image.o",
+      "mlx_destroy_image.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_destroy_image.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_destroy_image.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_mouse.o",
+      "mlx_mouse.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_mouse.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_mouse.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_screen_size.o",
+      "mlx_screen_size.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_screen_size.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_screen_size.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-O3",
+      "-I/usr/include",
+      "-c",
+      "-o",
+      "obj/mlx_destroy_display.o",
+      "mlx_destroy_display.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/mlx_destroy_display.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/obj/mlx_destroy_display.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I/usr/include",
+      "-O3",
+      "-I..",
+      "-g",
+      "-c",
+      "-o",
+      "main.o",
+      "main.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d/mlx-linux/test",
+    "file": "/home/ketrevis/42/cub3d/mlx-linux/test/main.c",
+    "output": "/home/ketrevis/42/cub3d/mlx-linux/test/main.o"
+  }
+]

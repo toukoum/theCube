@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:40:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 11:43:59 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	init_start_angle(t_cub *cub)
 	else if (cub->player.start_angle == 'E')
 	{
 		cub->dir.x = 1;
-		cub->plane.y = 0.66;
+		cub->plane.y = -0.66;
 	}
 	else if (cub->player.start_angle == 'W')
 	{
@@ -35,6 +35,7 @@ static void	init_start_angle(t_cub *cub)
 		cub->plane.y = 0.66;
 	}
 }
+
 void	init_cub(t_cub *cub, t_args *args)
 {
 	cub->player.x = args->pos_x;
