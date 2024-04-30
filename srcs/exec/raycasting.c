@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 15:08:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 11:27:59 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 	int	draw_start;
 	int	draw_end;
 
-	x = WWIN - x;
 	line_height = (int)(HWIN / ray->perpWallDist);
 	draw_start = -line_height / 2 + HWIN / 2;
 	if (draw_start < 0)
@@ -30,9 +29,9 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 		get_wall_color(&ray->map, cub->map->map, ray->side_hit));
 }
 
-void	assign_side_hit(t_ray *ray, bool horizontal)
+void	assign_side_hit(t_ray *ray, bool vertical)
 {
-	if (horizontal)
+	if (vertical)
 	{
 		if (ray->step.x > 0)
 			ray->side_hit = 'E';
@@ -50,7 +49,7 @@ void	assign_side_hit(t_ray *ray, bool horizontal)
 
 void	dda(t_ray *ray, char **map)
 {
-	while (!ray->hit)
+	while (map[ray->map.y][ray->map.x] != '1')
 	{
 		if (ray->sideDist.x < ray->sideDist.y)
 		{
@@ -64,8 +63,6 @@ void	dda(t_ray *ray, char **map)
 			ray->map.y += ray->step.y;
 			assign_side_hit(ray, false);
 		}
-		if (map[ray->map.y][ray->map.x] == '1')
-			ray->hit = true;
 	}
 	if (ray->side_hit == 'N' || ray->side_hit == 'S')
 		ray->perpWallDist = ray->sideDist.y - ray->d.y;
@@ -86,6 +83,7 @@ void	raycasting(t_cub *cub)
 	t_ray	ray;
 	t_coord	dist;
 
+	
 	x = 0;
 	while (x < WWIN)
 	{
@@ -95,6 +93,21 @@ void	raycasting(t_cub *cub)
 		dda(&ray, cub->map->map);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
+
+
+		// calcul for texture
+		//double offset;
+		//if (ray.side_hit == 'N' || ray.side_hit == 'S')
+		//	offset = cub->player.y + ray.perpWallDist * ray.rayDir.y;
+		//else
+		//	offset = cub->player.x + ray.perpWallDist * ray.rayDir.x;
+		//offset -= floor(offset);
+		
+		//int texX = (int)(offset * )
+
+
+
+		
 		// draw the ray
 		if (x % 75 == 0)
 			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
