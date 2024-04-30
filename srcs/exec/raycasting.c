@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 15:08:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 11:10:51 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ void	raycasting(t_cub *cub)
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
 		// draw the ray
-		if (x % 75 == 0)
-			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
-				(t_coord){dist.x, dist.y}, CORANGE);
+		/* if (x % 75 == 0) */
+		/* 	draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, */
+		/* 		(t_coord){dist.x, dist.y}, CORANGE); */
 		// draw the column
 		draw_column(x, &ray, cub);
 		x++;

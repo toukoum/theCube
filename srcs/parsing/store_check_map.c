@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_check_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/26 09:51:29 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 11:40:47 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	set_pos_player(t_args *args, int i, int j)
 	else
 	{
 		args->is_correct_pos = true;
-		args->pos_x = j;
-		args->pos_y = i;
+		args->pos_x = j + 0.5;
+		args->pos_y = i + 0.5;
 		args->start_angle = args->map[i][j];
 	}
 }
