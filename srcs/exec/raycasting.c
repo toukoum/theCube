@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:18:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 11:10:51 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 		draw_start = 0;
 	draw_end = line_height / 2 + HWIN / 2;
 	if (draw_end >= HWIN)
-		draw_end = WWIN - 1;
+		draw_end = HWIN - 1;
 	draw_line(&cub->img, (t_coord){x, draw_start}, (t_coord){x, draw_end},
 		get_wall_color(&ray->map, cub->map->map, ray->side_hit));
 }
@@ -95,10 +95,11 @@ void	raycasting(t_cub *cub)
 		dda(&ray, cub->map->map);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
-		//// draw the ray
-		if (x % 75 == 0)
-			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
-				(t_coord){dist.x, dist.y}, CORANGE);
+		// draw the ray
+		/* if (x % 75 == 0) */
+		/* 	draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2}, */
+		/* 		(t_coord){dist.x, dist.y}, CORANGE); */
+		// draw the column
 		draw_column(x, &ray, cub);
 		x++;
 	}
