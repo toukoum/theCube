@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 17:05:28 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 00:11:52 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 	int		pixel_index;
 
 	increment_y = (double)texture->height / ray->line_height;
-	tex_y = (ray->start_point.y - HWIN / 2 + ray->line_height / 2) * increment_y;
+	tex_y = (ray->start_point.y - HWIN / 2 + ray->line_height / 2)
+		* increment_y;
 	while (ray->start_point.y < ray->end_point.y)
 	{
 		pixel_index = (((int)tex_y % texture->height) * texture->line_length)
@@ -54,9 +55,9 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 	ray->start_point = (t_int_coord){x, draw_start};
 	ray->end_point = (t_int_coord){x, draw_end};
 	tex_x = (int)(offset * (double)cub->texN.width);
-	if(((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->rayDir.y < 0)) 
+	if (((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->rayDir.y < 0))
 		tex_x = cub->texN.width - tex_x - 1;
-	if(((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0)) 
+	if (((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0))
 		tex_x = cub->texN.width - tex_x - 1;
 	draw_column_texture(&cub->img, ray, &cub->texN, tex_x);
 }
@@ -122,17 +123,15 @@ void	raycasting(t_cub *cub)
 	x = 0;
 	while (x < WWIN)
 	{
-		// remaper dans -1,1 la coordonne du pixel
 		cam_x = 2 * x / (double)WWIN - 1;
 		init_ray(cub, &ray, cam_x);
 		dda(&ray, cub->map->map);
+		assign_ray_dist(x, ray.perpWallDist, cub);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;
-		// draw the ray
 		if (x % 75 == 0)
 			draw_line_minimap(&cub->mmap, (t_coord){WMAP / 2, HMAP / 2},
 				(t_coord){dist.x, dist.y}, CORANGE);
-		// draw the column
 		draw_column(x, &ray, cub);
 		x++;
 	}

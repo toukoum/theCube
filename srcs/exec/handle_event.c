@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:25:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:34:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 00:10:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	handle_key(int keycode, t_cub *cub)
 		move_player(keycode, cub, (t_int_coord){0, 0});
 	else if (keycode == XK_Left || keycode == XK_Right)
 		rotate_player(keycode, cub);
+	else if (keycode == XK_minus || keycode == XK_plus)
+		change_fov(cub, keycode);
 	render(cub);
 	return (0);
 }

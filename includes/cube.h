@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 19:07:10 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 00:09:30 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,10 @@ typedef struct s_cub
 	t_img			texS;
 	t_img			texE;
 	t_img			texW;
+
+	double			distRayL;
+	double			distRayC;
+	double			distRayR;
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -207,6 +211,7 @@ enum
 
 # define MOVESPEED 0.1
 # define ROTSPEED 0.1
+# define CHANGEFOV 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -244,6 +249,7 @@ void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void				render(t_cub *cub);
 void				draw_rect(t_img *img, t_int_coord point,
 						t_int_coord dimension, int color);
+void				change_fov(t_cub *cub, int keycode);
 
 // init
 void				init_mlx(t_cub *cub);
@@ -261,6 +267,8 @@ void				raycasting(t_cub *cub);
 void				init_ray(t_cub *cub, t_ray *ray, double camX);
 int					get_wall_color(t_int_coord *mapIndex, char **map,
 						int side_hit);
+void				assign_ray_dist(int x, double dist, t_cub *cub);
+
 // event mlx
 int					handle_close_win(t_cub *cub);
 int					handle_key(int keycode, t_cub *cub);
@@ -271,6 +279,8 @@ void				rotate_player(int keycode, t_cub *cub);
 
 // divers
 void				draw_log_player(t_cub *cub);
+void				draw_fov(t_cub *cub);
+char				*get_value_float(double value);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
@@ -284,6 +294,8 @@ void				draw_log_player(t_cub *cub);
 #  define XK_Down 125
 #  define XK_Left 123
 #  define XK_Right 124
+#  define XK_plus 24
+#  define XK_minus 27
 # endif
 
 #endif

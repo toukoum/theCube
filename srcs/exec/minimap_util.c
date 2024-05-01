@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 14:01:41 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 00:14:13 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	draw_border_minimap(t_cub *cub)
 
 int	get_dmax(t_coord *d)
 {
-	t_coord abs_d;
+	t_coord	abs_d;
 
 	abs_d.x = fabs(d->x);
-	abs_d.y = fabs(d->y);;
+	abs_d.y = fabs(d->y);
 	if (abs_d.x > abs_d.y)
 	{
 		if (abs_d.x > WMAP / 2)
@@ -111,5 +111,3 @@ void	draw_line_minimap(t_img *img, t_coord x1, t_coord x2, int color)
 		i++;
 	}
 }
-
-
