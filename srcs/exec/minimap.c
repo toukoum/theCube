@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:02:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:20:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/01 14:51:47 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ void	draw_all(t_cub *cub)
 	raycasting(cub);
 	draw_border_minimap(cub);
 	draw_player(cub);
+	draw_rect(&cub->img, (t_int_coord){WWIN - WMAP - 20, 20}, (t_int_coord){WMAP, HMAP}, CGROUND);
+
 }

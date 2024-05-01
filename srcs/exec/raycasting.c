@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 23:57:45 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/01 17:05:28 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 	int		color;
 	int		pixel_index;
 
-	if (ray->line_height > HWIN)
-		ray->line_height = HWIN;
 	increment_y = (double)texture->height / ray->line_height;
-	tex_y = 0;
+	tex_y = (ray->start_point.y - HWIN / 2 + ray->line_height / 2) * increment_y;
 	while (ray->start_point.y < ray->end_point.y)
 	{
 		pixel_index = (((int)tex_y % texture->height) * texture->line_length)
@@ -56,6 +54,10 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 	ray->start_point = (t_int_coord){x, draw_start};
 	ray->end_point = (t_int_coord){x, draw_end};
 	tex_x = (int)(offset * (double)cub->texN.width);
+	if(((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->rayDir.y < 0)) 
+		tex_x = cub->texN.width - tex_x - 1;
+	if(((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0)) 
+		tex_x = cub->texN.width - tex_x - 1;
 	draw_column_texture(&cub->img, ray, &cub->texN, tex_x);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 16:32:07 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/01 19:07:10 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,8 @@ void				free_arg(t_args *args);
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void				render(t_cub *cub);
+void				draw_rect(t_img *img, t_int_coord point,
+						t_int_coord dimension, int color);
 
 // init
 void				init_mlx(t_cub *cub);
@@ -251,7 +253,6 @@ void				init_cub(t_cub *cub, t_args *args);
 void				draw_all(t_cub *cub);
 int					get_pixel_color(char **map, t_int_coord *mapIndex);
 void				draw_border_minimap(t_cub *cub);
-void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
 void				draw_line_minimap(t_img *img, t_coord x1, t_coord x2,
 						int color);
 
@@ -267,6 +268,9 @@ int					handle_key(int keycode, t_cub *cub);
 // move player
 void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
 void				rotate_player(int keycode, t_cub *cub);
+
+// divers
+void				draw_log_player(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

@@ -6,7 +6,7 @@ parsing/parse_util_args.c parsing/parse_util2_args.c exec/exit_parsing.c parsing
 parsing/parse_map_util.c parsing/store_check_map.c parsing/exit_parsing_util.c \
 exec/exit_exec.c exec/mlx_util.c exec/init.c exec/minimap.c exec/raycasting.c \
 exec/minimap_util.c exec/raycasting_util.c exec/move_player.c exec/handle_event.c \
-exec/init_textures.c
+exec/init_textures.c exec/draw_log.c
 
 
 OBJS_DIR:=	./objs/
@@ -58,7 +58,7 @@ title:
 
 $(NAME): $(LIBFT_LIB) $(OBJ) $(MLX_LIB)
 	@echo "\n > Creating: $(GREEN)$(NAME)...✅$(NC)"
-	@$(CC) $(OBJ) $(INCLUDE) $(MLX_PATH) -o $(NAME) -L $(LIBFT_DIR) -lft 
+	@$(CC) $(FLAGS) $(OBJ) $(INCLUDE) $(MLX_PATH) -o $(NAME) -L $(LIBFT_DIR) -lft 
 	@echo " >$(CYAN) Done 🔥$(NC)"
 	@echo "\n => Run the project:$(BPURPLE) ./$(NAME)\n$(NC)"
 
