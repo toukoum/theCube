@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   draw_log_util.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 23:53:55 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 00:13:02 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 13:37:56 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
+
+char	*get_decimal(char *result, int fraction)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	tmp = result;
+	tmp2 = ft_itoa(fraction);
+	if (!tmp2)
+		return (NULL);
+	result = ft_strjoin(result, tmp2);
+	free(tmp);
+	free(tmp2);
+	return (result);
+}
 
 char	*get_value_float(double value)
 {
@@ -34,9 +49,7 @@ char	*get_value_float(double value)
 	free(tmp);
 	if (!result)
 		return (NULL);
-	tmp = result;
-	result = ft_strjoin(result, ft_itoa(fraction));
-	free(tmp);
+	result = get_decimal(result, fraction);
 	return (result);
 }
 

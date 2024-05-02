@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 13:17:26 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:19:23 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 		tex_x = texture->width - tex_x - 1;
 	if (((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0))
 		tex_x = texture->width - tex_x - 1;
-	/* draw_column_coordinal(cub, ray, tex_x); */
 	draw_column_texture(&cub->img, ray, texture, tex_x);
 }
 

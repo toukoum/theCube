@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 21:33:00 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 13:33:34 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void	free_cub(t_cub *cub)
 	mlx_destroy_image(cub->mlx, cub->texE.img);
 	mlx_destroy_image(cub->mlx, cub->texW.img);
 	mlx_destroy_window(cub->mlx, cub->win);
-	//mlx_destroy_display(cub->mlx);
+	mlx_destroy_display(cub->mlx);
 	free(cub->mlx);
 }
