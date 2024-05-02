@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_util.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 00:14:13 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 13:16:15 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ void	draw_line_minimap(t_img *img, t_coord x1, t_coord x2, int color)
 	dmax = get_dmax(&d);
 	while (i <= dmax)
 	{
-		my_mlx_pixel_put(img, (int)x1.x, (int)x1.y, color);
+		if (x1.x > 0 && x1.y > 0)
+			my_mlx_pixel_put(img, (int)x1.x, (int)x1.y, color);
 		x1.x += increment.x;
 		x1.y += increment.y;
 		i++;

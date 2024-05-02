@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 00:11:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/02 13:17:26 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,28 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 	}
 }
 
+static t_img	*get_texture(t_cub *cub, t_ray *ray)
+{
+	if (ray->side_hit == 'N')
+		return (&cub->texN);
+	if (ray->side_hit == 'S')
+		return (&cub->texS);
+	if (ray->side_hit == 'E')
+		return (&cub->texE);
+	if (ray->side_hit == 'W')
+		return (&cub->texW);
+	return (NULL);
+}
+
 void	draw_column(int x, t_ray *ray, t_cub *cub)
 {
 	int		draw_start;
 	int		draw_end;
 	int		tex_x;
 	double	offset;
+	t_img	*texture;
 
+	texture = get_texture(cub, ray);
 	ray->line_height = (int)(HWIN / ray->perpWallDist);
 	draw_start = -ray->line_height / 2 + HWIN / 2;
 	if (draw_start < 0)
@@ -54,12 +69,13 @@ void	draw_column(int x, t_ray *ray, t_cub *cub)
 	offset = offset - floor(offset);
 	ray->start_point = (t_int_coord){x, draw_start};
 	ray->end_point = (t_int_coord){x, draw_end};
-	tex_x = (int)(offset * (double)cub->texN.width);
+	tex_x = (int)(offset * (double)texture->width);
 	if (((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->rayDir.y < 0))
-		tex_x = cub->texN.width - tex_x - 1;
+		tex_x = texture->width - tex_x - 1;
 	if (((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0))
-		tex_x = cub->texN.width - tex_x - 1;
-	draw_column_texture(&cub->img, ray, &cub->texN, tex_x);
+		tex_x = texture->width - tex_x - 1;
+	/* draw_column_coordinal(cub, ray, tex_x); */
+	draw_column_texture(&cub->img, ray, texture, tex_x);
 }
 
 //// Calculer texY en utilisant texPos, qui est incrémenté par step
