@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 23:26:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/03 19:44:13 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,12 @@ void	print_log_debug(t_args *args)
 	ft_printf("\n");
 }
 
-void	draw_floor_ceil(t_cub *cub)
-{
-	t_int_coord	idx;
-
-	printf("cwhite: %u, %x\n", CWHITE, CWHITE);
-	idx.y = 0;
-	while (idx.y < HWIN)
-	{
-		idx.x = 0;
-		while (idx.x < WWIN)
-		{
-			if (idx.y < HWIN / 2)
-				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
-					cub->map->ceilColor.color);
-			else
-				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
-					cub->map->floorColor.color);
-			idx.x++;
-		}
-		idx.y++;
-	}
-}
 void	render(t_cub *cub)
 {
 	//(void)cub;
 	printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
-	printf(">> Vector dir of player (x, y): %f, %f / (x, y) %f, %f\n", cub->dir.x, cub->dir.y, cub->plane.x, cub->plane.y);
-	draw_floor_ceil(cub);
+	printf(">> Vector dir of player (x, y): %f, %f\n", cub->dir.x, cub->dir.y);
+	printf(">> Vector plane of player (x, y): %f, %f\n\n", cub->plane.x, cub->plane.y);
 	draw_all(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);

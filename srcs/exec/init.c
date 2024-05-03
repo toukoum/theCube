@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 13:34:41 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/03 19:43:01 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,16 @@ void	init_mlx(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx, WWIN, HWIN);
 	if (!cub->img.img)
 		return (mlx_destroy_window(cub->mlx, cub->win),
-				mlx_destroy_display(cub->mlx), free(cub->mlx),
-				free_arg(cub->map),
-				quit_cub(MALLOC_ERROR));
+			mlx_destroy_display(cub->mlx), free(cub->mlx), free_arg(cub->map),
+			quit_cub(MALLOC_ERROR));
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &cub->img.endian);
 	cub->mmap.img = mlx_new_image(cub->mlx, WMAP, HMAP);
 	if (!cub->mmap.img)
 		return (mlx_destroy_image(cub->mlx, cub->img.img),
-				mlx_destroy_window(cub->mlx, cub->win),
-				mlx_destroy_display(cub->mlx), free(cub->mlx),
-				free_arg(cub->map),
-				quit_cub(MALLOC_ERROR));
+			mlx_destroy_window(cub->mlx, cub->win),
+			mlx_destroy_display(cub->mlx), free(cub->mlx), free_arg(cub->map),
+			quit_cub(MALLOC_ERROR));
 	cub->mmap.addr = mlx_get_data_addr(cub->mmap.img, &cub->mmap.bits_per_pixel,
 			&cub->mmap.line_length, &cub->mmap.endian);
 	init_handle(cub);

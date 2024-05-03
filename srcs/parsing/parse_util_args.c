@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 14:27:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/03 16:31:37 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_color(t_args *args)
 	args->pathN = NULL;
 	args->pathS = NULL;
 	args->pathW = NULL;
+	args->ground = NULL;
+	args->sky = NULL;
 	args->start_map = 0;
 }
 
@@ -75,7 +77,7 @@ bool	check_extension(char *path, char *extension)
 bool	is_args_full(t_args *args)
 {
 	return (args->pathE && args->pathN && args->pathS && args->pathW
-		&& args->ceilColor.is_correct && args->floorColor.is_correct);
+		&& args->ceilColor.is_correct && args->floorColor.is_correct && args->sky && args->ground);
 }
 
 bool	is_space(char c)

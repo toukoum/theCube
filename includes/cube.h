@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 00:09:30 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/03 17:19:34 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_args
 	char			*pathS;
 	char			*pathW;
 	char			*pathE;
+	char			*ground;
+	char			*sky;
 	t_color			floorColor;
 	t_color			ceilColor;
 	char			**map;
@@ -106,6 +108,19 @@ typedef struct s_ray
 	t_int_coord		start_point;
 	t_int_coord		end_point;
 }					t_ray;
+
+typedef struct s_rayfloor
+{
+	t_coord			rayDir0;
+	t_coord			rayDir1;
+	t_coord			d;
+	t_coord			floor;
+	t_coord			cell;
+	t_int_coord		idx;
+	double			posZ;
+	double			p;
+	double			rowDist;
+}					t_rayfloor;
 typedef struct s_map
 {
 	char			*pathN;
@@ -133,10 +148,13 @@ typedef struct s_cub
 	t_img			texS;
 	t_img			texE;
 	t_img			texW;
+	t_img			sky;
+	t_img			ground;
 
 	double			distRayL;
 	double			distRayC;
 	double			distRayR;
+
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -250,6 +268,7 @@ void				render(t_cub *cub);
 void				draw_rect(t_img *img, t_int_coord point,
 						t_int_coord dimension, int color);
 void				change_fov(t_cub *cub, int keycode);
+void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
 
 // init
 void				init_mlx(t_cub *cub);
@@ -281,6 +300,9 @@ void				rotate_player(int keycode, t_cub *cub);
 void				draw_log_player(t_cub *cub);
 void				draw_fov(t_cub *cub);
 char				*get_value_float(double value);
+
+// floor and ceiling
+void				draw_floor_ceil(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
