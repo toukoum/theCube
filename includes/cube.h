@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:43:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/03 17:19:34 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,26 @@ typedef struct s_color
 
 }					t_color;
 
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
+
 typedef struct s_args
 {
 	int				fd;
 	char			*pathN;
 	char			*pathS;
-	char			*pathO;
+	char			*pathW;
 	char			*pathE;
+	char			*ground;
+	char			*sky;
 	t_color			floorColor;
 	t_color			ceilColor;
 	char			**map;
@@ -84,20 +97,35 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	int				line_height;
 	t_coord			rayDir;
 	t_coord			d;
 	t_int_coord		map;
 	t_coord			sideDist;
 	double			perpWallDist;
 	t_int_coord		step;
-	bool			hit;
 	int				side_hit;
+	t_int_coord		start_point;
+	t_int_coord		end_point;
 }					t_ray;
+
+typedef struct s_rayfloor
+{
+	t_coord			rayDir0;
+	t_coord			rayDir1;
+	t_coord			d;
+	t_coord			floor;
+	t_coord			cell;
+	t_int_coord		idx;
+	double			posZ;
+	double			p;
+	double			rowDist;
+}					t_rayfloor;
 typedef struct s_map
 {
 	char			*pathN;
 	char			*pathS;
-	char			*pathO;
+	char			*pathW;
 	char			*pathE;
 	t_color			floorColor;
 	t_color			ceilColor;
@@ -105,15 +133,6 @@ typedef struct s_map
 	int				width;
 	int				height;
 }					t_map;
-
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_length;
-	int				endian;
-}					t_img;
 
 typedef struct s_cub
 {
@@ -125,6 +144,17 @@ typedef struct s_cub
 	void			*win;
 	t_coord			dir;
 	t_coord			plane;
+	t_img			texN;
+	t_img			texS;
+	t_img			texE;
+	t_img			texW;
+	t_img			sky;
+	t_img			ground;
+
+	double			distRayL;
+	double			distRayC;
+	double			distRayR;
+
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -172,8 +202,6 @@ enum
 
 # define WWIN 1280 // width of window
 # define HWIN 720 // height of window
-//# define WMAP WWIN / 1.2 // width of minimap
-//# define HMAP HWIN / 1.2 // height of minimap
 # define WMAP 20 * WWIN / 100 // width of minimap
 # define HMAP 20 * HWIN / 100 // height of minimap
 
@@ -195,14 +223,13 @@ enum
 # define CWALL 0x032539
 # define CGROUND 0xF5F7F8
 # define CUNDEFINED 0x1E1E1E
-# define Cjsp 0x87bfb4
 # define CPLAYER 0xf96160
-# define CWTF 0xf7b666
 
 # define CRAY 0xCAE9EA
 
 # define MOVESPEED 0.1
 # define ROTSPEED 0.1
+# define CHANGEFOV 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -225,6 +252,7 @@ void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
 void				check_map(t_args *args, int i, int j);
 void				store_map(t_args *args);
+void				init_all_textures(t_cub *cub);
 
 // -> quit
 void				quit(int exit_code);
@@ -232,10 +260,15 @@ void				free_all_map(t_args *args, int exit_code);
 void				exit_free_map(t_args *args, int i);
 void				quit_cub(int exit_code);
 void				free_cub(t_cub *cub);
+void				free_arg(t_args *args);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void				render(t_cub *cub);
+void				draw_rect(t_img *img, t_int_coord point,
+						t_int_coord dimension, int color);
+void				change_fov(t_cub *cub, int keycode);
+void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
 
 // init
 void				init_mlx(t_cub *cub);
@@ -245,7 +278,6 @@ void				init_cub(t_cub *cub, t_args *args);
 void				draw_all(t_cub *cub);
 int					get_pixel_color(char **map, t_int_coord *mapIndex);
 void				draw_border_minimap(t_cub *cub);
-void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
 void				draw_line_minimap(t_img *img, t_coord x1, t_coord x2,
 						int color);
 
@@ -254,6 +286,8 @@ void				raycasting(t_cub *cub);
 void				init_ray(t_cub *cub, t_ray *ray, double camX);
 int					get_wall_color(t_int_coord *mapIndex, char **map,
 						int side_hit);
+void				assign_ray_dist(int x, double dist, t_cub *cub);
+
 // event mlx
 int					handle_close_win(t_cub *cub);
 int					handle_key(int keycode, t_cub *cub);
@@ -262,8 +296,13 @@ int					handle_key(int keycode, t_cub *cub);
 void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
 void				rotate_player(int keycode, t_cub *cub);
 
-// utils
-int					ft_strcmp(char *s1, char *s2);
+// divers
+void				draw_log_player(t_cub *cub);
+void				draw_fov(t_cub *cub);
+char				*get_value_float(double value);
+
+// floor and ceiling
+void				draw_floor_ceil(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
@@ -277,6 +316,8 @@ int					ft_strcmp(char *s1, char *s2);
 #  define XK_Down 125
 #  define XK_Left 123
 #  define XK_Right 124
+#  define XK_plus 24
+#  define XK_minus 27
 # endif
 
 #endif

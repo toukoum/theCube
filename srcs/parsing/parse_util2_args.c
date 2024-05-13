@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:14:51 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 18:32:58 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:29:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	goto_next_char(int *i, char *line)
 	while (is_space(line[*i]))
 		(*i)++;
 }
-
 
 void	goto_next_char_sizet(size_t *i, char *line)
 {
@@ -53,6 +52,8 @@ int	min_atoi_boost(char *line, int *i, int *err)
 
 bool	is_texture_id(char *line, int i)
 {
-	return (!ft_strncmp(line + i, "NO", 2) || !ft_strncmp(line + i, "SO", 2)
-		|| !ft_strncmp(line + i, "WE", 2) || !ft_strncmp(line + i, "EA", 2));
+	return ((line[i] == 'N' && line[i + 1] == 'O') || (line[i] == 'S' && line[i
+			+ 1] == 'O') || (line[i] == 'W' && line[i + 1] == 'E')
+		|| (line[i] == 'E' && line[i + 1] == 'A') || (line[i] == 'G' && line[i
+			+ 1] == 'R') || (line[i] == 'S' && line[i + 1] == 'K'));
 }

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:38:54 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:41:25 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:27:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@ void	exit_parse_map(t_args *args, int exit_code, bool close_fd)
 		free(args->pathN);
 	if (args->pathS)
 		free(args->pathS);
-	if (args->pathO)
-		free(args->pathO);
+	if (args->pathW)
+		free(args->pathW);
 	quit(exit_code);
 }
 
+/**
+ * @brief if during allocation on row, 
+ * a malloc doesn't work, we need to free 
+ * all row previously malloced
+ */
 void	exit_free_map(t_args *args, int i)
 {
 	while (i >= 0)
