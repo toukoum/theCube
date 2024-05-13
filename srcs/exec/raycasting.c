@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 13:19:23 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:11:28 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,6 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 		tex_y += increment_y;
 		ray->start_point.y++;
 	}
-}
-
-static t_img	*get_texture(t_cub *cub, t_ray *ray)
-{
-	if (ray->side_hit == 'N')
-		return (&cub->texN);
-	if (ray->side_hit == 'S')
-		return (&cub->texS);
-	if (ray->side_hit == 'E')
-		return (&cub->texE);
-	if (ray->side_hit == 'W')
-		return (&cub->texW);
-	return (NULL);
 }
 
 void	draw_column(int x, t_ray *ray, t_cub *cub)

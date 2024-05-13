@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:58:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 23:22:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:19:14 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
+
+t_img	*get_texture(t_cub *cub, t_ray *ray)
+{
+	if (ray->side_hit == 'N')
+		return (&cub->texN);
+	if (ray->side_hit == 'S')
+		return (&cub->texS);
+	if (ray->side_hit == 'E')
+		return (&cub->texE);
+	if (ray->side_hit == 'W')
+		return (&cub->texW);
+	return (NULL);
+}
 
 void	init_ray_step(t_ray *ray, t_cub *cub)
 {
@@ -77,7 +90,7 @@ int	get_wall_color(t_int_coord *mapIndex, char **map, int side_hit)
 		return (CWHITE);
 }
 
-void assign_ray_dist(int x, double dist, t_cub* cub)
+void	assign_ray_dist(int x, double dist, t_cub *cub)
 {
 	if (x == 0)
 		cub->distRayL = dist;

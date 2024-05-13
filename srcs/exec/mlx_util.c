@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 15:52:42 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:11:58 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	change_fov(t_cub *cub, int keycode)
 		cub->plane.y *= (1 - CHANGEFOV);
 	}
 }
-
 
 void	draw_line(t_img *img, t_coord x1, t_coord x2, int color)
 {

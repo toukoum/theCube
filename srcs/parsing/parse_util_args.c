@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util_args.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 16:31:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:16:44 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ bool	check_extension(char *path, char *extension)
 bool	is_args_full(t_args *args)
 {
 	return (args->pathE && args->pathN && args->pathS && args->pathW
-		&& args->ceilColor.is_correct && args->floorColor.is_correct && args->sky && args->ground);
+		&& args->ceilColor.is_correct && args->floorColor.is_correct
+		&& args->sky && args->ground);
 }
 
 bool	is_space(char c)

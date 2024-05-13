@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 17:19:34 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:10:19 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,7 @@ int					handle_key(int keycode, t_cub *cub);
 // move player
 void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
 void				rotate_player(int keycode, t_cub *cub);
+t_img				*get_texture(t_cub *cub, t_ray *ray);
 
 // divers
 void				draw_log_player(t_cub *cub);

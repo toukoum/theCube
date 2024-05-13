@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 19:45:03 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:13:08 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	free_arg(t_args *args)
 	free(args->ground);
 	free(args->sky);
 }
+
 void	quit_cub(int exit_code)
 {
 	if (exit_code == MALLOC_ERROR)

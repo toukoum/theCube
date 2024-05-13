@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 11:40:47 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:17:14 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 		return (false);
 	if (j < width - 1 && map[i][j + 1] == '\0')
 		return (false);
-	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0' || map[i - 1][j
-			- 1] == ' '))
+	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0'
+		|| map[i - 1][j - 1] == ' '))
 		return (false);
 	if (i > 0 && j < width - 1 && map[i - 1][j + 1] == '\0')
 		return (false);

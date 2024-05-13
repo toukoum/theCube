@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 12:51:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:12:22 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	add_move(t_cub *cub, int keycode, t_coord *next)
  */
 void	move_player(int keycode, t_cub *cub, t_int_coord map_index)
 {
-	t_coord next;
+	t_coord	next;
 
 	next.x = cub->player.x;
 	next.y = cub->player.y;
