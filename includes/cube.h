@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 22:34:44 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 23:07:47 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ typedef struct s_cub
 	double			distRayC;
 	double			distRayR;
 
+	double			rotSpeed;
+
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -305,6 +307,7 @@ int					handle_close_win(t_cub *cub);
 int					handle_key(int keycode, t_cub *cub);
 int					handle_key_release(int keycode, t_cub *cub);
 void				process_key_input(t_cub *cub);
+int					handle_mouse(int x, int y, t_cub *cub);
 
 // move player
 void				move_player(int keycode, t_cub *cub);

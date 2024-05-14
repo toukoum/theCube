@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 22:34:17 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 23:43:00 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,45 @@ static void	rotate_right(t_cub *cub)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double	cos_r;
+	double	sin_r;
 
-	// both camera direction and camera plane must be rotated
+	cos_r = cos(cub->rotSpeed);
+	sin_r = sin(cub->rotSpeed);
 	old_dir_x = cub->dir.x;
-	cub->dir.x = cub->dir.x * cos(ROTSPEED) - cub->dir.y * sin(ROTSPEED);
-	cub->dir.y = old_dir_x * sin(ROTSPEED) + cub->dir.y * cos(ROTSPEED);
+	cub->dir.x = cub->dir.x * cos_r - cub->dir.y
+		* sin_r;
+	cub->dir.y = old_dir_x * sin_r + cub->dir.y
+		* cos_r;
 	old_plane_x = cub->plane.x;
-	cub->plane.x = cub->plane.x * cos(ROTSPEED) - cub->plane.y * sin(ROTSPEED);
-	cub->plane.y = old_plane_x * sin(ROTSPEED) + cub->plane.y * cos(ROTSPEED);
+	cub->plane.x = cub->plane.x * cos_r - cub->plane.y
+		* sin_r;
+	cub->plane.y = old_plane_x * sin_r + cub->plane.y
+		* cos_r;
 }
 
 void	rotate_player(int keycode, t_cub *cub)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double	cos_r;
+	double	sin_r;
 
+	cos_r = cos(-cub->rotSpeed);
+	sin_r = sin(-cub->rotSpeed);
 	if (keycode == XK_Left)
 	{
-		// both camera direction and camera plane must be rotated
+		printf("bonjour\n");
 		old_dir_x = cub->dir.x;
-		cub->dir.x = cub->dir.x * cos(-ROTSPEED) - cub->dir.y * sin(-ROTSPEED);
-		cub->dir.y = old_dir_x * sin(-ROTSPEED) + cub->dir.y * cos(-ROTSPEED);
+		cub->dir.x = cub->dir.x * cos_r - cub->dir.y
+			* sin_r;
+		cub->dir.y = old_dir_x * sin_r + cub->dir.y
+			* cos_r;
 		old_plane_x = cub->plane.x;
-		cub->plane.x = cub->plane.x * cos(-ROTSPEED) - cub->plane.y
-			* sin(-ROTSPEED);
-		cub->plane.y = old_plane_x * sin(-ROTSPEED) + cub->plane.y
-			* cos(-ROTSPEED);
+		cub->plane.x = cub->plane.x * cos_r - cub->plane.y
+			* sin_r;
+		cub->plane.y = old_plane_x * sin_r + cub->plane.y
+			* cos_r;
 	}
 	else
 		rotate_right(cub);
@@ -76,8 +89,8 @@ static void	add_move(t_cub *cub, int keycode, t_coord *next)
  */
 void	move_player(int keycode, t_cub *cub)
 {
-	t_coord next;
-	t_int_coord map_index;
+	t_coord		next;
+	t_int_coord	map_index;
 
 	next.x = cub->player.x;
 	next.y = cub->player.y;
