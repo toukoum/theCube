@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:02:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 17:57:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:19:03 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	draw_minimap(t_cub *cub, t_coord player)
 		{
 			map_pos.x = player.x - (WMAP / 2) + x; // Position in pixels
 			map_pos.y = player.y - (HMAP / 2) + y;
-			map_idx.x = map_pos.x / TSIZE;
-				// Convert pixel position to map index
+			map_idx.x = map_pos.x / TSIZE; // Convert pixel position to map index
 			map_idx.y = map_pos.y / TSIZE;
 			if (map_idx.x < 0 || map_idx.x >= cub->map->width
 				|| map_idx.y < 0 || map_idx.y >= cub->map->height)
@@ -70,5 +69,4 @@ void	draw_all(t_cub *cub)
 	draw_border_minimap(cub);
 	draw_player(cub);
 	draw_rect(&cub->img, (t_int_coord){WWIN - WMAP - 20, 20}, (t_int_coord){WMAP, HMAP}, CGROUND);
-
 }

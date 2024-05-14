@@ -6,13 +6,13 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 08:23:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/25 21:58:05 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 12:50:11 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	get_dimensions(t_args *args, char *line)
+void	get_dimensions_map(t_args *args, char *line)
 {
 	while (line && !is_empty_line(line))
 	{
@@ -39,13 +39,13 @@ void	get_dimensions(t_args *args, char *line)
  * need to check and store map
  * if any pb
  * 	-> close(fd)
- *  -> free(args.path) * 4
+ *  -> free(all args.path)
  *
  *  need to free line
  */
 void	parse_map(t_args *args, char *line)
 {
-	get_dimensions(args, line);
+	get_dimensions_map(args, line);
 	store_map(args);
 	check_map(args, 0, 0);
 	if (!args->is_correct_pos)

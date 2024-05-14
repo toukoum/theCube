@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 19:43:01 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:49:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	init_cub(t_cub *cub, t_args *args)
 	init_start_angle(cub);
 }
 
+/**
+ * @brief init hook function
+ */
 void	init_handle(t_cub *cub)
 {
 	mlx_hook(cub->win, ON_DESTROY, StructureNotifyMask, handle_close_win, cub);
@@ -57,11 +60,7 @@ void	init_handle(t_cub *cub)
 
 /**
  * @brief create mlx window and img
- *
- * @para
- * void render(t_cub *cub)
- *
- * m cub
+ * if any error, free all memory
  */
 void	init_mlx(t_cub *cub)
 {

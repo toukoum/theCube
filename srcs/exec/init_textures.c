@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 16:33:54 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:14:16 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ bool	init_texture(void *mlx, char *path, t_img *texture)
 	return (true);
 }
 
+/**
+ * @brief Pas besoin de comment car c'est du beau code mon gaté
+ */
 void	init_all_textures(t_cub *cub)
 {
 	if (!init_texture(cub->mlx, cub->map->pathN, &cub->texN))

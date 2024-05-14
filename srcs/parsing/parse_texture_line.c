@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 16:42:40 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:03:16 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,16 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	assign_path(line, cpy_line, args);
 }
 
+/**
+ * @brief determine if the line is:
+ * 	- color line 
+ *  - texture path line
+ * 	- the start of the map
+ * 
+ * @param line 
+ * @param args 
+ * @return int 
+ */
 int	parse_line(char *line, t_args *args)
 {
 	int		i;
@@ -81,7 +91,7 @@ int	parse_line(char *line, t_args *args)
 	else
 	{
 		parse_map(args, line);
-		return (1);
+		return (ALL_GOOD);
 	}
-	return (0);
+	return (ALL_PAS_GOOD);
 }

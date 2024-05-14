@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:11:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/22 12:30:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 12:45:20 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	init_args(t_args *args)
 	return (close(args->fd), quit(MISSING_MAP));
 }
 
+/**
+ * @brief check the path of the .cub file
+ */
 void	check_path(int *fd, char *path)
 {
 	if (is_dir(path))
@@ -46,14 +49,14 @@ void	check_path(int *fd, char *path)
  * 2- initialise and check args value with gnl
  * 3- initialise and check the map
  *
- * @param args struct for all the arguments of the parse file
- * @param path path of the map
- */
+* @param args struct for all the arguments of the parse file
+* @param path path of the map
+*/
 void	parse(t_args *args, char *path)
 {
 	ft_bzero(args, sizeof(t_args));
 	args->path_file = path;
-	init_color(args);
+	init_all_value(args);
 	check_path(&args->fd, path);
 	init_args(args);
 	close(args->fd);

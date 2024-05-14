@@ -6,13 +6,13 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 16:31:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 12:44:30 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	init_color(t_args *args)
+void	init_all_value(t_args *args)
 {
 	args->ceilColor.is_correct = false;
 	args->ceilColor.b = 0;

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:16:41 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 00:12:02 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:26:08 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_len_ray(t_cub *cub, double distRay, char *name, int line_top)
 	char	result[100];
 	char	*tmp;
 
-	ft_memcpy(result, name, 10);
+	ft_memcpy(result, name, 16);
 	if (distRay < 0.1 && distRay > -0.1)
 		tmp = get_value_float(0);
 	else
@@ -44,7 +44,7 @@ void	draw_dir(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	ft_strlcat(result, ", dirY: ", sizeof(result));
+	ft_strlcat(result, " dirY: ", sizeof(result));
 	if (cub->dir.y < 0.1 && cub->dir.y > -0.1)
 		tmp = get_value_float(0);
 	else
@@ -70,7 +70,7 @@ void	draw_pos(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	ft_strlcat(result, ", posY: ", sizeof(result));
+	ft_strlcat(result, " posY: ", sizeof(result));
 	if (cub->player.y < 0.1 && cub->player.y > -0.1)
 		tmp = get_value_float(0);
 	else
@@ -96,8 +96,8 @@ void	draw_log_player(t_cub *cub)
 {
 	draw_pos(cub);
 	draw_dir(cub);
-	draw_len_ray(cub, cub->distRayR, "lenRayR: ", 65);
-	draw_len_ray(cub, cub->distRayC, "lenRayC: ", 80);
-	draw_len_ray(cub, cub->distRayL, "lenRayL: ", 95);
+	draw_len_ray(cub, cub->distRayL, "distLeftRay:   ", 95);
+	draw_len_ray(cub, cub->distRayC, "distCenterRay: ", 80);
+	draw_len_ray(cub, cub->distRayR, "distRightRay:  ", 65);
 	draw_fov(cub);
 }

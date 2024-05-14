@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   store_check_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/30 11:40:47 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:00:25 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
 /**
- * @brief check if all the wall is correctly surrounded by 1
+ * @brief check if all the wall is correctly surrounded by 1,
+ * including diagonal wall
+ *  1
+ * 101 ==> not valid map
+ *  1
  */
 static bool	check_wall(t_args *args, int i, int j, int width)
 {
@@ -54,6 +58,12 @@ static void	set_pos_player(t_args *args, int i, int j)
 	}
 }
 
+/**
+ * @brief function moche sa mere mais flemme de
+ * la refacto elle fonction (meme si je devrais...)
+ * en gros elle verifie que ya bien des murs de partout
+ * et que ya pas de joueur en double
+ */
 void	check_map(t_args *args, int i, int j)
 {
 	int	width_line;
@@ -83,7 +93,7 @@ void	check_map(t_args *args, int i, int j)
 	}
 }
 
-static void	store_map_line(t_args *args, char *line)
+static void	store_map_lines(t_args *args, char *line)
 {
 	int	i;
 
@@ -92,16 +102,11 @@ static void	store_map_line(t_args *args, char *line)
 	{
 		args->map[i] = ft_calloc(args->width + 1, sizeof(char));
 		if (!args->map[i])
-			return (free(line), exit_free_map(args, i - 1));
+			return (free(line), free_malloced_line_map(args, i - 1));
 		str_copy_cube(args->map[i], line);
 		free(line);
 		line = get_next_line(args->fd);
 		i++;
-	}
-	while (line)
-	{
-		free(line);
-		line = get_next_line(args->fd);
 	}
 	free(line);
 }
@@ -127,5 +132,5 @@ void	store_map(t_args *args)
 		line = get_next_line(args->fd);
 		i++;
 	}
-	store_map_line(args, line);
+	store_map_lines(args, line);
 }

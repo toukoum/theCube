@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 17:19:34 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:46:52 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,12 @@ typedef struct s_ray
 	int				side_hit;
 	t_int_coord		start_point;
 	t_int_coord		end_point;
+	int				draw_start;
+	int				draw_end;
+	int				tex_x;
+	double			offset;
+	t_img			*texture;
+
 }					t_ray;
 
 typedef struct s_rayfloor
@@ -171,6 +177,7 @@ enum
 
 // =========================== EXIT CODE ===========================
 // error code
+# define ALL_PAS_GOOD 0
 # define NUMBERS_ARGC 1
 # define WRONG_FILE 2
 # define EXTENSION_NAME 3
@@ -234,7 +241,7 @@ enum
 
 // -> parsing
 void				parse(t_args *args, char *path);
-void				init_color(t_args *args);
+void				init_all_value(t_args *args);
 bool				is_space(char c);
 bool				is_args_full(t_args *args);
 bool				check_extension(char *path, char *extension);
@@ -257,7 +264,7 @@ void				init_all_textures(t_cub *cub);
 // -> quit
 void				quit(int exit_code);
 void				free_all_map(t_args *args, int exit_code);
-void				exit_free_map(t_args *args, int i);
+void				free_malloced_line_map(t_args *args, int i);
 void				quit_cub(int exit_code);
 void				free_cub(t_cub *cub);
 void				free_arg(t_args *args);
@@ -287,6 +294,7 @@ void				init_ray(t_cub *cub, t_ray *ray, double camX);
 int					get_wall_color(t_int_coord *mapIndex, char **map,
 						int side_hit);
 void				assign_ray_dist(int x, double dist, t_cub *cub);
+void				draw_column(int x, t_ray *ray, t_cub *cub);
 
 // event mlx
 int					handle_close_win(t_cub *cub);
