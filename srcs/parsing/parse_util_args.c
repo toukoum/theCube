@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 12:44:30 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:25:02 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_all_value(t_args *args)
 	args->ground = NULL;
 	args->sky = NULL;
 	args->start_map = 0;
+	args->is_correct_pos = false;
 }
 
 bool	is_dir(char *path)
@@ -77,7 +78,8 @@ bool	check_extension(char *path, char *extension)
 bool	is_args_full(t_args *args)
 {
 	return (args->pathE && args->pathN && args->pathS && args->pathW
-		&& args->ceilColor.is_correct && args->floorColor.is_correct && args->sky && args->ground);
+		&& ((args->ceilColor.is_correct && args->floorColor.is_correct)
+			|| (args->sky && args->ground)));
 }
 
 bool	is_space(char c)

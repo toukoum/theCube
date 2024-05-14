@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:03:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:26:41 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,30 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	assign_path(line, cpy_line, args);
 }
 
+bool	to_many_floor(t_args *args)
+{
+	if (args->floorColor.is_correct && args->ceilColor.is_correct
+		&& (args->ground || args->sky))
+		return (true);
+	if (args->ground && args->sky
+		&& (args->floorColor.is_correct || args->ceilColor.is_correct))
+		return (true);
+	else if (args->ground && args->sky
+		&& !(args->floorColor.is_correct || args->ceilColor.is_correct))
+		args->is_floor_texture = true;
+	
+	return (false);
+}
+
 /**
  * @brief determine if the line is:
- * 	- color line 
+ * 	- color line
  *  - texture path line
  * 	- the start of the map
- * 
- * @param line 
- * @param args 
- * @return int 
+ *
+ * @param line
+ * @param args
+ * @return int
  */
 int	parse_line(char *line, t_args *args)
 {
@@ -82,9 +97,9 @@ int	parse_line(char *line, t_args *args)
 	else if (is_texture_id(line, i))
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
-		return (0);
-	else if (!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
-				|| line[i] == 'C')))
+		return (ALL_PAS_GOOD);
+	else if ((!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
+				|| line[i] == 'C'))) || to_many_floor(args))
 		return (free(line), exit_parse_map(args, INVALID_CHARACTER, true), 0);
 	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);

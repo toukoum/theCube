@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:46:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:02:50 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_args
 	int				width;
 	int				height;
 	bool			is_correct_pos;
+	bool			is_floor_texture;
 	char start_angle; // 'N', 'S', 'E', 'W'
 	char			*path_file;
 	int				start_map;

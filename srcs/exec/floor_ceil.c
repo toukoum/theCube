@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:29:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/03 22:00:47 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:20:45 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,34 @@ void	raycast_floor(t_cub *cub, t_rayfloor *rayf)
 	}
 }
 
+void	draw_simple_floor_ceil(t_cub *cub)
+{
+	t_int_coord	idx;
+
+	idx.y = 0;
+	while (idx.y < HWIN)
+	{
+		idx.x = 0;
+		while (idx.x < WWIN)
+		{
+			if (idx.y < HWIN / 2)
+				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
+					cub->map->ceilColor.color);
+			else
+				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
+					cub->map->floorColor.color);
+			idx.x++;
+		}
+		idx.y++;
+	}
+}
+
 void	draw_floor_ceil(t_cub *cub)
 {
 	t_rayfloor	rayf;
 
+	if (!cub->map->is_floor_texture)
+		return (draw_simple_floor_ceil(cub));
 	init_rayf(cub, &rayf);
 	raycast_floor(cub, &rayf);
 }

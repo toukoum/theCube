@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:14:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:19:54 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	init_all_textures(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->pathW, &cub->texW))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+	if (!cub->map->is_floor_texture)
+		return ;
 	if (!init_texture(cub->mlx, cub->map->ground, &cub->ground))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->sky, &cub->sky))

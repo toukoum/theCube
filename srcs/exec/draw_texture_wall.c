@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:46:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:48:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 17:53:41 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 	increment_y = (double)texture->height / ray->line_height;
 	tex_y = (ray->start_point.y - HWIN / 2 + ray->line_height / 2)
 		* increment_y;
+	if (tex_y < 0)
+		tex_y = 0;
 	while (ray->start_point.y < ray->end_point.y)
 	{
 		pixel_index = (((int)tex_y % texture->height) * texture->line_length)

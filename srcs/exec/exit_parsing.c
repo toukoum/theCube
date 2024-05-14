@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:17:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/23 13:34:10 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:08:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	quit(int exit_code)
 	else if (exit_code == MPTY_LINE_MAP)
 		print_err_mess("empty line in map");
 	else if (exit_code == INVALID_CHARACTER)
-		print_err_mess("in file, invalid character");
+		print_err_mess("in file, invalid character or missing args");
 	else if (exit_code == MAP_NOT_LAST)
 		print_err_mess("map is not the last element of file");
 	else
