@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:49:08 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:55:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	free_cub(t_cub *cub)
 	if (cub->sky.img)
 		mlx_destroy_image(cub->mlx, cub->sky.img);
 	mlx_destroy_window(cub->mlx, cub->win);
-	mlx_destroy_display(cub->mlx);
+	//mlx_destroy_display(cub->mlx);
 	free(cub->mlx);
 }
