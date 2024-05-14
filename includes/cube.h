@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:02:50 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 22:34:44 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ typedef struct s_cub
 	t_img			sky;
 	t_img			ground;
 
+	int				keyBuffer[256];
+
 	double			distRayL;
 	double			distRayC;
 	double			distRayR;
@@ -272,7 +274,7 @@ void				free_arg(t_args *args);
 
 // mlx
 void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void				render(t_cub *cub);
+int					render(t_cub *cub);
 void				draw_rect(t_img *img, t_int_coord point,
 						t_int_coord dimension, int color);
 void				change_fov(t_cub *cub, int keycode);
@@ -281,6 +283,7 @@ void				draw_line(t_img *img, t_coord x1, t_coord x2, int color);
 // init
 void				init_mlx(t_cub *cub);
 void				init_cub(t_cub *cub, t_args *args);
+void				init_handle(t_cub *cub);
 
 // minimap
 void				draw_all(t_cub *cub);
@@ -300,9 +303,11 @@ void				draw_column(int x, t_ray *ray, t_cub *cub);
 // event mlx
 int					handle_close_win(t_cub *cub);
 int					handle_key(int keycode, t_cub *cub);
+int					handle_key_release(int keycode, t_cub *cub);
+void				process_key_input(t_cub *cub);
 
 // move player
-void				move_player(int keycode, t_cub *cub, t_int_coord map_index);
+void				move_player(int keycode, t_cub *cub);
 void				rotate_player(int keycode, t_cub *cub);
 
 // divers

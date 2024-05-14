@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:55:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 22:29:48 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	init_handle(t_cub *cub)
 {
 	mlx_hook(cub->win, ON_DESTROY, StructureNotifyMask, handle_close_win, cub);
 	mlx_hook(cub->win, ON_KEYDOWN, KeyPressMask, handle_key, cub);
+	mlx_hook(cub->win, ON_KEYUP, KeyReleaseMask, handle_key_release, cub);
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:29:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:20:45 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/14 18:46:56 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	draw_pixel_floor(t_cub *cub, t_rayfloor *rayf, t_img *texture)
 	rayf->cell.y = (int)rayf->floor.y;
 	tex.x = (int)(texture->width * (rayf->floor.x - rayf->cell.x));
 	tex.y = (int)(texture->height * (rayf->floor.y - rayf->cell.y));
-	tex.x = tex.x % texture->width;
-	tex.y = tex.y % texture->height;
+	tex.x = tex.x * 8 % texture->width;
+	tex.y = tex.y * 8 % texture->height;
 	pixel_idx = tex.y * texture->line_length + (tex.x * (texture->bits_per_pixel
 				/ 8));
 	if (pixel_idx < 0)
