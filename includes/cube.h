@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 23:07:47 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/15 12:03:21 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ typedef struct s_cub
 	t_img			sky;
 	t_img			ground;
 
-	int				keyBuffer[256];
+	int				keyBuffer[99999];
 
 	double			distRayL;
 	double			distRayC;
