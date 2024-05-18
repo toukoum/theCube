@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 23:43:00 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/18 15:29:42 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	rotate_player(int keycode, t_cub *cub)
 	sin_r = sin(-cub->rotSpeed);
 	if (keycode == XK_Left)
 	{
-		printf("bonjour\n");
 		old_dir_x = cub->dir.x;
 		cub->dir.x = cub->dir.x * cos_r - cub->dir.y
 			* sin_r;
@@ -103,7 +102,7 @@ void	move_player(int keycode, t_cub *cub)
 		cub->player.x = next.x;
 		cub->player.y = next.y;
 	}
-	else
-		printf("Movement blocked at (%d, %d) %f, %f\n", map_index.x,
-			map_index.y, next.x, next.y);
+	//else
+	//	printf("Movement blocked at (%d, %d) %f, %f\n", map_index.x,
+	//		map_index.y, next.x, next.y);
 }

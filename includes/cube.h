@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 23:07:47 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/18 19:42:43 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,71 @@
 # include <mlx.h>
 # include <stdbool.h> // boolean
 # include <unistd.h>  // open, write
+
+// =========================== EXIT CODE ===========================
+// error code
+# define ALL_PAS_GOOD 0
+# define NUMBERS_ARGC 1
+# define WRONG_FILE 2
+# define EXTENSION_NAME 3
+# define FILE_DIR 4
+# define CLONE_ARGS 5
+# define MISSING_MAP 6
+# define WRONG_ARG 7
+# define MPTY_LINE_MAP 8
+# define INVALID_CHARACTER 9
+# define MAP_NOT_LAST 10
+# define MISSING_ARG 11
+# define MALLOC_ERROR 11
+# define WALL_SURR 12
+# define ALL_GOOD 13
+# define NO_PLAYER 14
+# define DUP_PLAYER 15
+# define SUCESS 16
+
+// shell color
+# define RED "\e[1;31m"
+# define REDL "\e[0;31m"
+# define YELLOWB "\e[1;93m"
+# define GREENB "\e[1;92m"
+# define RESET "\e[0m"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+# define WWIN 1280            // width of window
+# define HWIN 720             // height of window
+# define WMAP 20 * WWIN / 100 // width of minimap
+# define HMAP 20 * HWIN / 100 // height of minimap
+
+# define TSIZE 15 // taille d'un carreau de la minimap
+
+// color for mlx
+# define CBLUE 0x000000FF
+# define CWHITE 0x00FFFFFF
+# define CGREEN 0xB5E550
+# define CRED 0x00FF0000
+# define CBLACK 0x00000000
+# define CCYAN 0x0000FFFF
+# define CMAGENTA 0x00FF00FF
+# define CYELLOW 0x00E8E337
+# define CORANGE 0x00FA991C
+# define CPINK 0x00FFC0CB
+# define CLIME 0x0000FF80
+
+# define CWALL 0x032539
+# define CGROUND 0xF5F7F8
+# define CUNDEFINED 0x1E1E1E
+# define CPLAYER 0xf96160
+
+# define CRAY 0xCAE9EA
+
+# define MOVESPEED 0.1
+# define ROTSPEED 0.1
+# define CHANGEFOV 0.1
+
+# define NSPRITE 2
 
 // =========================== STRUCT ===========================
 typedef struct s_color
@@ -141,6 +206,16 @@ typedef struct s_map
 	int				height;
 }					t_map;
 
+typedef struct s_sprite
+{
+	int				spriteHeight;
+	int				spriteWidth;
+	int				spriteScreenX;
+	t_int_coord		drawStart;
+	t_int_coord		drawEnd;
+	int				texX;
+}					t_sprite;
+
 typedef struct s_cub
 {
 	t_args			*map;
@@ -158,11 +233,19 @@ typedef struct s_cub
 	t_img			sky;
 	t_img			ground;
 
-	int				keyBuffer[256];
+	double			wallDist[WWIN];
+	// distance de chaque rayon vers le mur le plus proche
+	t_coord sprite_pos[NSPRITE]; // position de chaque sprite
+	double			dist_ps[NSPRITE][2];
+	// distance entre le player p et les sprites s trie par ordre decroissant
+	t_coord			transform;
+	// position relative des sprite par rapport a la cam
+	double			invMatriceCam;
 
-	double			distRayL;
-	double			distRayC;
-	double			distRayR;
+	t_img			barrel;
+
+	
+	int				keyBuffer[256];
 
 	double			rotSpeed;
 
@@ -180,68 +263,6 @@ enum
 	ON_DESTROY = 17
 };
 
-// =========================== EXIT CODE ===========================
-// error code
-# define ALL_PAS_GOOD 0
-# define NUMBERS_ARGC 1
-# define WRONG_FILE 2
-# define EXTENSION_NAME 3
-# define FILE_DIR 4
-# define CLONE_ARGS 5
-# define MISSING_MAP 6
-# define WRONG_ARG 7
-# define MPTY_LINE_MAP 8
-# define INVALID_CHARACTER 9
-# define MAP_NOT_LAST 10
-# define MISSING_ARG 11
-# define MALLOC_ERROR 11
-# define WALL_SURR 12
-# define ALL_GOOD 13
-# define NO_PLAYER 14
-# define DUP_PLAYER 15
-# define SUCESS 16
-
-// shell color
-# define RED "\e[1;31m"
-# define REDL "\e[0;31m"
-# define YELLOWB "\e[1;93m"
-# define GREENB "\e[1;92m"
-# define RESET "\e[0m"
-
-# ifndef DEBUG
-#  define DEBUG 0
-# endif
-
-# define WWIN 1280 // width of window
-# define HWIN 720 // height of window
-# define WMAP 20 * WWIN / 100 // width of minimap
-# define HMAP 20 * HWIN / 100 // height of minimap
-
-# define TSIZE 15 // taille d'un carreau de la minimap
-
-// color for mlx
-# define CBLUE 0x000000FF
-# define CWHITE 0x00FFFFFF
-# define CGREEN 0xB5E550
-# define CRED 0x00FF0000
-# define CBLACK 0x00000000
-# define CCYAN 0x0000FFFF
-# define CMAGENTA 0x00FF00FF
-# define CYELLOW 0x00E8E337
-# define CORANGE 0x00FA991C
-# define CPINK 0x00FFC0CB
-# define CLIME 0x0000FF80
-
-# define CWALL 0x032539
-# define CGROUND 0xF5F7F8
-# define CUNDEFINED 0x1E1E1E
-# define CPLAYER 0xf96160
-
-# define CRAY 0xCAE9EA
-
-# define MOVESPEED 0.1
-# define ROTSPEED 0.1
-# define CHANGEFOV 0.1
 // =========================== FUNCTION ===========================
 
 // -> parsing
@@ -320,6 +341,9 @@ char				*get_value_float(double value);
 
 // floor and ceiling
 void				draw_floor_ceil(t_cub *cub);
+
+// sprites
+void				sprites(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

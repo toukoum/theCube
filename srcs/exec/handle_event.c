@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:25:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 23:44:17 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/18 15:28:55 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void process_key_input(t_cub *cub)
 
 int	handle_key(int keycode, t_cub *cub)
 {
-	printf("keycode :%d\n", keycode);
 	if (keycode == XK_Escape)
 		return (free_cub(cub), quit_cub(SUCESS), EXIT_FAILURE);
 	cub->keyBuffer[keycode] = 1;
@@ -74,13 +73,13 @@ int	handle_close_win(t_cub *cub)
  */
 
 
-#define SENSITIVITY 0.0005
+#define SENSITIVITY 0.0001
 int handle_mouse(int x, int y, t_cub *cub)
 {
     int deltaX = x - WWIN / 2;
 
     cub->rotSpeed = fabs(deltaX * SENSITIVITY);
-	printf("rotSpeed: %f, x: %d\n", cub->rotSpeed, x);
+	//printf("rotSpeed: %f, x: %d\n", cub->rotSpeed, x);
     if (x > (WWIN / 2)) {
 		rotate_player(XK_Right, cub);
     }
