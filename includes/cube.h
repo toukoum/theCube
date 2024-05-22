@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/18 19:47:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 12:16:23 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,6 @@ typedef struct s_cub
 
 	t_img			barrel;
 
-	
 	int				keyBuffer[256];
 
 	double			rotSpeed;
@@ -344,6 +343,11 @@ void				draw_floor_ceil(t_cub *cub);
 
 // sprites
 void				sprites(t_cub *cub);
+void				init_pos_sprite(t_cub *cub);
+bool				is_sprite_viewable(t_cub *cub, int x);
+void				sort_dist_player_sprites(double dist_ps[NSPRITE][2]);
+void				draw_sprites(t_cub *cub);
+void				calculate_pos_relative_sprite(int i, t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
