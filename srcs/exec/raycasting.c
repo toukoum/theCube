@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:04:35 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 19:42:42 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	assign_side_hit(t_ray *ray, bool vertical)
 	}
 }
 
-bool	is_door(char **map, int x, int y, t_door **doors)
+bool	is_door_close(char **map, int x, int y, t_door **doors)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ bool	is_door(char **map, int x, int y, t_door **doors)
 void	dda(t_ray *ray, char **map, t_door **doors)
 {
 	ray->is_ray_door = false;
-	while (map[ray->map.y][ray->map.x] != '1' && !is_door(map, ray->map.x,
+	while (map[ray->map.y][ray->map.x] != '1' && !is_door_close(map, ray->map.x,
 			ray->map.y, doors))
 	{
 		if (ray->sideDist.x < ray->sideDist.y)
