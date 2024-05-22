@@ -104,5 +104,6 @@ client_secret.json
 *.a
 *.d
 cub3D
+.cache/
 *.json
 .cache/
