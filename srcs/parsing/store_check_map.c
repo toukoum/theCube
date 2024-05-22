@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:11:30 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 20:09:59 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	set_pos_door_player(t_args *args, int i, int j)
 		if (!args->doors[args->ndoor])
 			return (free_all_map(args, MALLOC_ERROR));
 		args->doors[args->ndoor]->pos = (t_int_coord){j, i};
-		args->doors[args->ndoor]->is_open = true;
+		args->doors[args->ndoor]->is_open = false;
 		args->ndoor++;
 		return ;
 	}

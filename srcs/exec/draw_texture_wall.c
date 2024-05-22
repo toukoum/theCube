@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:46:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 19:16:19 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:05:47 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ static t_img	*get_texture(t_cub *cub, t_ray *ray)
 		return (&cub->texS);
 	else if (ray->side_hit == 'E')
 		return (&cub->texE);
-	else
+	else if (ray->side_hit == 'W')
 		return (&cub->texW);
+	return (NULL);
 }
 
 void	get_draw_start_end(t_ray *ray)

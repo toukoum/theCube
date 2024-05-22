@@ -1,20 +1,21 @@
 
-GR textures/poutou.xpm
-SK textures/poutou.xpm
+GR textures/sky.xpm
+SK textures/lea.xpm
+
 EA textures/poutou.xpm
-NO textures/poutou.xpm
-SO textures/poutou.xpm
-WE textures/poutou.xpm
+NO textures/bardella.xpm
+SO textures/melanch.xpm
+WE textures/hollande.xpm
 
   
 11111111111111111111111111111111111
 1000000D000000000000000000000000001
 11110000011111111000111111111111111
 100000000111111110001
-111111100111000S00001
+111111100111000000001
      1100111111D10001
   1111101111111010001
-  1000000000000000001
+  1000000000000N00001
   1111111111111111001
                  1001
                  1001

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 19:43:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 20:08:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@ static void	rotate_right(t_cub *cub)
 	cos_r = cos(cub->rotSpeed);
 	sin_r = sin(cub->rotSpeed);
 	old_dir_x = cub->dir.x;
-	cub->dir.x = cub->dir.x * cos_r - cub->dir.y * sin_r;
-	cub->dir.y = old_dir_x * sin_r + cub->dir.y * cos_r;
+	cub->dir.x = cub->dir.x * cos_r - cub->dir.y
+		* sin_r;
+	cub->dir.y = old_dir_x * sin_r + cub->dir.y
+		* cos_r;
 	old_plane_x = cub->plane.x;
-	cub->plane.x = cub->plane.x * cos_r - cub->plane.y * sin_r;
-	cub->plane.y = old_plane_x * sin_r + cub->plane.y * cos_r;
+	cub->plane.x = cub->plane.x * cos_r - cub->plane.y
+		* sin_r;
+	cub->plane.y = old_plane_x * sin_r + cub->plane.y
+		* cos_r;
 }
 
 void	rotate_player(int keycode, t_cub *cub)
@@ -41,11 +45,15 @@ void	rotate_player(int keycode, t_cub *cub)
 	if (keycode == XK_Left)
 	{
 		old_dir_x = cub->dir.x;
-		cub->dir.x = cub->dir.x * cos_r - cub->dir.y * sin_r;
-		cub->dir.y = old_dir_x * sin_r + cub->dir.y * cos_r;
+		cub->dir.x = cub->dir.x * cos_r - cub->dir.y
+			* sin_r;
+		cub->dir.y = old_dir_x * sin_r + cub->dir.y
+			* cos_r;
 		old_plane_x = cub->plane.x;
-		cub->plane.x = cub->plane.x * cos_r - cub->plane.y * sin_r;
-		cub->plane.y = old_plane_x * sin_r + cub->plane.y * cos_r;
+		cub->plane.x = cub->plane.x * cos_r - cub->plane.y
+			* sin_r;
+		cub->plane.y = old_plane_x * sin_r + cub->plane.y
+			* cos_r;
 	}
 	else
 		rotate_right(cub);
@@ -75,6 +83,7 @@ static void	add_move(t_cub *cub, int keycode, t_coord *next)
 	}
 }
 
+
 bool	is_door_open(char **map, int x, int y, t_door **doors)
 {
 	int	i;
@@ -93,6 +102,7 @@ bool	is_door_open(char **map, int x, int y, t_door **doors)
 	return (false);
 }
 
+
 /**
  * @brief a finir
  */
@@ -107,12 +117,12 @@ void	move_player(int keycode, t_cub *cub)
 	map_index.x = (int)(next.x);
 	map_index.y = (int)(next.y);
 	if (cub->map->map[map_index.y][map_index.x] == '0'
-		|| cub->map->map[map_index.y][map_index.x] == cub->player.start_angle)
+		|| cub->map->map[map_index.y][map_index.x] == cub->player.start_angle || is_door_open(cub->map->map, map_index.x, map_index.y, cub->doors))
 	{
 		cub->player.x = next.x;
 		cub->player.y = next.y;
 	}
-	// else
+	//else
 	//	printf("Movement blocked at (%d, %d) %f, %f\n", map_index.x,
 	//		map_index.y, next.x, next.y);
 }
