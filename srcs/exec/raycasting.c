@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:45:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:04:35 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,28 @@ void	assign_side_hit(t_ray *ray, bool vertical)
 	}
 }
 
-void	dda(t_ray *ray, char **map)
+bool	is_door(char **map, int x, int y, t_door **doors)
 {
-	while (map[ray->map.y][ray->map.x] != '1')
+	int	i;
+
+	i = 0;
+	if (map[y][x] == 'D')
+	{
+		while (doors[i])
+		{
+			if (doors[i]->pos.x == x && doors[i]->pos.y == y
+				&& !doors[i]->is_open)
+				return (true);
+			i++;
+		}
+	}
+	return (false);
+}
+void	dda(t_ray *ray, char **map, t_door **doors)
+{
+	ray->is_ray_door = false;
+	while (map[ray->map.y][ray->map.x] != '1' && !is_door(map, ray->map.x,
+			ray->map.y, doors))
 	{
 		if (ray->sideDist.x < ray->sideDist.y)
 		{
@@ -54,6 +73,8 @@ void	dda(t_ray *ray, char **map)
 		ray->perpWallDist = ray->sideDist.y - ray->d.y;
 	else
 		ray->perpWallDist = ray->sideDist.x - ray->d.x;
+	if (map[ray->map.y][ray->map.x] == 'D')
+		ray->is_ray_door = true;
 }
 
 /**
@@ -74,7 +95,7 @@ void	raycasting(t_cub *cub)
 	{
 		cam_x = 2 * x / (double)WWIN - 1;
 		init_ray(cub, &ray, cam_x);
-		dda(&ray, cub->map->map);
+		dda(&ray, cub->map->map, cub->doors);
 		assign_ray_dist(x, ray.perpWallDist, cub);
 		dist.x = (WMAP / 2) + ray.rayDir.x * ray.perpWallDist * TSIZE;
 		dist.y = (HMAP / 2) + ray.rayDir.y * ray.perpWallDist * TSIZE;

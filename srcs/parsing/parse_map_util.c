@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:09:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/11 20:38:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:22:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ bool	valid_value_map(char c, bool space)
 	if (space)
 	{
 		return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
-			|| c == 'W' || is_space(c));
+			|| c == 'W' || c == 'D' || is_space(c));
 	}
 	else
 	{
 		return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
-			|| c == 'W');
+			|| c == 'W' || c == 'D');
 	}
 }
 
@@ -43,6 +43,8 @@ void	get_line_width(t_args *args, char *line)
 			return (free(line), exit_parse_map(args, INVALID_CHARACTER, true));
 		if (valid_value_map(line[i], false) && !found_map)
 			found_map = true;
+		if (line[i] == 'D')
+			args->ndoor++;
 		i++;
 	}
 	if (result > args->width)
@@ -80,4 +82,10 @@ void	str_copy_cube(char *dst, char *src)
 			found_map = true;
 		i++;
 	}
+}
+
+
+bool is_player_door_char(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D');
 }

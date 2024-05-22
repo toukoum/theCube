@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:56:15 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:24:52 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,37 @@ void	change_fov(t_cub *cub, int keycode)
 {
 	if (keycode == XK_plus)
 	{
-		//cub->plane.x *= (1 + CHANGEFOV);
-		//cub->plane.y *= (1 + CHANGEFOV);
+		// cub->plane.x *= (1 + CHANGEFOV);
+		// cub->plane.y *= (1 + CHANGEFOV);
 		cub->dir.x *= (1 + CHANGEFOV);
 		cub->dir.y *= (1 + CHANGEFOV);
 	}
 	else if (keycode == XK_minus)
 	{
-		//cub->plane.x *= (1 - CHANGEFOV);
-		//cub->plane.y *= (1 - CHANGEFOV);
+		// cub->plane.x *= (1 - CHANGEFOV);
+		// cub->plane.y *= (1 - CHANGEFOV);
 		cub->dir.x *= (1 - CHANGEFOV);
 		cub->dir.y *= (1 - CHANGEFOV);
 	}
 }
 
+void	open_door(t_cub *cub)
+{
+	int		i;
+	double	dist_door_player;
+
+	i = 0;
+	while (i < cub->map->ndoor)
+	{
+		dist_door_player = (cub->player.x - cub->doors[i]->pos.x)
+			* (cub->player.x - cub->doors[i]->pos.x) + (cub->player.y
+				- cub->doors[i]->pos.y) * (cub->player.y
+				- cub->doors[i]->pos.y);
+		if (fabs(dist_door_player) < 5.0)
+			cub->doors[i]->is_open = !cub->doors[i]->is_open;
+		i++;
+	}
+}
 
 void	draw_line(t_img *img, t_coord x1, t_coord x2, int color)
 {

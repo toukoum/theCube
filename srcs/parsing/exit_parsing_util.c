@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:38:54 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 12:51:50 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 15:32:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,18 @@ void	free_all_map(t_args *args, int exit_code)
 	int	i;
 
 	i = 0;
-	while (args->map[i])
-		free(args->map[i++]);
-	free(args->map);
+	if (args->map)
+	{
+		while (args->map[i])
+			free(args->map[i++]);
+		free(args->map);
+	}
+	i = 0;
+	if (args->doors)
+	{
+		while (args->doors[i])
+			free(args->doors[i]);
+		free(args->doors);
+	}
 	exit_parse_map(args, exit_code, true);
 }

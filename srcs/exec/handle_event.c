@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:25:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/18 19:47:35 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:19:09 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ void process_key_input(t_cub *cub)
 		rotate_player(XK_Left, cub);
     if (cub->keyBuffer[XK_Right])
 		rotate_player(XK_Right, cub);
+	
 }
 
 int	handle_key(int keycode, t_cub *cub)
 {
 	if (keycode == XK_Escape)
 		return (free_cub(cub), quit_cub(SUCESS), EXIT_FAILURE);
+	if (keycode == XK_Space)
+		open_door(cub);
 	cub->keyBuffer[keycode] = 1;
 	return (0);
 }

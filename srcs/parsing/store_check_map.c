@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:00:25 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:11:30 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,18 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 	return (true);
 }
 
-static void	set_pos_player(t_args *args, int i, int j)
+static void	set_pos_door_player(t_args *args, int i, int j)
 {
+	if (args->map[i][j] == 'D')
+	{
+		args->doors[args->ndoor] = malloc(sizeof(t_door));
+		if (!args->doors[args->ndoor])
+			return (free_all_map(args, MALLOC_ERROR));
+		args->doors[args->ndoor]->pos = (t_int_coord){j, i};
+		args->doors[args->ndoor]->is_open = true;
+		args->ndoor++;
+		return ;
+	}
 	if (args->is_correct_pos)
 		return (free_all_map(args, DUP_PLAYER));
 	else
@@ -60,11 +70,11 @@ static void	set_pos_player(t_args *args, int i, int j)
 
 /**
  * @brief function moche sa mere mais flemme de
- * la refacto elle fonction (meme si je devrais...)
+ * la refacto (meme si je devrais...)
  * en gros elle verifie que ya bien des murs de partout
  * et que ya pas de joueur en double
  */
-void	check_map(t_args *args, int i, int j)
+void	check_map(t_args *args, int i, int j, char c)
 {
 	int	width_line;
 	int	first_j;
@@ -77,15 +87,13 @@ void	check_map(t_args *args, int i, int j)
 		width_line = ft_strlen(args->map[i] + j);
 		while (args->map[i][j])
 		{
-			if (args->map[i][j] == 'N' || args->map[i][j] == 'S'
-				|| args->map[i][j] == 'E' || args->map[i][j] == 'W')
-				set_pos_player(args, i, j);
+			c = args->map[i][j];
+			if (is_player_door_char(c))
+				set_pos_door_player(args, i, j);
 			if ((i == 0 || i == args->height - 1 || j == first_j
-					|| j == ft_strlen(args->map[i]) - 1)
-				&& args->map[i][j] != '1')
+					|| j == ft_strlen(args->map[i]) - 1) && c != '1')
 				return (free_all_map(args, WALL_SURR));
-			else if (args->map[i][j] != '1' && !check_wall(args, i, j,
-					width_line))
+			else if (c != '1' && !check_wall(args, i, j, width_line))
 				return (free_all_map(args, WALL_SURR));
 			j++;
 		}

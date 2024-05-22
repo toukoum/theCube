@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 13:55:27 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 16:16:57 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	free_arg(t_args *args)
 	i = 0;
 	while (args->map[i])
 		free(args->map[i++]);
+	//i = 0;
+	//while (args->doors[i])
+	//	free(args->doors[i++]);
+	//free(args->doors);
 	free(args->map);
 	free(args->pathE);
 	free(args->pathN);
@@ -60,6 +64,10 @@ void	free_cub(t_cub *cub)
 		mlx_destroy_image(cub->mlx, cub->ground.img);
 	if (cub->sky.img)
 		mlx_destroy_image(cub->mlx, cub->sky.img);
+	if (cub->barrel.img)
+		mlx_destroy_image(cub->mlx, cub->barrel.img);
+	if (cub->door.img)
+		mlx_destroy_image(cub->mlx, cub->door.img);
 	mlx_destroy_window(cub->mlx, cub->win);
 	//mlx_destroy_display(cub->mlx);
 	free(cub->mlx);

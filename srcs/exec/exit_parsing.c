@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:17:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:08:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:52:24 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	quit2(int exit_code)
 	if (exit_code == MISSING_ARG)
 		print_err_mess("argument missing in .cub file");
 	else if (exit_code == MALLOC_ERROR)
-		print_err_mess("malloc didn't work as expected");
+		print_err_mess("malloc failed");
 	else if (exit_code == WALL_SURR)
 		print_err_mess("map not surrounded with walls");
 	else if (exit_code == ALL_GOOD)

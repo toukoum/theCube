@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 23:13:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:26:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	print_log_debug(t_args *args)
 
 int	render(t_cub *cub)
 {
-	if (DEBUG)
-	{
-		printf("================\n");
-		printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
-		printf(">> Vector dir of player (x, y): %f, %f\n", cub->dir.x, cub->dir.y);
-		printf(">> Vector plane of player (x, y): %f, %f\n", cub->plane.x,
-			cub->plane.y);
-	}
+	//if (DEBUG)
+	//{
+	//	printf("================\n");
+	//	printf("> pos of player (x, y): %f, %f\n", cub->player.x, cub->player.y);
+	//	printf(">> Vector dir of player (x, y): %f, %f\n", cub->dir.x, cub->dir.y);
+	//	printf(">> Vector plane of player (x, y): %f, %f\n", cub->plane.x,
+	//		cub->plane.y);
+	//}
 	draw_all(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 {
 	t_args	args;
 	t_cub	cub;
-
+	
 	ft_bzero(&cub, sizeof(t_cub));
 	if (argc != 2)
 		quit(NUMBERS_ARGC);

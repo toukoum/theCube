@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 12:16:23 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:12:09 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define INVALID_CHARACTER 9
 # define MAP_NOT_LAST 10
 # define MISSING_ARG 11
-# define MALLOC_ERROR 11
+# define MALLOC_ERROR 71
 # define WALL_SURR 12
 # define ALL_GOOD 13
 # define NO_PLAYER 14
@@ -108,6 +108,18 @@ typedef struct s_color
 
 }					t_color;
 
+typedef struct s_coord
+{
+	double			x;
+	double			y;
+}					t_coord;
+
+typedef struct s_int_coord
+{
+	int				x;
+	int				y;
+}					t_int_coord;
+
 typedef struct s_img
 {
 	void			*img;
@@ -118,6 +130,12 @@ typedef struct s_img
 	int				width;
 	int				height;
 }					t_img;
+
+typedef struct s_door
+{
+	t_int_coord		pos;
+	bool			is_open;
+}					t_door;
 
 typedef struct s_args
 {
@@ -140,19 +158,10 @@ typedef struct s_args
 	char start_angle; // 'N', 'S', 'E', 'W'
 	char			*path_file;
 	int				start_map;
+	int				ndoor;
+	t_door			**doors;
+
 }					t_args;
-
-typedef struct s_coord
-{
-	double			x;
-	double			y;
-}					t_coord;
-
-typedef struct s_int_coord
-{
-	int				x;
-	int				y;
-}					t_int_coord;
 
 typedef struct s_player
 {
@@ -176,6 +185,7 @@ typedef struct s_ray
 	int				draw_start;
 	int				draw_end;
 	int				tex_x;
+	bool			is_ray_door;
 	double			offset;
 	t_img			*texture;
 
@@ -233,17 +243,17 @@ typedef struct s_cub
 	t_img			sky;
 	t_img			ground;
 
+	// sprite
+	t_img			barrel;
 	double			wallDist[WWIN];
-	// distance de chaque rayon vers le mur le plus proche
 	t_coord sprite_pos[NSPRITE]; // position de chaque sprite
 	double			dist_ps[NSPRITE][2];
-	// distance entre le player p et les sprites s trie par ordre decroissant
 	t_coord			transform;
-	// position relative des sprite par rapport a la cam
 	double			invMatriceCam;
 
-	t_img			barrel;
-
+	// door
+	t_img			door;
+	t_door			**doors;
 	int				keyBuffer[256];
 
 	double			rotSpeed;
@@ -282,9 +292,10 @@ void				exit_parse_map(t_args *args, int exit_code, bool close_fd);
 bool				is_empty_line(char *line);
 void				get_line_width(t_args *args, char *line);
 void				str_copy_cube(char *dst, char *src);
-void				check_map(t_args *args, int i, int j);
+void				check_map(t_args *args, int i, int j, char c);
 void				store_map(t_args *args);
 void				init_all_textures(t_cub *cub);
+bool				is_player_door_char(char c);
 
 // -> quit
 void				quit(int exit_code);
@@ -337,6 +348,7 @@ void				rotate_player(int keycode, t_cub *cub);
 void				draw_log_player(t_cub *cub);
 void				draw_fov(t_cub *cub);
 char				*get_value_float(double value);
+void				open_door(t_cub *cub);
 
 // floor and ceiling
 void				draw_floor_ceil(t_cub *cub);
@@ -363,6 +375,8 @@ void				calculate_pos_relative_sprite(int i, t_cub *cub);
 #  define XK_Right 124
 #  define XK_plus 24
 #  define XK_minus 27
+#  define XK_Space 49
+
 # endif
 
 #endif

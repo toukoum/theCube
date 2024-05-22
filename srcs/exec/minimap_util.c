@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_util.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/02 13:16:15 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:23:33 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	get_pixel_color(char **map, t_int_coord *mapIndex)
 	{
 		return (CGROUND);
 	}
+	else if (map[mapIndex->y][mapIndex->x] == 'D')
+		return (CRED);
 	else
 		return (CLIME);
 }

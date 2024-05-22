@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:12:12 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:25:02 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:23:11 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_all_value(t_args *args)
 {
+	args->ndoor = 0;
 	args->ceilColor.is_correct = false;
 	args->ceilColor.b = 0;
 	args->ceilColor.g = 0;

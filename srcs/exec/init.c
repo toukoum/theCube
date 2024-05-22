@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/18 19:37:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:05:01 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init_cub(t_cub *cub, t_args *args)
 	init_start_angle(cub);
 	cub->invMatriceCam = 1.0 / (cub->plane.x * cub->dir.y - cub->dir.x
 			* cub->plane.y);
+	cub->doors = cub->map->doors;
 }
 
 /**
