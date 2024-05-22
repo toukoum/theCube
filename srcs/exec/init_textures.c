@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:19:54 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/18 19:28:05 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ bool	init_texture(void *mlx, char *path, t_img *texture)
 	return (true);
 }
 
+
+void	init_texture_sprite(t_cub *cub)
+{
+	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->barrel))
+		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+	
+		
+}
+
+
+
 /**
  * @brief Pas besoin de comment car c'est du beau code mon gaté
  */
@@ -44,10 +55,9 @@ void	init_all_textures(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->pathW, &cub->texW))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!cub->map->is_floor_texture)
-		return ;
 	if (!init_texture(cub->mlx, cub->map->ground, &cub->ground))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->sky, &cub->sky))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+	init_texture_sprite(cub);
 }

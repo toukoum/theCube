@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:58:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/01 23:22:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/18 15:25:24 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,5 @@ int	get_wall_color(t_int_coord *mapIndex, char **map, int side_hit)
 
 void assign_ray_dist(int x, double dist, t_cub* cub)
 {
-	if (x == 0)
-		cub->distRayL = dist;
-	else if (x == WWIN / 2)
-		cub->distRayC = dist;
-	else if (x == WWIN - 1)
-		cub->distRayR = dist;
+	cub->wallDist[x] = dist;
 }
