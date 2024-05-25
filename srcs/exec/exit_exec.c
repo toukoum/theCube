@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:25:44 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 16:23:45 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	free_arg(t_args *args)
 	i = 0;
 	while (args->map[i])
 		free(args->map[i++]);
-	//i = 0;
-	//while (args->doors[i])
-	//	free(args->doors[i++]);
-	//free(args->doors);
+	i = 0;
+	while (args->doors[i])
+		free(args->doors[i++]);
+	free(args->doors);
 	free(args->map);
 	free(args->pathE);
 	free(args->pathN);

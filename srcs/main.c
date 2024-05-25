@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:22:01 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:59:53 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	render(t_cub *cub)
 	//		cub->plane.y);
 	//}
 	cub->frame_counter++;
-	printf("%d\n", cub->frame_counter);
 	draw_all(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->mmap.img, 20, 20);

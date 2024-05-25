@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:26:14 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 18:24:19 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@
 
 # define MOVESPEED 0.1
 # define ROTSPEED 0.1
-# define CHANGEFOV 0.1
+# define CHANGEFOV 2
+
+# define HITBOX_RADIUS 0.8
 
 # define NSPRITE 2
 # define NFRAME 2
@@ -226,8 +228,9 @@ typedef struct s_sprite
 	t_int_coord		drawEnd;
 	int				texX;
 	t_img			texture;
-	t_coord			sprite_pos;
+	t_coord			pos;
 	int				idx_textures;
+	bool			play;
 }					t_sprite;
 
 typedef struct s_cub
@@ -249,7 +252,7 @@ typedef struct s_cub
 
 	// sprite
 	t_sprite		sprites[NSPRITE];
-	
+
 	t_img			sprites_textures[NSPRITE][NFRAME];
 	double			wallDist[WWIN];
 	double			dist_ps[NSPRITE][2];
@@ -257,10 +260,11 @@ typedef struct s_cub
 	double			invMatriceCam;
 
 	int				frame_counter;
+	bool			can_move;
 	// door
 	t_img			door;
 	t_door			**doors;
-	int				keyBuffer[256];
+	int				keyBuffer[100000];
 
 	double			rotSpeed;
 
@@ -354,10 +358,12 @@ void				rotate_player(int keycode, t_cub *cub);
 void				draw_log_player(t_cub *cub);
 void				draw_fov(t_cub *cub);
 char				*get_value_float(double value);
+bool				is_collision(t_cub *cub, t_coord *next);
 void				open_door(t_cub *cub);
 
 // floor and ceiling
 void				draw_floor_ceil(t_cub *cub);
+bool				is_door_close(char **map, int x, int y, t_door **doors);
 
 // sprites
 void				sprites(t_cub *cub);
@@ -366,7 +372,7 @@ bool				is_sprite_viewable(t_cub *cub, int x);
 void				sort_dist_player_sprites(double dist_ps[NSPRITE][2]);
 void				draw_sprites(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
-void				init_pos_sprite(t_cub *cub);
+void				play_animation(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
@@ -382,7 +388,7 @@ void				init_pos_sprite(t_cub *cub);
 #  define XK_Right 124
 #  define XK_plus 24
 #  define XK_minus 27
-#  define XK_Space 49
+#  define XK_space 49
 
 # endif
 

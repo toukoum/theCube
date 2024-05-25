@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:21:31 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 16:49:51 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	init_cub(t_cub *cub, t_args *args)
 	cub->player.start_angle = args->start_angle;
 	cub->map = args;
 	cub->dir.x = 0;
+	cub->can_move = true;
 	cub->dir.y = 0;
 	cub->plane.x = 0;
 	cub->plane.y = 0;

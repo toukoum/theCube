@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:04:35 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 16:19:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	raycasting(t_cub *cub)
 	t_coord	dist;
 
 	x = 0;
+	ft_bzero(&ray, sizeof(t_ray));
 	while (x < WWIN)
 	{
 		cam_x = 2 * x / (double)WWIN - 1;

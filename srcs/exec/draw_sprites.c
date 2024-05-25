@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:27:46 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 14:06:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,11 @@ void	draw_sprites(t_cub *cub)
 	while (i < NSPRITE)
 	{
 		sprit = cub->sprites[(int)cub->dist_ps[i][0]];
-		sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_counter % NFRAME];
+		if (sprit.play)
+			sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_counter % NFRAME];
+		else
+			sprit.texture = cub->sprites_textures[sprit.idx_textures][0];
+			
 		calculate_pos_relative_sprite(i, cub);
 		calculate_height_width_sprite(cub, &sprit);
 		draw_column_sprite(cub, &sprit);
