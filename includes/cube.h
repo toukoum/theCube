@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:39:27 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:21:06 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,9 @@ typedef struct s_sprite
 	t_int_coord		drawStart;
 	t_int_coord		drawEnd;
 	int				texX;
-	t_img			texture_sprite;
+	t_img			texture;
+	t_coord			sprite_pos;
+	int				idx_textures;
 }					t_sprite;
 
 typedef struct s_cub
@@ -245,14 +247,15 @@ typedef struct s_cub
 	t_img			ground;
 
 	// sprite
-	t_img			sprites[NSPRITE];
-	int				idx_textures_sprites[NSPRITE];
+	t_sprite		sprites[NSPRITE];
+	
+	t_img			sprites_textures[NSPRITE];
 	double			wallDist[WWIN];
-	t_coord			sprite_pos[NSPRITE];
 	double			dist_ps[NSPRITE][2];
 	t_coord			transform;
 	double			invMatriceCam;
 
+	int				frame_counter;
 	// door
 	t_img			door;
 	t_door			**doors;

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 14:56:23 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:26:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:02:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@
 void	store_dist_player_sprites(t_cub *cub)
 {
 	int	i;
+	t_sprite sprite;
 
 	i = 0;
 	while (i < NSPRITE)
 	{
+		sprite = cub->sprites[i];
 		cub->dist_ps[i][0] = i;
-		cub->dist_ps[i][1] = (cub->player.x - cub->sprite_pos[i].x)
-			* (cub->player.x - cub->sprite_pos[i].x) + (cub->player.y
-				- cub->sprite_pos[i].y) * (cub->player.y
-				- cub->sprite_pos[i].y);
+		cub->dist_ps[i][1] = (cub->player.x - sprite.sprite_pos.x)
+			* (cub->player.x - sprite.sprite_pos.x) + (cub->player.y
+				- sprite.sprite_pos.y) * (cub->player.y
+				- sprite.sprite_pos.y);
 		i++;
 	}
 	sort_dist_player_sprites(cub->dist_ps);

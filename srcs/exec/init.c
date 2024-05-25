@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:03:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:21:31 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_cub(t_cub *cub, t_args *args)
 	cub->dir.y = 0;
 	cub->plane.x = 0;
 	cub->plane.y = 0;
+	cub->frame_counter = 0;
 	cub->rotSpeed = 0.1;
 	init_start_angle(cub);
 	cub->doors = cub->map->doors;

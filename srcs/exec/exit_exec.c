@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:21:35 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:57:44 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void destroy_sprite(t_cub *cub){
 	i = 0;
 	while (i < NSPRITE)
 	{
-		if (cub->sprites[i].img)
-			mlx_destroy_image(cub->mlx, cub->sprites[i].img);
+		if (cub->sprites_textures[i].img)
+			mlx_destroy_image(cub->mlx, cub->sprites_textures[i].img);
 		i++;
 	}
 	

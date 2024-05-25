@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:41:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:11:50 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
 	while (y < sprite->drawEnd.y)
 	{
 		d = y * 256 - HWIN * 128 + sprite->spriteHeight * 128;
-		tex_y = ((d * sprite->texture_sprite.height) / sprite->spriteHeight) / 256;
-		pixel_index = ((int)tex_y * sprite->texture_sprite.line_length)
-			+ ((int)sprite->texX * (sprite->texture_sprite.bits_per_pixel / 8));
-		color = *(int *)(sprite->texture_sprite.addr + pixel_index);
+		tex_y = ((d * sprite->texture.height) / sprite->spriteHeight) / 256;
+		pixel_index = ((int)tex_y * sprite->texture.line_length)
+			+ ((int)sprite->texX * (sprite->texture.bits_per_pixel / 8));
+		color = *(int *)(sprite->texture.addr + pixel_index);
 		if (color & 0x00FFFFFF)
 			my_mlx_pixel_put(&cub->img, x, y, color);
 		y++;
@@ -87,7 +87,7 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
 void	get_tex_x(t_sprite *sprite, int x)
 {
 	sprite->texX = (256 * (x - (-sprite->spriteWidth / 2
-					+ sprite->spriteScreenX)) * sprite->texture_sprite.width
+					+ sprite->spriteScreenX)) * sprite->texture.width
 			/ sprite->spriteWidth) / 256;
 	sprite->texX = (int)(sprite->texX);
 }
@@ -114,7 +114,7 @@ void	draw_column_sprite(t_cub *cub, t_sprite *sprite)
 
 /**
  * @brief on affiche les sprites du plus
- * loin au plus proche (dist_ps contient les sprites triés)
+ * loin au plus proche (dist_player_sprites contient les sprites triés par ordre decroissant)
  */
 void	draw_sprites(t_cub *cub)
 {
@@ -124,7 +124,8 @@ void	draw_sprites(t_cub *cub)
 	i = 0;
 	while (i < NSPRITE)
 	{
-		sprit.texture_sprite = cub->sprites[cub->idx_textures_sprites[i]];
+		sprit = cub->sprites[(int)cub->dist_ps[i][0]];
+		sprit.texture = cub->sprites_textures[sprit.idx_textures];
 		calculate_pos_relative_sprite(i, cub);
 		calculate_height_width_sprite(cub, &sprit);
 		draw_column_sprite(cub, &sprit);
