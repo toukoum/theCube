@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:21:06 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:26:14 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@
 # define CHANGEFOV 0.1
 
 # define NSPRITE 2
+# define NFRAME 2
 
 // =========================== STRUCT ===========================
 typedef struct s_color
@@ -249,7 +250,7 @@ typedef struct s_cub
 	// sprite
 	t_sprite		sprites[NSPRITE];
 	
-	t_img			sprites_textures[NSPRITE];
+	t_img			sprites_textures[NSPRITE][NFRAME];
 	double			wallDist[WWIN];
 	double			dist_ps[NSPRITE][2];
 	t_coord			transform;

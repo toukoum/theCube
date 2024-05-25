@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 12:58:23 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 13:25:52 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ bool	init_texture(void *mlx, char *path, t_img *texture)
 
 void	init_texture_sprites(t_cub *cub)
 {
-	if (!init_texture(cub->mlx, "sprites/barrel.xpm", &cub->sprites_textures[0]))
+	if (!init_texture(cub->mlx, "sprites/barrel.xpm", &cub->sprites_textures[0][0]))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->sprites_textures[1]))
+	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->sprites_textures[0][1]))
+		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+		
+	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->sprites_textures[1][0]))
+		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+	if (!init_texture(cub->mlx, "sprites/barrel.xpm", &cub->sprites_textures[1][1]))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 }
 
