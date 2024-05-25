@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:13:20 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 12:16:14 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:39:45 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	init_pos_sprite(t_cub *cub)
 {
 	cub->sprite_pos[0].x = 1.5;
 	cub->sprite_pos[0].y = 1.5;
+	cub->idx_textures_sprites[0] = 0;
 	cub->sprite_pos[1].x = 4.5;
 	cub->sprite_pos[1].y = 2.5;
+	cub->idx_textures_sprites[1] = 1;
 }
 
 /**

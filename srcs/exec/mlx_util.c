@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:24:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 11:46:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,11 @@ void	change_fov(t_cub *cub, int keycode)
 {
 	if (keycode == XK_plus)
 	{
-		// cub->plane.x *= (1 + CHANGEFOV);
-		// cub->plane.y *= (1 + CHANGEFOV);
 		cub->dir.x *= (1 + CHANGEFOV);
 		cub->dir.y *= (1 + CHANGEFOV);
 	}
 	else if (keycode == XK_minus)
 	{
-		// cub->plane.x *= (1 - CHANGEFOV);
-		// cub->plane.y *= (1 - CHANGEFOV);
 		cub->dir.x *= (1 - CHANGEFOV);
 		cub->dir.y *= (1 - CHANGEFOV);
 	}

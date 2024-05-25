@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 12:14:32 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:41:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
 	while (y < sprite->drawEnd.y)
 	{
 		d = y * 256 - HWIN * 128 + sprite->spriteHeight * 128;
-		tex_y = ((d * cub->barrel.height) / sprite->spriteHeight) / 256;
-		pixel_index = ((int)tex_y * cub->barrel.line_length)
-			+ ((int)sprite->texX * (cub->barrel.bits_per_pixel / 8));
-		color = *(int *)(cub->barrel.addr + pixel_index);
+		tex_y = ((d * sprite->texture_sprite.height) / sprite->spriteHeight) / 256;
+		pixel_index = ((int)tex_y * sprite->texture_sprite.line_length)
+			+ ((int)sprite->texX * (sprite->texture_sprite.bits_per_pixel / 8));
+		color = *(int *)(sprite->texture_sprite.addr + pixel_index);
 		if (color & 0x00FFFFFF)
 			my_mlx_pixel_put(&cub->img, x, y, color);
 		y++;
@@ -84,10 +84,10 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
  * par ex: pour une bande a dessiner de x = 450, il faudrait
  * utiliser le pixel 64 de la texture (en x)
  */
-void	get_tex_x(t_cub *cub, t_sprite *sprite, int x)
+void	get_tex_x(t_sprite *sprite, int x)
 {
 	sprite->texX = (256 * (x - (-sprite->spriteWidth / 2
-					+ sprite->spriteScreenX)) * cub->barrel.width
+					+ sprite->spriteScreenX)) * sprite->texture_sprite.width
 			/ sprite->spriteWidth) / 256;
 	sprite->texX = (int)(sprite->texX);
 }
@@ -105,7 +105,7 @@ void	draw_column_sprite(t_cub *cub, t_sprite *sprite)
 	{
 		if (is_sprite_viewable(cub, x))
 		{
-			get_tex_x(cub, sprite, x);
+			get_tex_x(sprite, x);
 			draw_pixel_sprite(cub, sprite, x);
 		}
 		x++;
@@ -124,6 +124,7 @@ void	draw_sprites(t_cub *cub)
 	i = 0;
 	while (i < NSPRITE)
 	{
+		sprit.texture_sprite = cub->sprites[cub->idx_textures_sprites[i]];
 		calculate_pos_relative_sprite(i, cub);
 		calculate_height_width_sprite(cub, &sprit);
 		draw_column_sprite(cub, &sprit);

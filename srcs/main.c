@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:26:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:27:29 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(int argc, char **argv)
 		print_log_debug(&args);
 	init_cub(&cub, &args);
 	init_mlx(&cub);
+	init_pos_sprite(&cub);
 	mlx_loop_hook(cub.mlx, &render, &cub);
 	mlx_loop(cub.mlx);
 	return (EXIT_SUCCESS);

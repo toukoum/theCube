@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 18:12:09 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:39:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,7 @@ typedef struct s_sprite
 	t_int_coord		drawStart;
 	t_int_coord		drawEnd;
 	int				texX;
+	t_img			texture_sprite;
 }					t_sprite;
 
 typedef struct s_cub
@@ -244,9 +245,10 @@ typedef struct s_cub
 	t_img			ground;
 
 	// sprite
-	t_img			barrel;
+	t_img			sprites[NSPRITE];
+	int				idx_textures_sprites[NSPRITE];
 	double			wallDist[WWIN];
-	t_coord sprite_pos[NSPRITE]; // position de chaque sprite
+	t_coord			sprite_pos[NSPRITE];
 	double			dist_ps[NSPRITE][2];
 	t_coord			transform;
 	double			invMatriceCam;
@@ -360,6 +362,7 @@ bool				is_sprite_viewable(t_cub *cub, int x);
 void				sort_dist_player_sprites(double dist_ps[NSPRITE][2]);
 void				draw_sprites(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
+void				init_pos_sprite(t_cub *cub);
 
 # ifdef __APPLE__
 #  define XK_Escape 53
