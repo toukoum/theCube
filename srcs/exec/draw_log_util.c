@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 23:53:55 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 14:03:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 12:03:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ void	draw_fov(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 110, CBLACK, result);
+	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 110, CWHITE, result);
 }

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 16:23:45 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/27 11:08:02 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	free_arg(t_args *args)
 	i = 0;
 	while (args->doors[i])
 		free(args->doors[i++]);
-	free(args->doors);
+	if (args->doors)
+		free(args->doors);
 	free(args->map);
 	free(args->pathE);
 	free(args->pathN);
@@ -53,7 +54,7 @@ void destroy_sprite(t_cub *cub){
 	while (i < NSPRITE)
 	{
 		j = 0;
-		while (j < NFRAME)
+		while (j < cub->sprites[i].nframe)
 		{
 			if (cub->sprites_textures[i][j].img)
 				mlx_destroy_image(cub->mlx, cub->sprites_textures[i][j].img);
@@ -86,6 +87,6 @@ void	free_cub(t_cub *cub)
 		mlx_destroy_image(cub->mlx, cub->door.img);
 	mlx_destroy_window(cub->mlx, cub->win);
 	destroy_sprite(cub);
-	//mlx_destroy_display(cub->mlx);
+	mlx_destroy_display(cub->mlx);
 	free(cub->mlx);
 }

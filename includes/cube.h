@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 18:24:19 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 22:40:24 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,22 @@
 # define CPINK 0x00FFC0CB
 # define CLIME 0x0000FF80
 
-# define CWALL 0x032539
-# define CGROUND 0xF5F7F8
-# define CUNDEFINED 0x1E1E1E
+# define CWALL 0x222831
+# define CGROUND 0xEEEEEE
+# define CUNDEFINED 0xAA96DA
+# define CDOOR 0x00ADB5
 # define CPLAYER 0xf96160
 
 # define CRAY 0xCAE9EA
 
-# define MOVESPEED 0.1
-# define ROTSPEED 0.1
+# define MOVESPEED 0.06
+# define ROTSPEED 0.05
 # define CHANGEFOV 2
+# define SENSITIVITY 0.0000001
 
-# define HITBOX_RADIUS 0.8
+# define HITBOX_RADIUS 0.6
 
-# define NSPRITE 2
-# define NFRAME 2
+# define NSPRITE 14
 
 // =========================== STRUCT ===========================
 typedef struct s_color
@@ -231,6 +232,7 @@ typedef struct s_sprite
 	t_coord			pos;
 	int				idx_textures;
 	bool			play;
+	int				nframe;
 }					t_sprite;
 
 typedef struct s_cub
@@ -253,19 +255,22 @@ typedef struct s_cub
 	// sprite
 	t_sprite		sprites[NSPRITE];
 
-	t_img			sprites_textures[NSPRITE][NFRAME];
+	t_img			sprites_textures[NSPRITE][100];
 	double			wallDist[WWIN];
 	double			dist_ps[NSPRITE][2];
 	t_coord			transform;
 	double			invMatriceCam;
 
 	int				frame_counter;
+	int				frame_sprite;
 	bool			can_move;
+	bool			display_help;
+
 	// door
 	t_img			door;
 	t_door			**doors;
 	int				keyBuffer[100000];
-
+	
 	double			rotSpeed;
 
 }					t_cub;
@@ -353,12 +358,12 @@ int					handle_mouse(int x, int y, t_cub *cub);
 // move player
 void				move_player(int keycode, t_cub *cub);
 void				rotate_player(int keycode, t_cub *cub);
+int					handle_mouse_click(int keycode, int x, int y, t_cub *cub);
 
 // divers
 void				draw_log_player(t_cub *cub);
 void				draw_fov(t_cub *cub);
 char				*get_value_float(double value);
-bool				is_collision(t_cub *cub, t_coord *next);
 void				open_door(t_cub *cub);
 
 // floor and ceiling
@@ -374,6 +379,13 @@ void				draw_sprites(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
 void				play_animation(t_cub *cub);
 
+// voice
+// void				free_media(void);
+// bool				load_media(void);
+// void				play_sound(void);
+// bool				init_audio(void);
+// void				close_audio(void);
+
 # ifdef __APPLE__
 #  define XK_Escape 53
 #  define XK_q 12
@@ -382,6 +394,7 @@ void				play_animation(t_cub *cub);
 #  define XK_a 0
 #  define XK_s 1
 #  define XK_d 2
+#  define XK_h 4
 #  define XK_Up 126
 #  define XK_Down 125
 #  define XK_Left 123

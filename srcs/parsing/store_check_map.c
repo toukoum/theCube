@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 11:44:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 09:04:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ static void	set_pos_door_player(t_args *args, int i, int j)
 {
 	if (args->map[i][j] == 'D')
 	{
-		args->doors[args->ndoor] = malloc(sizeof(t_door));
-		if (!args->doors[args->ndoor])
-			return (free_all_map(args, MALLOC_ERROR));
+
 		args->doors[args->ndoor]->pos = (t_int_coord){j, i};
 		args->doors[args->ndoor]->is_open = false;
 		args->ndoor++;

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:25:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 16:45:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 11:51:05 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	process_key_input(t_cub *cub)
 
 int	handle_key(int keycode, t_cub *cub)
 {
+	printf("%d\n", keycode);
 	if (keycode == XK_Escape)
 		return (free_cub(cub), quit_cub(SUCESS), EXIT_FAILURE);
 	if (keycode == XK_space)
@@ -42,8 +43,9 @@ int	handle_key(int keycode, t_cub *cub)
 		change_fov(cub, XK_minus);
 	if (keycode == XK_plus)
 		change_fov(cub, XK_plus);
+	if (keycode == XK_h)
+		cub->display_help = !cub->display_help;
 	cub->keyBuffer[keycode] = 1;
-	// if (keycode = )`
 	return (0);
 }
 
@@ -76,15 +78,13 @@ int	handle_close_win(t_cub *cub)
  *
  */
 
-#define SENSITIVITY 0.0001
 
 int	handle_mouse(int x, int y, t_cub *cub)
 {
 	int	deltaX;
 
 	deltaX = x - WWIN / 2;
-	cub->rotSpeed = fabs(deltaX * SENSITIVITY);
-	// printf("rotSpeed: %f, x: %d\n", cub->rotSpeed, x);
+	cub->rotSpeed = fabs(deltaX * deltaX * SENSITIVITY);
 	if (x > (WWIN / 2))
 	{
 		rotate_player(XK_Right, cub);
@@ -92,6 +92,6 @@ int	handle_mouse(int x, int y, t_cub *cub)
 	else
 		rotate_player(XK_Left, cub);
 	(void)y;
-	mlx_mouse_move(cub->mlx, cub->win, WWIN / 2, HWIN / 2);
 	return (0);
 }
+

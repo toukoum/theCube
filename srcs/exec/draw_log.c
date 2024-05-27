@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:16:41 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/18 15:27:54 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 12:03:29 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_len_ray(t_cub *cub, double distRay, char *name, int line_top)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, line_top, CBLACK,
+	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, line_top, CWHITE,
 		result);
 }
 
@@ -53,7 +53,7 @@ void	draw_dir(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 50, CBLACK, result);
+	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 50, CWHITE, result);
 }
 
 void	draw_pos(t_cub *cub)
@@ -79,7 +79,7 @@ void	draw_pos(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	ft_strlcat(result, tmp, sizeof(result));
 	free(tmp);
-	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 35, CBLACK, result);
+	mlx_string_put(cub->mlx, cub->win, WWIN - WMAP - 12, 35, CWHITE, result);
 }
 
 /**

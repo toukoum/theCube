@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 14:06:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 16:55:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	draw_sprites(t_cub *cub)
 	{
 		sprit = cub->sprites[(int)cub->dist_ps[i][0]];
 		if (sprit.play)
-			sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_counter % NFRAME];
+			sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_sprite % sprit.nframe];
 		else
 			sprit.texture = cub->sprites_textures[sprit.idx_textures][0];
 			

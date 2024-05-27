@@ -1,5 +1,5 @@
 NAME 	:=	cub3D
-FLAGS	:=	-Wall -Wextra -Werror -MMD -g
+FLAGS	:=	-Wall -Wextra -Werror -MMD -g -O3
 
 SRC		:= main.c  parsing/parse.c parsing/parse_color_line.c parsing/parse_texture_line.c \
 parsing/parse_util_args.c parsing/parse_util2_args.c exec/exit_parsing.c parsing/parse_map.c \
@@ -18,8 +18,10 @@ DEPS	:= $(OBJ:.o=.d)
 CC		:=	cc
 LIBFT_DIR := libft-boost/
 LIBFT_LIB := $(LIBFT_DIR)libft.a
-INCLUDE := -I includes
+INCLUDE := -I includes -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
 DEBUG	:= -DDEBUG=1
+SDL2_CFLAGS := -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
+SDL2_LDFLAGS := -L/opt/homebrew/Cellar/sdl2/2.30.3/lib -lSDL2 -lSDL2_mixer
 
 # ============== MLX ==============
 
@@ -60,7 +62,7 @@ title:
 
 $(NAME): $(LIBFT_LIB) $(OBJ) $(MLX_LIB)
 	@echo "\n > Creating: $(GREEN)$(NAME)...✅$(NC)"
-	@$(CC) $(FLAGS) $(OBJ) $(INCLUDE) $(MLX_PATH) -o $(NAME) -L $(LIBFT_DIR) -lft 
+	@$(CC) $(FLAGS) $(OBJ) $(INCLUDE) $(MLX_PATH) -o $(NAME) -L $(LIBFT_DIR) -lft
 	@echo " >$(CYAN) Done 🔥$(NC)"
 	@echo "\n => Run the project:$(BPURPLE) ./$(NAME)\n$(NC)"
 

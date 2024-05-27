@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:48:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 13:23:33 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 17:22:34 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ int	get_pixel_color(char **map, t_int_coord *mapIndex)
 		return (CGROUND);
 	}
 	else if (map[mapIndex->y][mapIndex->x] == 'D')
-		return (CRED);
+		return (CDOOR);
+	else if (map[mapIndex->y][mapIndex->x] == '2')
+		return (CWHITE);
 	else
-		return (CLIME);
+		return (CGREEN);
 }
 
 void	draw_border_minimap(t_cub *cub)
@@ -59,7 +61,7 @@ void	draw_border_minimap(t_cub *cub)
 		while (x < WMAP)
 		{
 			if (y == 0 || y == HMAP - 1 || x == 0 || x == WMAP - 1)
-				my_mlx_pixel_put(&cub->mmap, x, y, CWALL);
+				my_mlx_pixel_put(&cub->mmap, x, y, CWHITE);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 08:23:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 17:49:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 09:07:20 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,24 @@ void	get_dimensions_map(t_args *args, char *line)
 		free(line);
 }
 
+void init_door(t_args *args)
+{
+	int i = 0;
+	args->doors = malloc((args->ndoor + 1) * sizeof(t_door *));
+	if (!args->doors)
+		return (free_all_map(args, MALLOC_ERROR));
+	args->doors[args->ndoor] = NULL;
+	while (i < args->ndoor)
+	{
+		args->doors[i] = malloc(sizeof(t_door));
+		if (!args->doors[i])
+			return (free_all_map(args, MALLOC_ERROR));
+		i++;
+	}
+	
+}
+
+
 /**
  * @brief args are correct
  * need to check and store map
@@ -49,10 +67,7 @@ void	parse_map(t_args *args, char *line)
 
 	c = 'a';
 	get_dimensions_map(args, line);
-	args->doors = malloc((args->ndoor + 1) * sizeof(t_door *));
-	if (!args->doors)
-		return (free_all_map(args, MALLOC_ERROR));
-	args->doors[args->ndoor] = NULL;
+	init_door(args);
 	store_map(args);
 	args->ndoor = 0;
 	check_map(args, 0, 0, c);

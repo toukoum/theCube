@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 13:25:52 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 16:50:30 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,36 @@ bool	init_texture(void *mlx, char *path, t_img *texture)
 	return (true);
 }
 
+void	init_name_sprite(t_cub *cub, t_sprite *sprit, int j)
+{
+	int	i;
+
+	char filename[256]; // Buffer pour le nom de fichier
+	i = 1;
+	while (i <= sprit->nframe)
+	{
+		snprintf(filename, sizeof(filename), "sprites/%d/%d.xpm", j, i);
+		if (!init_texture(cub->mlx, filename, &cub->sprites_textures[j - 1][i - 1]))
+		{
+			free_cub(cub);
+			quit_cub(MALLOC_ERROR);
+			return ;
+		}
+		i++;
+	}
+}
 
 void	init_texture_sprites(t_cub *cub)
 {
-	if (!init_texture(cub->mlx, "sprites/barrel.xpm", &cub->sprites_textures[0][0]))
-		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->sprites_textures[0][1]))
-		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-		
-	if (!init_texture(cub->mlx, "sprites/pillar.xpm", &cub->sprites_textures[1][0]))
-		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, "sprites/barrel.xpm", &cub->sprites_textures[1][1]))
-		return (free_cub(cub), quit_cub(MALLOC_ERROR));
+	int	j;
+
+	j = 0;
+	while (j < 7)
+	{
+		init_name_sprite(cub, &cub->sprites[j], j + 1);
+		j++;
+	}
 }
-
-
 
 /**
  * @brief Pas besoin de comment car c'est du beau code mon gaté

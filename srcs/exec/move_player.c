@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/25 18:32:12 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/26 11:13:37 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,42 @@ bool	is_door_close(char **map, int x, int y, t_door **doors)
 	}
 	return (false);
 }
+
+bool	is_door_open(char **map, int x, int y, t_door **doors)
+{
+	int	i;
+
+	i = 0;
+	if (map[y][x] == 'D')
+	{
+		while (doors[i])
+		{
+			if (doors[i]->pos.x == x && doors[i]->pos.y == y
+				&& doors[i]->is_open)
+				return (true);
+			i++;
+		}
+	}
+	return (false);
+}
+
 void	move_player(int keycode, t_cub *cub)
 {
-	t_coord		next_x;
-	t_coord		next_y;
-	t_int_coord	map_index_x;
-	t_int_coord	map_index_y;
+	t_coord		next;
+	t_int_coord	map_index;
 
 	if (!cub->can_move)
 		return ;
-	next_x = (t_coord){cub->player.x, cub->player.y};
-	next_y = (t_coord){cub->player.x, cub->player.y};
-	add_move(cub, keycode, &next_x);
-	add_move(cub, keycode, &next_y);
-	map_index_x.x = (int)(next_x.x);
-	map_index_x.y = (int)(cub->player.y);
-	map_index_y.x = (int)(cub->player.x);
-	map_index_y.y = (int)(next_y.y);
-	if (!is_collision(cub, &next_x))
-		cub->player.x = next_x.x;
-	if (!is_collision(cub, &next_y))
-		cub->player.y = next_y.y;
+	next.x = cub->player.x;
+	next.y = cub->player.y;
+	add_move(cub, keycode, &next);
+	map_index.x = (int)(next.x);
+	map_index.y = (int)(next.y);
+	if (cub->map->map[map_index.y][map_index.x] == '0'
+		|| cub->map->map[map_index.y][map_index.x] == cub->player.start_angle
+		|| is_door_open(cub->map->map, map_index.x, map_index.y, cub->doors))
+	{
+		cub->player.x = next.x;
+		cub->player.y = next.y;
+	}
 }
