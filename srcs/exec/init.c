@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/27 11:08:10 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/31 22:49:13 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	init_mlx(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx, WWIN, HWIN);
 	if (!cub->img.img)
 		return (mlx_destroy_window(cub->mlx, cub->win),
-				 mlx_destroy_display(cub->mlx), free(cub->mlx),
+				// mlx_destroy_display(cub->mlx), free(cub->mlx),
 					free_arg(cub->map),
 				quit_cub(MALLOC_ERROR));
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
@@ -91,7 +91,7 @@ void	init_mlx(t_cub *cub)
 	if (!cub->mmap.img)
 		return (mlx_destroy_image(cub->mlx, cub->img.img),
 				mlx_destroy_window(cub->mlx, cub->win),
-				mlx_destroy_display(cub->mlx), free(cub->mlx),
+				//mlx_destroy_display(cub->mlx), free(cub->mlx),
 					free_arg(cub->map),
 				quit_cub(MALLOC_ERROR));
 	cub->mmap.addr = mlx_get_data_addr(cub->mmap.img, &cub->mmap.bits_per_pixel,

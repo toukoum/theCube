@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:11:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 12:45:20 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:21:04 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	init_args(t_args *args)
 {
-	char	*result;
+	char	*line;
 
-	result = get_next_line(args->fd);
-	while (result)
+	line = get_next_line(args->fd);
+	while (line)
 	{
 		args->start_map++;
-		if (parse_line(result, args))
+		if (parse_line(line, args))
 			return ;
-		free(result);
-		result = get_next_line(args->fd);
+		free(line);
+		line = get_next_line(args->fd);
 	}
-	free(result);
+	free(line);
 	return (close(args->fd), quit(MISSING_MAP));
 }
 

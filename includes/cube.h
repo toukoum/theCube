@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 22:40:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:19:42 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ typedef struct s_cub
 	t_img			door;
 	t_door			**doors;
 	int				keyBuffer[100000];
-	
+
 	double			rotSpeed;
 
 }					t_cub;
