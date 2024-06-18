@@ -6,11 +6,30 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:43:17 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 12:55:38 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
+
+void	handle_error(t_args *args, char *line)
+{
+	if (args->pathe)
+		free(args->pathe);
+	if (args->pathn)
+		free(args->pathn);
+	if (args->pathw)
+		free(args->pathw);
+	if (args->paths)
+		free(args->paths);
+	if (args->sky)
+		free(args->sky);
+	if (args->ground)
+		free(args->ground);
+	free(line);
+	close(args->fd);
+	quit(WRONG_ARG);
+}
 
 bool	good_number(int i, char *line)
 {
@@ -23,7 +42,7 @@ bool	good_number(int i, char *line)
 	return (true);
 }
 
-static int	get_number(char *line, int *i, int fd, bool is_last)
+static int	get_number(char *line, int *i, t_args *args, bool is_last)
 {
 	int	result;
 	int	err;
@@ -33,9 +52,9 @@ static int	get_number(char *line, int *i, int fd, bool is_last)
 	result = min_atoi_boost(line, i, &err);
 	goto_next_char(i, line);
 	if (is_last && (line[(*i)] || err))
-		return (free(line), close(fd), quit(WRONG_ARG), EXIT_FAILURE);
+		return (handle_error(args, line), EXIT_FAILURE);
 	else if (!is_last && (line[(*i)] != ',' || err))
-		return (free(line), close(fd), quit(WRONG_ARG), EXIT_FAILURE);
+		return (handle_error(args, line), EXIT_FAILURE);
 	(*i)++;
 	return (result);
 }
@@ -50,9 +69,9 @@ void	parse_color_line(t_args *args, char *line, int i)
 	t_color	tmp_color;
 	t_color	*color_target;
 
-	tmp_color.r = get_number(line, &i, args->fd, false);
-	tmp_color.g = get_number(line, &i, args->fd, false);
-	tmp_color.b = get_number(line, &i, args->fd, true);
+	tmp_color.r = get_number(line, &i, args, false);
+	tmp_color.g = get_number(line, &i, args, false);
+	tmp_color.b = get_number(line, &i, args, true);
 	if (line[0] == 'C')
 		color_target = &args->ceil_col;
 	else
