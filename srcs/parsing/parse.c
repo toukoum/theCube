@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:11:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/28 15:21:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 16:24:01 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_args(t_args *args)
 		line = get_next_line(args->fd);
 	}
 	free(line);
-	return (close(args->fd), quit(MISSING_MAP));
+	return (close(args->fd), handle_error(args, line), quit(MISSING_MAP));
 }
 
 /**

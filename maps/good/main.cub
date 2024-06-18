@@ -1,11 +1,9 @@
-F 0, 255, 255 
-C 0, 255, 100
-
 EA textures/poutou.xpm
+
+C 0, 255, 100
+F 0, 255, 1
+
 NO textures/bardella.xpm
 SO textures/melanch.xpm
 WE textures/lassalle.xpm
 
-1111
-1W01
-1111
