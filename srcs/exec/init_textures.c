@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:51:19 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:10:24 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	init_all_textures(t_cub *cub)
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->pathw, &cub->texw))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->ground, &cub->ground))
+	if (cub->map->ground && !init_texture(cub->mlx, cub->map->ground, &cub->ground))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->sky, &cub->sky))
+	if (cub->map->sky && !init_texture(cub->mlx, cub->map->sky, &cub->sky))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, "textures/door.xpm", &cub->door))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));

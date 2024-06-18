@@ -19,25 +19,27 @@ enum e_direction	getDirection(t_int_coord *player, t_int_coord *next) {
 	return (-1);
 }
 
+// true if collided in corner
 bool	cornerCollision(t_cub *cub, t_int_coord next) {
 	t_int_coord	player;
 	enum e_direction	direction;
 
 	player = (t_int_coord){(int)cub->player.x, (int)cub->player.y};
 	if (next.x == player.x && next.y == player.y)
-		return (true);
+		return (false);
 	direction = getDirection(&player, &next);
-	if (direction == UP_LEFT && cub->map->map[player.y][player.x - 1] == '0'
-		&& cub->map->map[player.y - 1][player.x] == '0')
+	printf("direction: %d\n", direction);
+	if (direction == UP_LEFT && cub->map->map[player.y][player.x - 1] == '1'
+		&& cub->map->map[player.y - 1][player.x] == '1')
 		return (true);
-	if (direction == UP_RIGHT && cub->map->map[player.y][player.x + 1] == '0'
-		&& cub->map->map[player.y - 1][player.x] == '0')
+	if (direction == UP_RIGHT && cub->map->map[player.y][player.x + 1] == '1'
+		&& cub->map->map[player.y - 1][player.x] == '1')
 		return (true);
-	if (direction == DOWN_LEFT && cub->map->map[player.y][player.x - 1] == '0'
-		&& cub->map->map[player.y + 1][player.x] == '0')
+	if (direction == DOWN_LEFT && cub->map->map[player.y][player.x - 1] == '1'
+		&& cub->map->map[player.y + 1][player.x] == '1')
 		return (true);
-	if (direction == DOWN_RIGHT && cub->map->map[player.y][player.x + 1] == '0'
-		&& cub->map->map[player.y + 1][player.x] == '0')
+	if (direction == DOWN_RIGHT && cub->map->map[player.y][player.x + 1] == '1'
+		&& cub->map->map[player.y + 1][player.x] == '1')
 		return (true);
 	return (false);
 }

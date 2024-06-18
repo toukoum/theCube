@@ -79,6 +79,8 @@ $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@printf "$(ERASE) > Compiling: $(BLUE)$@$(NC)$(END)"    
 	@$(CC) $(FLAGS) $(INCLUDE) $(MLX_FLAGS) -c $< -o $@
 
+bonus: all
+
 clean:
 	@echo " >$(RED) Deleting objects files...✅$(NC)"
 	@rm -rf $(OBJS_DIR)

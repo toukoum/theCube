@@ -1524,6 +1524,28 @@
   },
   {
     "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-g",
+      "-O3",
+      "-I",
+      "includes",
+      "-I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2",
+      "-I/usr/include",
+      "-Imlx-linux",
+      "-c",
+      "-o",
+      "objs/exec/cornerCollision.o",
+      "srcs/exec/cornerCollision.c"
+    ],
+    "directory": "/home/ketrevis/42/cub3d",
+    "file": "/home/ketrevis/42/cub3d/srcs/exec/cornerCollision.c",
+    "output": "/home/ketrevis/42/cub3d/objs/exec/cornerCollision.o"
+  },
+  {
+    "arguments": [
       "/usr/bin/gcc",
       "-O3",
       "-I/usr/include",
