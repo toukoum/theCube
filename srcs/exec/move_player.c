@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 11:13:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:21:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,6 @@ static void	add_move(t_cub *cub, int keycode, t_coord *next)
 		next->x += MOVESPEED * cub->dir.y;
 		next->y -= MOVESPEED * cub->dir.x;
 	}
-}
-
-bool	is_door_close(char **map, int x, int y, t_door **doors)
-{
-	int	i;
-
-	i = 0;
-	if (map[y][x] == 'D')
-	{
-		while (doors[i])
-		{
-			if (doors[i]->pos.x == x && doors[i]->pos.y == y
-				&& !doors[i]->is_open)
-				return (true);
-			i++;
-		}
-	}
-	return (false);
 }
 
 bool	is_door_open(char **map, int x, int y, t_door **doors)

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/04/29 14:09:08 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:14:37 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	rgb_to_int(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
+
 void	parse_color_line(t_args *args, char *line, int i)
 {
 	t_color	tmp_color;

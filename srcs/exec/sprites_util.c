@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:13:20 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 22:39:19 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:18:16 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	sort_dist_player_sprites(double dist_ps[NSPRITE][2])
 {
 	double	tmp_dist;
 	double	tmp_index;
+	int		i;
+	int		j;
 
-	int i, j;
 	i = 0;
 	while (i < NSPRITE)
 	{
@@ -105,6 +106,7 @@ void	init_2_sprite(t_cub *cub)
 	cub->sprites[13].nframe = 42;
 	cub->sprites[13].play = true;
 }
+
 void	init_pos_sprite(t_cub *cub)
 {
 	int	i;
@@ -130,31 +132,6 @@ void	init_pos_sprite(t_cub *cub)
 	cub->sprites[12].play = true;
 	i = -1;
 	while (++i < NSPRITE)
-		cub->map->map[(int)cub->sprites[i].pos.y][(int)cub->sprites[i].pos.x] = '2';
-}
-
-/**
- * @brief calculate the position of the sprite
- * de facon relative a la position de la camera
- *
- * i = index du sprite que l'on calcule
- *
- * transformX = invDet * (dirY * spriteX - dirX * spriteY);
- * transformY = invDet * (-planeY * spriteX + planeX * spriteY);
- * transformY est la profondeur du sprite cela correspond a z en 3d
- * transformX est la position x du sprite dans l'espace de la camera
- */
-
-void	calculate_pos_relative_sprite(int i, t_cub *cub)
-{
-	int		isprite;
-	t_coord	sprite;
-
-	isprite = cub->dist_ps[i][0];
-	sprite.x = cub->sprites[isprite].pos.x - cub->player.x;
-	sprite.y = cub->sprites[isprite].pos.y - cub->player.y;
-	cub->transform.x = cub->dir.y * sprite.x - cub->dir.x * sprite.y;
-	cub->transform.y = -cub->plane.y * sprite.x + cub->plane.x * sprite.y;
-	cub->transform.x *= cub->invMatriceCam;
-	cub->transform.y *= cub->invMatriceCam;
+		cub->map->map[(int)cub->sprites[i].pos.y]
+		[(int)cub->sprites[i].pos.x] = '2';
 }

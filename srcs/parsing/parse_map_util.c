@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:09:26 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/22 14:22:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:14:01 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void	str_copy_cube(char *dst, char *src)
 	}
 }
 
-
-bool is_player_door_char(char c)
+bool	is_player_door_char(char c)
 {
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D');
 }

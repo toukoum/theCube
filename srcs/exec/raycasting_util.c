@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:58:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/18 15:25:24 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:19:22 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	get_wall_color(t_int_coord *mapIndex, char **map, int side_hit)
 		return (CWHITE);
 }
 
-void assign_ray_dist(int x, double dist, t_cub* cub)
+void	assign_ray_dist(int x, double dist, t_cub *cub)
 {
 	cub->wallDist[x] = dist;
 }

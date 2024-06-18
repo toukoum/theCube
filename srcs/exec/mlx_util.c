@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:58 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 09:20:58 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:22:17 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	open_door(t_cub *cub)
 				- cub->doors[i]->pos.y);
 		if (fabs(dist_door_player) < 5.0)
 		{
-			if ((int)cub->player.x == cub->doors[i]->pos.x && (int)cub->player.y == cub->doors[i]->pos.y)
+			if ((int)cub->player.x == cub->doors[i]->pos.x
+				&& (int)cub->player.y == cub->doors[i]->pos.y)
 				return ;
 			cub->doors[i]->is_open = !cub->doors[i]->is_open;
 		}

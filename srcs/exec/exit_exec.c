@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:10:37 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/31 22:49:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:25:40 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_arg(t_args *args)
 	free(args->ground);
 	free(args->sky);
 }
+
 void	quit_cub(int exit_code)
 {
 	if (exit_code == MALLOC_ERROR)
@@ -46,9 +47,10 @@ void	quit_cub(int exit_code)
 	}
 }
 
-void destroy_sprite(t_cub *cub){
-	int i;
-	int j;
+void	destroy_sprite(t_cub *cub)
+{
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < NSPRITE)
@@ -87,6 +89,6 @@ void	free_cub(t_cub *cub)
 		mlx_destroy_image(cub->mlx, cub->door.img);
 	mlx_destroy_window(cub->mlx, cub->win);
 	destroy_sprite(cub);
-	//mlx_destroy_display(cub->mlx);
+	mlx_destroy_display(cub->mlx);
 	free(cub->mlx);
 }

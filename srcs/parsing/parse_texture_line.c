@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:26:41 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:13:53 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,12 @@ bool	to_many_floor(t_args *args)
 	if (args->floorColor.is_correct && args->ceilColor.is_correct
 		&& (args->ground || args->sky))
 		return (true);
-	if (args->ground && args->sky
-		&& (args->floorColor.is_correct || args->ceilColor.is_correct))
+	if (args->ground && args->sky && (args->floorColor.is_correct
+			|| args->ceilColor.is_correct))
 		return (true);
-	else if (args->ground && args->sky
-		&& !(args->floorColor.is_correct || args->ceilColor.is_correct))
+	else if (args->ground && args->sky && !(args->floorColor.is_correct
+			|| args->ceilColor.is_correct))
 		args->is_floor_texture = true;
-	
 	return (false);
 }
 
@@ -98,8 +97,8 @@ int	parse_line(char *line, t_args *args)
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
 		return (ALL_PAS_GOOD);
-	else if ((!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
-				|| line[i] == 'C'))) || to_many_floor(args))
+	else if ((!is_args_full(args) && (!is_texture_id(line, i)
+				&& !(line[i] == 'F' || line[i] == 'C'))) || to_many_floor(args))
 		return (free(line), exit_parse_map(args, INVALID_CHARACTER, true), 0);
 	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);

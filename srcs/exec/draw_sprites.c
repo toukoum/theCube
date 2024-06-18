@@ -6,23 +6,12 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 16:55:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:29:08 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-/**
- * calcul de la taille des sprite en x et en y
- * plus le sprite est loin (transform y), plus il va apparaitre petit
- *
-
-	* puis on calcul de ou a ou le sprite doit etre dessinner par rapport a sa taille x et y pour qu'il
- * soit centree
- *
-
-	* spriteScreenX correspond a la position en X central du sprite en fonction de transformX
- */
 void	calculate_height_width_sprite(t_cub *cub, t_sprite *s)
 {
 	s->spriteHeight = (int)(HWIN / cub->transform.y);
@@ -114,22 +103,24 @@ void	draw_column_sprite(t_cub *cub, t_sprite *sprite)
 
 /**
  * @brief on affiche les sprites du plus
- * loin au plus proche (dist_player_sprites contient les sprites triés par ordre decroissant)
+
+	* loin au plus proche (dist_player_sprites
+	* contient les sprites triés par ordre decroissant)
  */
 void	draw_sprites(t_cub *cub)
 {
-	int i;
-	t_sprite sprit;
+	int			i;
+	t_sprite	sprit;
 
 	i = 0;
 	while (i < NSPRITE)
 	{
 		sprit = cub->sprites[(int)cub->dist_ps[i][0]];
 		if (sprit.play)
-			sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_sprite % sprit.nframe];
+			sprit.texture = cub->sprites_textures[sprit.idx_textures]
+			[cub->frame_sprite % sprit.nframe];
 		else
 			sprit.texture = cub->sprites_textures[sprit.idx_textures][0];
-			
 		calculate_pos_relative_sprite(i, cub);
 		calculate_height_width_sprite(cub, &sprit);
 		draw_column_sprite(cub, &sprit);

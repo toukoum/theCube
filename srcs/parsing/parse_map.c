@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 08:23:01 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 09:07:20 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:14:11 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	get_dimensions_map(t_args *args, char *line)
 		free(line);
 }
 
-void init_door(t_args *args)
+void	init_door(t_args *args)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	args->doors = malloc((args->ndoor + 1) * sizeof(t_door *));
 	if (!args->doors)
 		return (free_all_map(args, MALLOC_ERROR));
@@ -48,9 +50,7 @@ void init_door(t_args *args)
 			return (free_all_map(args, MALLOC_ERROR));
 		i++;
 	}
-	
 }
-
 
 /**
  * @brief args are correct
@@ -63,7 +63,7 @@ void init_door(t_args *args)
  */
 void	parse_map(t_args *args, char *line)
 {
-	char c;
+	char	c;
 
 	c = 'a';
 	get_dimensions_map(args, line);

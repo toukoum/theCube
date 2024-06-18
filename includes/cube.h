@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/28 15:19:42 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:21:43 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@
 
 # define CRAY 0xCAE9EA
 
-# define MOVESPEED 0.06
-# define ROTSPEED 0.05
+# define MOVESPEED 0.03
+# define ROTSPEED 0.03
 # define CHANGEFOV 2
 # define SENSITIVITY 0.0000001
 
@@ -378,13 +378,8 @@ void				sort_dist_player_sprites(double dist_ps[NSPRITE][2]);
 void				draw_sprites(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
 void				play_animation(t_cub *cub);
-
-// voice
-// void				free_media(void);
-// bool				load_media(void);
-// void				play_sound(void);
-// bool				init_audio(void);
-// void				close_audio(void);
+void				calculate_pos_relative_sprite(int i, t_cub *cub);
+bool				is_door_close(char **map, int x, int y, t_door **doors);
 
 # ifdef __APPLE__
 #  define XK_Escape 53

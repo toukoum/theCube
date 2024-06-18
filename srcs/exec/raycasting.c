@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:45:44 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/27 10:54:11 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:20:00 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ bool	is_door(char **map, int x, int y, t_door **doors)
 	}
 	return (false);
 }
+
 void	dda(t_ray *ray, char **map, t_door **doors)
 {
 	ray->is_ray_door = false;

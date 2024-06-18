@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 09:04:04 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:12:42 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 	if (j < width - 1 && map[i][j + 1] == '\0')
 		return (false);
 	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0' || map[i - 1][j
-			- 1] == ' '))
+		- 1] == ' '))
 		return (false);
 	if (i > 0 && j < width - 1 && map[i - 1][j + 1] == '\0')
 		return (false);
@@ -49,7 +49,6 @@ static void	set_pos_door_player(t_args *args, int i, int j)
 {
 	if (args->map[i][j] == 'D')
 	{
-
 		args->doors[args->ndoor]->pos = (t_int_coord){j, i};
 		args->doors[args->ndoor]->is_open = false;
 		args->ndoor++;

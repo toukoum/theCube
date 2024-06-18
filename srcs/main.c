@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 16:57:18 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:14:47 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	render(t_cub *cub)
 	if (cub->display_help)
 		draw_log_player(cub);
 	else
-		mlx_string_put(cub->mlx, cub->win, WWIN - WMAP + 50, 35, CUNDEFINED, "h for informations");
+		mlx_string_put(cub->mlx, cub->win, WWIN - WMAP + 50, 35, CUNDEFINED,
+			"h for informations");
 	process_key_input(cub);
-
 	return (ALL_GOOD);
 }
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 {
 	t_args	args;
 	t_cub	cub;
-	
+
 	ft_bzero(&cub, sizeof(t_cub));
 	if (argc != 2)
 		quit(NUMBERS_ARGC);
