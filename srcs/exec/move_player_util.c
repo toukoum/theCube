@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:20:47 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:52:18 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:13:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,22 @@ bool	is_door_close(char **map, int x, int y, t_door **doors)
 		}
 	}
 	return (false);
+}
+
+void	put_sprite_on_map(t_cub *cub)
+{
+	int	i;
+
+	i = -1;
+	while (++i < NSPRITE)
+	{
+		if (cub->sprites[i].pos.y < cub->map->height
+			&& cub->sprites[i].pos.x < cub->map->width
+			&& cub->map->map[(int)cub->sprites[i].pos.y]
+			[(int)cub->sprites[i].pos.x] == '0')
+		{
+			cub->map->map[(int)cub->sprites[i].pos.y]
+			[(int)cub->sprites[i].pos.x] = '2';
+		}
+	}
 }

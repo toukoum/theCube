@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:13:20 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:51:39 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:12:08 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,5 @@ void	init_pos_sprite(t_cub *cub)
 	cub->sprites[11].play = true;
 	cub->sprites[12].play = true;
 	i = -1;
-	while (++i < NSPRITE)
-		cub->map->map[(int)cub->sprites[i].pos.y]
-		[(int)cub->sprites[i].pos.x] = '2';
+	put_sprite_on_map(cub);
 }
