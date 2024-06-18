@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:20:47 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:22:09 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:52:18 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	calculate_pos_relative_sprite(int i, t_cub *cub)
 	sprite.y = cub->sprites[isprite].pos.y - cub->player.y;
 	cub->transform.x = cub->dir.y * sprite.x - cub->dir.x * sprite.y;
 	cub->transform.y = -cub->plane.y * sprite.x + cub->plane.x * sprite.y;
-	cub->transform.x *= cub->invMatriceCam;
-	cub->transform.y *= cub->invMatriceCam;
+	cub->transform.x *= cub->inv_matrice;
+	cub->transform.y *= cub->inv_matrice;
 }
 
 bool	is_door_close(char **map, int x, int y, t_door **doors)

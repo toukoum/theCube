@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:13:20 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:18:16 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:51:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_dist_player_sprites(double dist_ps[NSPRITE][2])
 bool	is_sprite_viewable(t_cub *cub, int x)
 {
 	return (cub->transform.y > 0 && x > 0 && x < WWIN
-		&& cub->transform.y <= cub->wallDist[x]);
+		&& cub->transform.y <= cub->walldist[x]);
 }
 
 void	init_1_sprite(t_cub *cub)

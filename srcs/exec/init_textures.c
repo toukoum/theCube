@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:24:07 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:51:19 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ void	init_texture_sprites(t_cub *cub)
  */
 void	init_all_textures(t_cub *cub)
 {
-	if (!init_texture(cub->mlx, cub->map->pathN, &cub->texN))
+	if (!init_texture(cub->mlx, cub->map->pathn, &cub->texn))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathS, &cub->texS))
+	if (!init_texture(cub->mlx, cub->map->paths, &cub->texs))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathE, &cub->texE))
+	if (!init_texture(cub->mlx, cub->map->pathe, &cub->texe))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathW, &cub->texW))
+	if (!init_texture(cub->mlx, cub->map->pathw, &cub->texw))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, cub->map->ground, &cub->ground))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));

@@ -497,7 +497,7 @@ int get_mouse_button(NSEventType eventtype)
   pixel_nb ++;
 
   glBindTexture(GL_TEXTURE_2D, pixel_vbuffer);
-  glTexSubImage2D(GL_TEXTURE_2D, 0, x, y, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid *)(&color));
+  gltexsubImage2D(GL_TEXTURE_2D, 0, x, y, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid *)(&color));
 
   if (pixel_nb >= MAX_PIXEL_NB)
     [self mlx_gl_draw];

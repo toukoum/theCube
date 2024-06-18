@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:29:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:25:22 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:48:57 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	init_rayf(t_cub *cub, t_rayfloor *rayf)
 {
-	rayf->rayDir0.x = cub->dir.x - cub->plane.x;
-	rayf->rayDir0.y = cub->dir.y - cub->plane.y;
-	rayf->rayDir1.x = cub->dir.x + cub->plane.x;
-	rayf->rayDir1.y = cub->dir.y + cub->plane.y;
-	rayf->posZ = HWIN / 2;
+	rayf->raydir0.x = cub->dir.x - cub->plane.x;
+	rayf->raydir0.y = cub->dir.y - cub->plane.y;
+	rayf->raydir1.x = cub->dir.x + cub->plane.x;
+	rayf->raydir1.y = cub->dir.y + cub->plane.y;
+	rayf->posz = HWIN / 2;
 }
 
 void	draw_pixel_floor(t_cub *cub, t_rayfloor *rayf, t_img *texture)
@@ -51,11 +51,11 @@ void	raycast_floor(t_cub *cub, t_rayfloor *rayf)
 		rayf->p = idx.y - (HWIN / 2);
 		if (rayf->p == 0)
 			rayf->p = 1;
-		rayf->rowDist = rayf->posZ / rayf->p;
-		rayf->d.x = rayf->rowDist * (rayf->rayDir1.x - rayf->rayDir0.x) / WWIN;
-		rayf->d.y = rayf->rowDist * (rayf->rayDir1.y - rayf->rayDir0.y) / WWIN;
-		rayf->floor.x = cub->player.x + rayf->rowDist * rayf->rayDir0.x;
-		rayf->floor.y = cub->player.y + rayf->rowDist * rayf->rayDir0.y;
+		rayf->rowdist = rayf->posz / rayf->p;
+		rayf->d.x = rayf->rowdist * (rayf->raydir1.x - rayf->raydir0.x) / WWIN;
+		rayf->d.y = rayf->rowdist * (rayf->raydir1.y - rayf->raydir0.y) / WWIN;
+		rayf->floor.x = cub->player.x + rayf->rowdist * rayf->raydir0.x;
+		rayf->floor.y = cub->player.y + rayf->rowdist * rayf->raydir0.y;
 		idx.x = -1;
 		while (idx.x++ < WWIN - 1)
 		{
@@ -82,10 +82,10 @@ void	draw_simple_floor_ceil(t_cub *cub)
 		{
 			if (idx.y < HWIN / 2)
 				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
-					cub->map->ceilColor.color);
+					cub->map->ceil_col.color);
 			else
 				my_mlx_pixel_put(&cub->img, idx.x, idx.y,
-					cub->map->floorColor.color);
+					cub->map->floor_col.color);
 			idx.x++;
 		}
 		idx.y++;

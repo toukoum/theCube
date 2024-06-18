@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:38:54 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:15:01 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:46:02 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	exit_parse_map(t_args *args, int exit_code, bool close_fd)
 {
 	if (close_fd)
 		close(args->fd);
-	if (args->pathE)
-		free(args->pathE);
-	if (args->pathN)
-		free(args->pathN);
-	if (args->pathS)
-		free(args->pathS);
-	if (args->pathW)
-		free(args->pathW);
+	if (args->pathe)
+		free(args->pathe);
+	if (args->pathn)
+		free(args->pathn);
+	if (args->paths)
+		free(args->paths);
+	if (args->pathw)
+		free(args->pathw);
 	quit(exit_code);
 }
 

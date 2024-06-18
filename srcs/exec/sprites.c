@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 14:56:23 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:19:13 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:52:18 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	store_dist_player_sprites(t_cub *cub)
  */
 void	sprites(t_cub *cub)
 {
-	cub->invMatriceCam = 1.0 / (cub->plane.x * cub->dir.y - cub->dir.x
+	cub->inv_matrice = 1.0 / (cub->plane.x * cub->dir.y - cub->dir.x
 			* cub->plane.y);
 	store_dist_player_sprites(cub);
 	draw_sprites(cub);

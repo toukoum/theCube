@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:21:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:52:59 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	rotate_right(t_cub *cub)
 	double	cos_r;
 	double	sin_r;
 
-	cos_r = cos(cub->rotSpeed);
-	sin_r = sin(cub->rotSpeed);
+	cos_r = cos(cub->rot_speed);
+	sin_r = sin(cub->rot_speed);
 	old_dir_x = cub->dir.x;
 	cub->dir.x = cub->dir.x * cos_r - cub->dir.y * sin_r;
 	cub->dir.y = old_dir_x * sin_r + cub->dir.y * cos_r;
@@ -36,8 +36,8 @@ void	rotate_player(int keycode, t_cub *cub)
 	double	cos_r;
 	double	sin_r;
 
-	cos_r = cos(-cub->rotSpeed);
-	sin_r = sin(-cub->rotSpeed);
+	cos_r = cos(-cub->rot_speed);
+	sin_r = sin(-cub->rot_speed);
 	if (keycode == XK_Left)
 	{
 		old_dir_x = cub->dir.x;

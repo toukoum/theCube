@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:21:25 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:14:47 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:43:17 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	print_log_debug(t_args *args)
 	ft_printf("\n===== DEBUG MODE ====\n\n");
 	ft_printf("> height/width of map: %d, %d\n", args->height, args->width);
 	printf("> pos of player (x, y): %f, %f\n", args->pos_x, args->pos_y);
-	ft_printf("> map color floor (r, g, b): %u, %u, %u\n", args->floorColor.r,
-		args->floorColor.g, args->floorColor.b);
-	ft_printf("> map color ceiling (r, g, b): %u, %u, %u\n", args->ceilColor.r,
-		args->ceilColor.g, args->ceilColor.b);
+	ft_printf("> map color floor (r, g, b): %u, %u, %u\n", args->floor_col.r,
+		args->floor_col.g, args->floor_col.b);
+	ft_printf("> map color ceiling (r, g, b): %u, %u, %u\n", args->ceil_col.r,
+		args->ceil_col.g, args->ceil_col.b);
 	ft_printf("> map: \n\n");
 	while (++i < args->height)
 	{

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:13:53 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:46:02 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	assign_path(char *line, char *cpy_line, t_args *args)
 	char	**target_path;
 
 	if (!ft_strncmp("NO", cpy_line, 2))
-		target_path = &args->pathN;
+		target_path = &args->pathn;
 	else if (!ft_strncmp("SO", cpy_line, 2))
-		target_path = &args->pathS;
+		target_path = &args->paths;
 	else if (!ft_strncmp("WE", cpy_line, 2))
-		target_path = &args->pathW;
+		target_path = &args->pathw;
 	else if (!ft_strncmp("SK", cpy_line, 2))
 		target_path = &args->sky;
 	else if (!ft_strncmp("GR", cpy_line, 2))
 		target_path = &args->ground;
 	else
-		target_path = &args->pathE;
+		target_path = &args->pathe;
 	if (*target_path)
 		return (free(cpy_line), exit_parse_map(args, CLONE_ARGS, true));
 	*target_path = ft_strdup(line);
@@ -61,14 +61,14 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 
 bool	to_many_floor(t_args *args)
 {
-	if (args->floorColor.is_correct && args->ceilColor.is_correct
+	if (args->floor_col.is_correct && args->ceil_col.is_correct
 		&& (args->ground || args->sky))
 		return (true);
-	if (args->ground && args->sky && (args->floorColor.is_correct
-			|| args->ceilColor.is_correct))
+	if (args->ground && args->sky && (args->floor_col.is_correct
+			|| args->ceil_col.is_correct))
 		return (true);
-	else if (args->ground && args->sky && !(args->floorColor.is_correct
-			|| args->ceilColor.is_correct))
+	else if (args->ground && args->sky && !(args->floor_col.is_correct
+			|| args->ceil_col.is_correct))
 		args->is_floor_texture = true;
 	return (false);
 }

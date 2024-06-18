@@ -6,13 +6,13 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:46:18 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:25:57 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:51:19 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
+void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texx)
 {
 	double	increment_y;
 	double	tex_y;
@@ -27,7 +27,7 @@ void	draw_column_texture(t_img *img, t_ray *ray, t_img *texture, int texX)
 	while (ray->start_point.y < ray->end_point.y)
 	{
 		pixel_index = (((int)tex_y % texture->height) * texture->line_length)
-			+ (texX * (texture->bits_per_pixel / 8));
+			+ (texx * (texture->bits_per_pixel / 8));
 		color = *(int *)(texture->addr + pixel_index);
 		my_mlx_pixel_put(img, ray->start_point.x, ray->start_point.y, color);
 		tex_y += increment_y;
@@ -40,13 +40,13 @@ static t_img	*get_texture(t_cub *cub, t_ray *ray)
 	if (ray->is_ray_door)
 		return (&cub->door);
 	else if (ray->side_hit == 'N')
-		return (&cub->texN);
+		return (&cub->texn);
 	else if (ray->side_hit == 'S')
-		return (&cub->texS);
+		return (&cub->texs);
 	else if (ray->side_hit == 'E')
-		return (&cub->texE);
+		return (&cub->texe);
 	else if (ray->side_hit == 'W')
-		return (&cub->texW);
+		return (&cub->texw);
 	return (NULL);
 }
 
@@ -58,20 +58,20 @@ void	get_draw_start_end(t_ray *ray)
 	ray->draw_end = ray->line_height / 2 + HWIN / 2;
 	if (ray->draw_end >= HWIN)
 		ray->draw_end = HWIN - 1;
-	ray->line_height = (int)(HWIN / ray->perpWallDist);
+	ray->line_height = (int)(HWIN / ray->perpdist);
 }
 
 void	get_offset_tex_x(t_cub *cub, t_ray *ray)
 {
 	if (ray->side_hit == 'N' || ray->side_hit == 'S')
-		ray->offset = cub->player.x + ray->perpWallDist * ray->rayDir.x;
+		ray->offset = cub->player.x + ray->perpdist * ray->raydir.x;
 	else
-		ray->offset = cub->player.y + ray->perpWallDist * ray->rayDir.y;
+		ray->offset = cub->player.y + ray->perpdist * ray->raydir.y;
 	ray->offset = ray->offset - floor(ray->offset);
 	ray->tex_x = (int)(ray->offset * (double)ray->texture->width);
-	if (((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->rayDir.y < 0))
+	if (((ray->side_hit == 'N' || ray->side_hit == 'S') && ray->raydir.y < 0))
 		ray->tex_x = ray->texture->width - ray->tex_x - 1;
-	if (((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->rayDir.x > 0))
+	if (((ray->side_hit == 'E' || ray->side_hit == 'W') && ray->raydir.x > 0))
 		ray->tex_x = ray->texture->width - ray->tex_x - 1;
 }
 

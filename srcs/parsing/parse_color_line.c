@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:14:37 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:43:17 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	parse_color_line(t_args *args, char *line, int i)
 	tmp_color.g = get_number(line, &i, args->fd, false);
 	tmp_color.b = get_number(line, &i, args->fd, true);
 	if (line[0] == 'C')
-		color_target = &args->ceilColor;
+		color_target = &args->ceil_col;
 	else
-		color_target = &args->floorColor;
+		color_target = &args->floor_col;
 	if (color_target->is_correct)
 		return (free(line), close(args->fd), quit(CLONE_ARGS));
 	*color_target = tmp_color;
