@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:46:02 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:05:50 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,26 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	i = len_path;
 	goto_next_char(&i, line);
 	if (line[i])
-		return (free(cpy_line), exit_parse_map(args, WRONG_ARG, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
+				true));
 	line[len_path] = '\0';
 	if (is_dir(line))
-		return (free(cpy_line), exit_parse_map(args, FILE_DIR, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args, FILE_DIR,
+				true));
 	if (!check_extension(line, ".xpm"))
-		return (free(cpy_line), exit_parse_map(args, EXTENSION_NAME, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args,
+				EXTENSION_NAME, true));
 	fd_path = open(line, O_RDONLY);
 	if (fd_path == -1)
-		return (free(cpy_line), exit_parse_map(args, WRONG_FILE, true));
-	close(fd_path);
-	assign_path(line, cpy_line, args);
+		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_FILE,
+				true));
+	return (close(fd_path), assign_path(line, cpy_line, args));
 }
 
 bool	to_many_floor(t_args *args)
 {
-	if (args->floor_col.is_correct && args->ceil_col.is_correct
-		&& (args->ground || args->sky))
+	if (args->floor_col.is_correct && args->ceil_col.is_correct && (args->ground
+			|| args->sky))
 		return (true);
 	if (args->ground && args->sky && (args->floor_col.is_correct
 			|| args->ceil_col.is_correct))
