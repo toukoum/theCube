@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/19 14:05:50 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:36:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	assign_path(char *line, char *cpy_line, t_args *args)
 	char	**target_path;
 
 	if (!ft_strncmp("NO", cpy_line, 2))
-		target_path = &args->pathn;
-	else if (!ft_strncmp("SO", cpy_line, 2))
 		target_path = &args->paths;
+	else if (!ft_strncmp("SO", cpy_line, 2))
+		target_path = &args->pathn;
 	else if (!ft_strncmp("WE", cpy_line, 2))
 		target_path = &args->pathw;
 	else if (!ft_strncmp("SK", cpy_line, 2))
