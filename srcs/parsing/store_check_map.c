@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:07:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:12:42 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/19 13:46:23 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@ static bool	check_wall(t_args *args, int i, int j, int width)
 	char	**map;
 
 	map = args->map;
-	if (i > 0 && (map[i - 1][j] == '\0' || map[i - 1][j] == ' '))
+	if (i > 0 && (map[i - 1][j] == '\0' || is_space(map[i - 1][j])))
 		return (false);
-	if (i < args->height - 1 && (map[i + 1][j] == '\0' || map[i + 1][j] == ' '))
+	if (i < args->height - 1 && (map[i + 1][j] == '\0' || is_space(map[i
+				+ 1][j])))
 		return (false);
-	if (j > 0 && (map[i][j - 1] == '\0' || map[i - 1][j - 1] == ' '))
+	if (j > 0 && (map[i][j - 1] == '\0' || is_space(map[i - 1][j - 1])))
 		return (false);
 	if (j < width - 1 && map[i][j + 1] == '\0')
 		return (false);
-	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0' || map[i - 1][j
-		- 1] == ' '))
+	if (i > 0 && j > 0 && (map[i - 1][j - 1] == '\0' || is_space(map[i - 1][j
+			- 1])))
 		return (false);
 	if (i > 0 && j < width - 1 && map[i - 1][j + 1] == '\0')
 		return (false);
-	if (i < args->height - 1 && j > 0 && (map[i + 1][j - 1] == '\0' || map[i
-			- 1][j - 1] == ' '))
+	if (i < args->height - 1 && j > 0 && (map[i + 1][j - 1] == '\0'
+		|| is_space(map[i - 1][j - 1])))
 		return (false);
 	if (i < args->height - 1 && j < width - 1 && map[i + 1][j + 1] == '\0')
 		return (false);

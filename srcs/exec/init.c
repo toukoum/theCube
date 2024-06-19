@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:02:42 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 15:18:43 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:16:58 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_cub(t_cub *cub, t_args *args)
 	cub->plane.x = 0;
 	cub->plane.y = 0;
 	cub->frame_counter = 0;
-	cub->rot_speed = 0.01;
+	cub->rot_speed = ROTSPEED;
 	init_start_angle(cub);
 	cub->doors = cub->map->doors;
 }

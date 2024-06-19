@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:25:13 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 15:18:16 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:16:50 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	process_key_input(t_cub *cub)
 {
-	cub->rot_speed = 0.01;
+	cub->rot_speed = 0.02;
 	if (cub->keybuffer[XK_w])
 		move_player(XK_w, cub);
 	if (cub->keybuffer[XK_s])

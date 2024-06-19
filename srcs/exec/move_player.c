@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:23:53 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/19 11:07:47 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:16:27 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,7 @@ void	move_player(int keycode, t_cub *cub)
 	map_index.x = (int)(next.x);
 	map_index.y = (int)(next.y);
 	if (corner_collision(cub, map_index))
-	{
-		printf("COLLIDED\n");
 		return ;
-	}
 	if (cub->map->map[map_index.y][map_index.x] == '0'
 		|| cub->map->map[map_index.y][map_index.x] == cub->player.start_angle
 		|| is_door_open(cub->map->map, map_index.x, map_index.y, cub->doors))
