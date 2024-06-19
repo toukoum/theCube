@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:31:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 16:23:57 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:09:45 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,15 @@
 # define NSPRITE 14
 
 // =========================== STRUCT ===========================
+
+enum e_direction
+{
+	UP_LEFT,
+	UP_RIGHT,
+	DOWN_LEFT,
+	DOWN_RIGHT
+};
+
 typedef struct s_color
 {
 	bool			is_correct;
@@ -372,7 +381,7 @@ void				play_animation(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
 bool				is_door_close(char **map, int x, int y, t_door **doors);
 void				put_sprite_on_map(t_cub *cub);
-bool				cornerCollision(t_cub *cub, t_int_coord next);
+bool				corner_collision(t_cub *cub, t_int_coord next);
 void				handle_error(t_args *args, char *line);
 
 #endif
