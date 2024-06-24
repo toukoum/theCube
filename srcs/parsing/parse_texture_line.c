@@ -3,70 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/24 13:48:40 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/24 14:17:04 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-void	assign_path(char *line, char *cpy_line, t_args *args)
+void	assign_path(char **split, t_args *args)
 {
 	char	**target_path;
 
-	if (!ft_strncmp("NO", cpy_line, 2))
+	if (!ft_strncmp("NO", split[0], 2))
 		target_path = &args->paths;
-	else if (!ft_strncmp("SO", cpy_line, 2))
+	else if (!ft_strncmp("SO", split[0], 2))
 		target_path = &args->pathn;
-	else if (!ft_strncmp("WE", cpy_line, 2))
+	else if (!ft_strncmp("WE", split[0], 2))
 		target_path = &args->pathw;
-	else if (!ft_strncmp("SK", cpy_line, 2))
+	else if (!ft_strncmp("SK", split[0], 2))
 		target_path = &args->sky;
-	else if (!ft_strncmp("GR", cpy_line, 2))
+	else if (!ft_strncmp("GR", split[0], 2))
 		target_path = &args->ground;
 	else
 		target_path = &args->pathe;
 	if (*target_path)
-		return (free(cpy_line), exit_parse_map(args, CLONE_ARGS, true));
-	*target_path = ft_strdup(line);
+		return (exit_parse_map(args, CLONE_ARGS, true));
+	*target_path = ft_strdup(split[1]);
 }
 
 void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 {
-	int	len_path;
+	char	**split;
 	int	fd_path;
 
-	goto_next_char(&i, line);
-	printf("i = %d\n", i);
-	if (!line[i])
-		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
+	split = multisplit(line, " \t");
+	if (split_size(split) != 2 || !split)
+		return (free_multisplit(split), handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
 				true));
-	line = line + i;
-	len_path = i;
-	while (!is_space(line[len_path]))
-		len_path++;
-	i = len_path;
-	goto_next_char(&i, line);
-	printf("line[i] = %c\n", line[i]);
-	printf("line[i] = %c\n", *line);
-	if (line[i])
-		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
-				true));
-	line[len_path] = '\0';
 	if (is_dir(line))
 		return (handle_error(args, cpy_line), exit_parse_map(args, FILE_DIR,
-				true));
+					true));
 	if (!check_extension(line, ".xpm"))
 		return (handle_error(args, cpy_line), exit_parse_map(args,
-				EXTENSION_NAME, true));
+					EXTENSION_NAME, true));
 	fd_path = open(line, O_RDONLY);
 	if (fd_path == -1)
 		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_FILE,
-				true));
-	return (close(fd_path), assign_path(line, cpy_line, args));
+					true));
+	return (close(fd_path), assign_path(split, args), free_multisplit(split));
 }
+
+/* void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line) */
+/* { */
+/* 	int	len_path; */
+/*  */
+/* 	goto_next_char(&i, line); */
+/* 	printf("i = %d\n", i); */
+/* 	if (!line[i]) */
+/* 		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG, */
+/* 				true)); */
+/* 	line = line + i; */
+/* 	len_path = i; */
+/* 	while (!is_space(line[len_path])) */
+/* 		len_path++; */
+/* 	i = len_path; */ 
+/* 	goto_next_char(&i, line); */
+/* 	if (line[i]) */
+/* 		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG, */
+/* 				true)); */
+/* 	line[len_path] = '\0'; */
+/* } */
+
 
 bool	to_many_floor(t_args *args)
 {

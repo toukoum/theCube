@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:31:29 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/19 11:09:45 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:07:49 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,5 +383,10 @@ bool				is_door_close(char **map, int x, int y, t_door **doors);
 void				put_sprite_on_map(t_cub *cub);
 bool				corner_collision(t_cub *cub, t_int_coord next);
 void				handle_error(t_args *args, char *line);
+
+// multisplit
+char				**multisplit(char *str, char *charset);
+void				free_multisplit(char **split);
+int					split_size(char **split);
 
 #endif
