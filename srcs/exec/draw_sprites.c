@@ -6,42 +6,31 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 16:55:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:50:28 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 
-/**
- * calcul de la taille des sprite en x et en y
- * plus le sprite est loin (transform y), plus il va apparaitre petit
- *
-
-	* puis on calcul de ou a ou le sprite doit etre dessinner par rapport a sa taille x et y pour qu'il
- * soit centree
- *
-
-	* spriteScreenX correspond a la position en X central du sprite en fonction de transformX
- */
 void	calculate_height_width_sprite(t_cub *cub, t_sprite *s)
 {
-	s->spriteHeight = (int)(HWIN / cub->transform.y);
-	s->spriteHeight = abs(s->spriteHeight);
-	s->drawStart.y = -s->spriteHeight / 2 + HWIN / 2;
-	if (s->drawStart.y < 0)
-		s->drawStart.y = 0;
-	s->drawEnd.y = s->spriteHeight / 2 + HWIN / 2;
-	if (s->drawEnd.y >= HWIN)
-		s->drawEnd.y = HWIN - 1;
-	s->spriteScreenX = (int)((WWIN / 2) * (1 + cub->transform.x
+	s->spritheight = (int)(HWIN / cub->transform.y);
+	s->spritheight = abs(s->spritheight);
+	s->drawstart.y = -s->spritheight / 2 + HWIN / 2;
+	if (s->drawstart.y < 0)
+		s->drawstart.y = 0;
+	s->drawend.y = s->spritheight / 2 + HWIN / 2;
+	if (s->drawend.y >= HWIN)
+		s->drawend.y = HWIN - 1;
+	s->spritescrinx = (int)((WWIN / 2) * (1 + cub->transform.x
 				/ cub->transform.y));
-	s->spriteWidth = (HWIN / (cub->transform.y));
-	s->drawStart.x = -s->spriteWidth / 2 + s->spriteScreenX;
-	if (s->drawStart.x < 0)
-		s->drawStart.x = 0;
-	s->drawEnd.x = s->spriteWidth / 2 + s->spriteScreenX;
-	if (s->drawEnd.x >= WWIN)
-		s->drawEnd.x = WWIN - 1;
+	s->spritwidth = (HWIN / (cub->transform.y));
+	s->drawstart.x = -s->spritwidth / 2 + s->spritescrinx;
+	if (s->drawstart.x < 0)
+		s->drawstart.x = 0;
+	s->drawend.x = s->spritwidth / 2 + s->spritescrinx;
+	if (s->drawend.x >= WWIN)
+		s->drawend.x = WWIN - 1;
 }
 
 /**
@@ -64,13 +53,13 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
 	int	pixel_index;
 	int	color;
 
-	y = sprite->drawStart.y;
-	while (y < sprite->drawEnd.y)
+	y = sprite->drawstart.y;
+	while (y < sprite->drawend.y)
 	{
-		d = y * 256 - HWIN * 128 + sprite->spriteHeight * 128;
-		tex_y = ((d * sprite->texture.height) / sprite->spriteHeight) / 256;
+		d = y * 256 - HWIN * 128 + sprite->spritheight * 128;
+		tex_y = ((d * sprite->texture.height) / sprite->spritheight) / 256;
 		pixel_index = ((int)tex_y * sprite->texture.line_length)
-			+ ((int)sprite->texX * (sprite->texture.bits_per_pixel / 8));
+			+ ((int)sprite->texx * (sprite->texture.bits_per_pixel / 8));
 		color = *(int *)(sprite->texture.addr + pixel_index);
 		if (color & 0x00FFFFFF)
 			my_mlx_pixel_put(&cub->img, x, y, color);
@@ -86,10 +75,10 @@ void	draw_pixel_sprite(t_cub *cub, t_sprite *sprite, int x)
  */
 void	get_tex_x(t_sprite *sprite, int x)
 {
-	sprite->texX = (256 * (x - (-sprite->spriteWidth / 2
-					+ sprite->spriteScreenX)) * sprite->texture.width
-			/ sprite->spriteWidth) / 256;
-	sprite->texX = (int)(sprite->texX);
+	sprite->texx = (256 * (x - (-sprite->spritwidth / 2
+					+ sprite->spritescrinx)) * sprite->texture.width
+			/ sprite->spritwidth) / 256;
+	sprite->texx = (int)(sprite->texx);
 }
 
 /**
@@ -100,8 +89,8 @@ void	draw_column_sprite(t_cub *cub, t_sprite *sprite)
 {
 	int	x;
 
-	x = sprite->drawStart.x;
-	while (x < sprite->drawEnd.x)
+	x = sprite->drawstart.x;
+	while (x < sprite->drawend.x)
 	{
 		if (is_sprite_viewable(cub, x))
 		{
@@ -114,22 +103,24 @@ void	draw_column_sprite(t_cub *cub, t_sprite *sprite)
 
 /**
  * @brief on affiche les sprites du plus
- * loin au plus proche (dist_player_sprites contient les sprites triés par ordre decroissant)
+
+	* loin au plus proche (dist_player_sprites
+	* contient les sprites triés par ordre decroissant)
  */
 void	draw_sprites(t_cub *cub)
 {
-	int i;
-	t_sprite sprit;
+	int			i;
+	t_sprite	sprit;
 
 	i = 0;
 	while (i < NSPRITE)
 	{
 		sprit = cub->sprites[(int)cub->dist_ps[i][0]];
 		if (sprit.play)
-			sprit.texture = cub->sprites_textures[sprit.idx_textures][cub->frame_sprite % sprit.nframe];
+			sprit.texture = cub->sprites_textures[sprit.idx_textures]
+			[cub->frame_sprite % sprit.nframe];
 		else
 			sprit.texture = cub->sprites_textures[sprit.idx_textures][0];
-			
 		calculate_pos_relative_sprite(i, cub);
 		calculate_height_width_sprite(cub, &sprit);
 		draw_column_sprite(cub, &sprit);

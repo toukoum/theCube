@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 17:22:07 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/28 15:19:42 by rgiraud          ###   ########.fr       */
+/*   Created: 2024/06/18 11:31:29 by rgiraud           #+#    #+#             */
+/*   Updated: 2024/06/19 11:09:45 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CUBE_H__
-# define __CUBE_H__
+#ifndef CUBE_H
+# define CUBE_H
 
-# ifdef __APPLE__
-#  define LINUX 0
-#  define MY_DIR O_DIRECTORY
-# elif __linux__
-#  include <X11/keysym.h>
-#  define LINUX 1
-#  define MY_DIR __O_DIRECTORY
-# endif
+# include <X11/keysym.h>
+# define LINUX 1
+# define MY_DIR __O_DIRECTORY
 
 # include "../libft-boost/ft_printf/includes/ft_printf.h"
 # include "../libft-boost/gnl/includes/get_next_line_bonus.h"
@@ -64,12 +59,12 @@
 #  define DEBUG 0
 # endif
 
-# define WWIN 1280            // width of window
-# define HWIN 720             // height of window
-# define WMAP 20 * WWIN / 100 // width of minimap
-# define HMAP 20 * HWIN / 100 // height of minimap
+# define WWIN 1280
+# define HWIN 720
+# define WMAP 256
+# define HMAP 144
 
-# define TSIZE 15 // taille d'un carreau de la minimap
+# define TSIZE 15
 
 // color for mlx
 # define CBLUE 0x000000FF
@@ -92,8 +87,8 @@
 
 # define CRAY 0xCAE9EA
 
-# define MOVESPEED 0.06
-# define ROTSPEED 0.05
+# define MOVESPEED 0.03
+# define ROTSPEED 0.03
 # define CHANGEFOV 2
 # define SENSITIVITY 0.0000001
 
@@ -102,6 +97,15 @@
 # define NSPRITE 14
 
 // =========================== STRUCT ===========================
+
+enum e_direction
+{
+	UP_LEFT,
+	UP_RIGHT,
+	DOWN_LEFT,
+	DOWN_RIGHT
+};
+
 typedef struct s_color
 {
 	bool			is_correct;
@@ -144,14 +148,14 @@ typedef struct s_door
 typedef struct s_args
 {
 	int				fd;
-	char			*pathN;
-	char			*pathS;
-	char			*pathW;
-	char			*pathE;
+	char			*pathn;
+	char			*paths;
+	char			*pathw;
+	char			*pathe;
 	char			*ground;
 	char			*sky;
-	t_color			floorColor;
-	t_color			ceilColor;
+	t_color			floor_col;
+	t_color			ceil_col;
 	char			**map;
 	double			pos_x;
 	double			pos_y;
@@ -159,7 +163,7 @@ typedef struct s_args
 	int				height;
 	bool			is_correct_pos;
 	bool			is_floor_texture;
-	char start_angle; // 'N', 'S', 'E', 'W'
+	char			start_angle;
 	char			*path_file;
 	int				start_map;
 	int				ndoor;
@@ -177,11 +181,11 @@ typedef struct s_player
 typedef struct s_ray
 {
 	int				line_height;
-	t_coord			rayDir;
+	t_coord			raydir;
 	t_coord			d;
 	t_int_coord		map;
-	t_coord			sideDist;
-	double			perpWallDist;
+	t_coord			sidist;
+	double			perpdist;
 	t_int_coord		step;
 	int				side_hit;
 	t_int_coord		start_point;
@@ -197,24 +201,24 @@ typedef struct s_ray
 
 typedef struct s_rayfloor
 {
-	t_coord			rayDir0;
-	t_coord			rayDir1;
+	t_coord			raydir0;
+	t_coord			raydir1;
 	t_coord			d;
 	t_coord			floor;
 	t_coord			cell;
 	t_int_coord		idx;
-	double			posZ;
+	double			posz;
 	double			p;
-	double			rowDist;
+	double			rowdist;
 }					t_rayfloor;
 typedef struct s_map
 {
-	char			*pathN;
-	char			*pathS;
-	char			*pathW;
-	char			*pathE;
-	t_color			floorColor;
-	t_color			ceilColor;
+	char			*pathn;
+	char			*paths;
+	char			*pathw;
+	char			*pathe;
+	t_color			floor_col;
+	t_color			ceil_col;
 	char			**map;
 	int				width;
 	int				height;
@@ -222,12 +226,12 @@ typedef struct s_map
 
 typedef struct s_sprite
 {
-	int				spriteHeight;
-	int				spriteWidth;
-	int				spriteScreenX;
-	t_int_coord		drawStart;
-	t_int_coord		drawEnd;
-	int				texX;
+	int				spritheight;
+	int				spritwidth;
+	int				spritescrinx;
+	t_int_coord		drawstart;
+	t_int_coord		drawend;
+	int				texx;
 	t_img			texture;
 	t_coord			pos;
 	int				idx_textures;
@@ -245,34 +249,30 @@ typedef struct s_cub
 	void			*win;
 	t_coord			dir;
 	t_coord			plane;
-	t_img			texN;
-	t_img			texS;
-	t_img			texE;
-	t_img			texW;
+	t_img			texn;
+	t_img			texs;
+	t_img			texe;
+	t_img			texw;
 	t_img			sky;
 	t_img			ground;
 
-	// sprite
 	t_sprite		sprites[NSPRITE];
 
 	t_img			sprites_textures[NSPRITE][100];
-	double			wallDist[WWIN];
+	double			walldist[WWIN];
 	double			dist_ps[NSPRITE][2];
 	t_coord			transform;
-	double			invMatriceCam;
+	double			inv_matrice;
 
 	int				frame_counter;
 	int				frame_sprite;
 	bool			can_move;
 	bool			display_help;
 
-	// door
 	t_img			door;
 	t_door			**doors;
-	int				keyBuffer[100000];
-
-	double			rotSpeed;
-
+	int				keybuffer[100000];
+	double			rot_speed;
 }					t_cub;
 
 // =========================== EVENT MLX ===========================
@@ -378,31 +378,10 @@ void				sort_dist_player_sprites(double dist_ps[NSPRITE][2]);
 void				draw_sprites(t_cub *cub);
 void				calculate_pos_relative_sprite(int i, t_cub *cub);
 void				play_animation(t_cub *cub);
-
-// voice
-// void				free_media(void);
-// bool				load_media(void);
-// void				play_sound(void);
-// bool				init_audio(void);
-// void				close_audio(void);
-
-# ifdef __APPLE__
-#  define XK_Escape 53
-#  define XK_q 12
-#  define XK_w 13
-#  define XK_e 14
-#  define XK_a 0
-#  define XK_s 1
-#  define XK_d 2
-#  define XK_h 4
-#  define XK_Up 126
-#  define XK_Down 125
-#  define XK_Left 123
-#  define XK_Right 124
-#  define XK_plus 24
-#  define XK_minus 27
-#  define XK_space 49
-
-# endif
+void				calculate_pos_relative_sprite(int i, t_cub *cub);
+bool				is_door_close(char **map, int x, int y, t_door **doors);
+void				put_sprite_on_map(t_cub *cub);
+bool				corner_collision(t_cub *cub, t_int_coord next);
+void				handle_error(t_args *args, char *line);
 
 #endif

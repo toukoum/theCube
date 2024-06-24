@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/14 18:26:41 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:36:21 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	assign_path(char *line, char *cpy_line, t_args *args)
 	char	**target_path;
 
 	if (!ft_strncmp("NO", cpy_line, 2))
-		target_path = &args->pathN;
+		target_path = &args->paths;
 	else if (!ft_strncmp("SO", cpy_line, 2))
-		target_path = &args->pathS;
+		target_path = &args->pathn;
 	else if (!ft_strncmp("WE", cpy_line, 2))
-		target_path = &args->pathW;
+		target_path = &args->pathw;
 	else if (!ft_strncmp("SK", cpy_line, 2))
 		target_path = &args->sky;
 	else if (!ft_strncmp("GR", cpy_line, 2))
 		target_path = &args->ground;
 	else
-		target_path = &args->pathE;
+		target_path = &args->pathe;
 	if (*target_path)
 		return (free(cpy_line), exit_parse_map(args, CLONE_ARGS, true));
 	*target_path = ft_strdup(line);
@@ -46,31 +46,33 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	i = len_path;
 	goto_next_char(&i, line);
 	if (line[i])
-		return (free(cpy_line), exit_parse_map(args, WRONG_ARG, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
+				true));
 	line[len_path] = '\0';
 	if (is_dir(line))
-		return (free(cpy_line), exit_parse_map(args, FILE_DIR, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args, FILE_DIR,
+				true));
 	if (!check_extension(line, ".xpm"))
-		return (free(cpy_line), exit_parse_map(args, EXTENSION_NAME, true));
+		return (handle_error(args, cpy_line), exit_parse_map(args,
+				EXTENSION_NAME, true));
 	fd_path = open(line, O_RDONLY);
 	if (fd_path == -1)
-		return (free(cpy_line), exit_parse_map(args, WRONG_FILE, true));
-	close(fd_path);
-	assign_path(line, cpy_line, args);
+		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_FILE,
+				true));
+	return (close(fd_path), assign_path(line, cpy_line, args));
 }
 
 bool	to_many_floor(t_args *args)
 {
-	if (args->floorColor.is_correct && args->ceilColor.is_correct
-		&& (args->ground || args->sky))
+	if (args->floor_col.is_correct && args->ceil_col.is_correct && (args->ground
+			|| args->sky))
 		return (true);
-	if (args->ground && args->sky
-		&& (args->floorColor.is_correct || args->ceilColor.is_correct))
+	if (args->ground && args->sky && (args->floor_col.is_correct
+			|| args->ceil_col.is_correct))
 		return (true);
-	else if (args->ground && args->sky
-		&& !(args->floorColor.is_correct || args->ceilColor.is_correct))
+	else if (args->ground && args->sky && !(args->floor_col.is_correct
+			|| args->ceil_col.is_correct))
 		args->is_floor_texture = true;
-	
 	return (false);
 }
 
@@ -98,8 +100,8 @@ int	parse_line(char *line, t_args *args)
 		parse_texture_line(args, line, i + 2, cpy_line);
 	else if (!line[i])
 		return (ALL_PAS_GOOD);
-	else if ((!is_args_full(args) && (!is_texture_id(line, i) && !(line[i] == 'F'
-				|| line[i] == 'C'))) || to_many_floor(args))
+	else if ((!is_args_full(args) && (!is_texture_id(line, i)
+				&& !(line[i] == 'F' || line[i] == 'C'))) || to_many_floor(args))
 		return (free(line), exit_parse_map(args, INVALID_CHARACTER, true), 0);
 	else if (!is_args_full(args))
 		return (free(line), exit_parse_map(args, MISSING_ARG, true), 0);

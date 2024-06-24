@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:12:28 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 16:50:30 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/19 11:04:48 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ bool	init_texture(void *mlx, char *path, t_img *texture)
 
 void	init_name_sprite(t_cub *cub, t_sprite *sprit, int j)
 {
-	int	i;
+	int		i;
+	char	filename[256];
 
-	char filename[256]; // Buffer pour le nom de fichier
 	i = 1;
 	while (i <= sprit->nframe)
 	{
 		snprintf(filename, sizeof(filename), "sprites/%d/%d.xpm", j, i);
-		if (!init_texture(cub->mlx, filename, &cub->sprites_textures[j - 1][i - 1]))
+		if (!init_texture(cub->mlx, filename, &cub->sprites_textures[j - 1][i
+				- 1]))
 		{
 			free_cub(cub);
 			quit_cub(MALLOC_ERROR);
@@ -67,17 +68,18 @@ void	init_texture_sprites(t_cub *cub)
  */
 void	init_all_textures(t_cub *cub)
 {
-	if (!init_texture(cub->mlx, cub->map->pathN, &cub->texN))
+	if (!init_texture(cub->mlx, cub->map->pathn, &cub->texn))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathS, &cub->texS))
+	if (!init_texture(cub->mlx, cub->map->paths, &cub->texs))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathE, &cub->texE))
+	if (!init_texture(cub->mlx, cub->map->pathe, &cub->texe))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->pathW, &cub->texW))
+	if (!init_texture(cub->mlx, cub->map->pathw, &cub->texw))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->ground, &cub->ground))
+	if (cub->map->ground
+		&& !init_texture(cub->mlx, cub->map->ground, &cub->ground))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
-	if (!init_texture(cub->mlx, cub->map->sky, &cub->sky))
+	if (cub->map->sky && !init_texture(cub->mlx, cub->map->sky, &cub->sky))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));
 	if (!init_texture(cub->mlx, "textures/door.xpm", &cub->door))
 		return (free_cub(cub), quit_cub(MALLOC_ERROR));

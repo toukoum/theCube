@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:16:41 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/05/26 12:03:29 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:51:39 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void	draw_log_player(t_cub *cub)
 {
 	draw_pos(cub);
 	draw_dir(cub);
-	draw_len_ray(cub, cub->wallDist[0], "distLeftRay:   ", 95);
-	draw_len_ray(cub, cub->wallDist[WWIN / 2], "distCenterRay: ", 80);
-	draw_len_ray(cub, cub->wallDist[WWIN - 1], "distRightRay:  ", 65);
+	draw_len_ray(cub, cub->walldist[0], "distLeftRay:   ", 95);
+	draw_len_ray(cub, cub->walldist[WWIN / 2], "distCenterRay: ", 80);
+	draw_len_ray(cub, cub->walldist[WWIN - 1], "distRightRay:  ", 65);
 	draw_fov(cub);
 }

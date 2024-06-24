@@ -1,5 +1,5 @@
 NAME 	:=	cub3D
-FLAGS	:=	-Wall -Wextra -Werror -MMD -g -O3
+FLAGS	:=	-Wall -Wextra -Werror -MMD
 
 SRC		:= main.c  parsing/parse.c parsing/parse_color_line.c parsing/parse_texture_line.c \
 parsing/parse_util_args.c parsing/parse_util2_args.c exec/exit_parsing.c parsing/parse_map.c \
@@ -8,7 +8,7 @@ exec/exit_exec.c exec/mlx_util.c exec/init.c exec/minimap.c exec/raycasting.c \
 exec/minimap_util.c exec/raycasting_util.c exec/move_player.c exec/handle_event.c \
 exec/init_textures.c exec/draw_log.c exec/draw_log_util.c exec/floor_ceil.c \
 exec/draw_texture_wall.c exec/sprites.c exec/sprites_util.c exec/draw_sprites.c \
-exec/move_player_util.c
+exec/move_player_util.c exec/cornerCollision.c
 
 
 OBJS_DIR:=	./objs/
@@ -78,6 +78,8 @@ $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
 	@printf "$(ERASE) > Compiling: $(BLUE)$@$(NC)$(END)"    
 	@$(CC) $(FLAGS) $(INCLUDE) $(MLX_FLAGS) -c $< -o $@
+
+bonus: all
 
 clean:
 	@echo " >$(RED) Deleting objects files...✅$(NC)"
