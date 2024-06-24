@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:08 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/19 14:01:06 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/24 14:33:50 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 void	handle_error(t_args *args, char *line)
 {
-	if (args->pathe)
-		free(args->pathe);
-	if (args->pathn)
-		free(args->pathn);
-	if (args->pathw)
-		free(args->pathw);
-	if (args->paths)
-		free(args->paths);
-	if (args->sky)
-		free(args->sky);
-	if (args->ground)
-		free(args->ground);
+	free(args->pathe);
+	free(args->pathn);
+	free(args->pathw);
+	free(args->paths);
+	free(args->sky);
+	free(args->ground);
 	free(line);
 	close(args->fd);
 	quit(WRONG_ARG);
