@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:14:51 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/18 11:13:12 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/24 13:29:23 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	goto_next_char(int *i, char *line)
 {
+	if (!line[*i])
+		return ;
 	while (is_space(line[*i]))
 		(*i)++;
 }

@@ -6,7 +6,7 @@
 /*   By: rgiraud <rgiraud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:17:46 by rgiraud           #+#    #+#             */
-/*   Updated: 2024/06/19 16:36:21 by rgiraud          ###   ########.fr       */
+/*   Updated: 2024/06/24 13:48:40 by rgiraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,18 @@ void	parse_texture_line(t_args *args, char *line, int i, char *cpy_line)
 	int	fd_path;
 
 	goto_next_char(&i, line);
+	printf("i = %d\n", i);
+	if (!line[i])
+		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
+				true));
 	line = line + i;
 	len_path = i;
-	while (line[i] && !is_space(line[len_path]))
+	while (!is_space(line[len_path]))
 		len_path++;
 	i = len_path;
 	goto_next_char(&i, line);
+	printf("line[i] = %c\n", line[i]);
+	printf("line[i] = %c\n", *line);
 	if (line[i])
 		return (handle_error(args, cpy_line), exit_parse_map(args, WRONG_ARG,
 				true));
